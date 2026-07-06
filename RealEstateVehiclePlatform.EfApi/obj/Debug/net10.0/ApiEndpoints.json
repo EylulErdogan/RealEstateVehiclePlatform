@@ -1,0 +1,941 @@
+[
+  {
+    "ContainingType": "RealEstateVehiclePlatform.EfApi.Controllers.AppointmentsController",
+    "Method": "Approve",
+    "RelativePath": "api/Appointments/Approve/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstateVehiclePlatform.EfApi.Controllers.AppointmentsController",
+    "Method": "Cancel",
+    "RelativePath": "api/Appointments/Cancel/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstateVehiclePlatform.EfApi.Controllers.AppointmentsController",
+    "Method": "Complete",
+    "RelativePath": "api/Appointments/Complete/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstateVehiclePlatform.EfApi.Controllers.AppointmentsController",
+    "Method": "Create",
+    "RelativePath": "api/Appointments/Create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "appointment",
+        "Type": "RealEstateVehiclePlatform.Entities.Concrete.Appointment",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstateVehiclePlatform.EfApi.Controllers.AppointmentsController",
+    "Method": "GetListingAppointments",
+    "RelativePath": "api/Appointments/ListingAppointments/{listingId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "listingId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstateVehiclePlatform.EfApi.Controllers.AppointmentsController",
+    "Method": "Reject",
+    "RelativePath": "api/Appointments/Reject/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstateVehiclePlatform.EfApi.Controllers.AppointmentsController",
+    "Method": "GetUserAppointments",
+    "RelativePath": "api/Appointments/UserAppointments/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstateVehiclePlatform.EfApi.Controllers.CategoriesController",
+    "Method": "GetAll",
+    "RelativePath": "api/Categories",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstateVehiclePlatform.EfApi.Controllers.CategoriesController",
+    "Method": "Create",
+    "RelativePath": "api/Categories",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "category",
+        "Type": "RealEstateVehiclePlatform.Entities.Concrete.Category",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstateVehiclePlatform.EfApi.Controllers.CategoriesController",
+    "Method": "Update",
+    "RelativePath": "api/Categories",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "category",
+        "Type": "RealEstateVehiclePlatform.Entities.Concrete.Category",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstateVehiclePlatform.EfApi.Controllers.CategoriesController",
+    "Method": "GetById",
+    "RelativePath": "api/Categories/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstateVehiclePlatform.EfApi.Controllers.CategoriesController",
+    "Method": "Delete",
+    "RelativePath": "api/Categories/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstateVehiclePlatform.EfApi.Controllers.CitiesController",
+    "Method": "GetAll",
+    "RelativePath": "api/Cities",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstateVehiclePlatform.EfApi.Controllers.CitiesController",
+    "Method": "Create",
+    "RelativePath": "api/Cities",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "city",
+        "Type": "RealEstateVehiclePlatform.Entities.Concrete.City",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstateVehiclePlatform.EfApi.Controllers.CitiesController",
+    "Method": "Update",
+    "RelativePath": "api/Cities",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "city",
+        "Type": "RealEstateVehiclePlatform.Entities.Concrete.City",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstateVehiclePlatform.EfApi.Controllers.CitiesController",
+    "Method": "GetById",
+    "RelativePath": "api/Cities/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstateVehiclePlatform.EfApi.Controllers.CitiesController",
+    "Method": "Delete",
+    "RelativePath": "api/Cities/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstateVehiclePlatform.EfApi.Controllers.ConversationsController",
+    "Method": "GetById",
+    "RelativePath": "api/Conversations/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstateVehiclePlatform.EfApi.Controllers.ConversationsController",
+    "Method": "StartConversation",
+    "RelativePath": "api/Conversations/Start/{listingId}/{userOneId}/{userTwoId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "listingId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "userOneId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "userTwoId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstateVehiclePlatform.EfApi.Controllers.ConversationsController",
+    "Method": "GetUserConversations",
+    "RelativePath": "api/Conversations/UserConversations/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstateVehiclePlatform.EfApi.Controllers.DistrictsController",
+    "Method": "GetAll",
+    "RelativePath": "api/Districts",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstateVehiclePlatform.EfApi.Controllers.DistrictsController",
+    "Method": "Create",
+    "RelativePath": "api/Districts",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "district",
+        "Type": "RealEstateVehiclePlatform.Entities.Concrete.District",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstateVehiclePlatform.EfApi.Controllers.DistrictsController",
+    "Method": "Update",
+    "RelativePath": "api/Districts",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "district",
+        "Type": "RealEstateVehiclePlatform.Entities.Concrete.District",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstateVehiclePlatform.EfApi.Controllers.DistrictsController",
+    "Method": "GetById",
+    "RelativePath": "api/Districts/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstateVehiclePlatform.EfApi.Controllers.DistrictsController",
+    "Method": "Delete",
+    "RelativePath": "api/Districts/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstateVehiclePlatform.EfApi.Controllers.DistrictsController",
+    "Method": "GetByCityId",
+    "RelativePath": "api/Districts/GetByCity/{cityId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cityId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstateVehiclePlatform.EfApi.Controllers.FavoritesController",
+    "Method": "AddFavorite",
+    "RelativePath": "api/Favorites/Add/{userId}/{listingId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "listingId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstateVehiclePlatform.EfApi.Controllers.FavoritesController",
+    "Method": "RemoveFavorite",
+    "RelativePath": "api/Favorites/Remove/{userId}/{listingId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "listingId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstateVehiclePlatform.EfApi.Controllers.FavoritesController",
+    "Method": "GetUserFavorites",
+    "RelativePath": "api/Favorites/UserFavorites/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstateVehiclePlatform.EfApi.Controllers.HouseDetailsController",
+    "Method": "Create",
+    "RelativePath": "api/HouseDetails/Create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "houseDetail",
+        "Type": "RealEstateVehiclePlatform.Entities.Concrete.HouseDetail",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstateVehiclePlatform.EfApi.Controllers.HouseDetailsController",
+    "Method": "Delete",
+    "RelativePath": "api/HouseDetails/Delete/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstateVehiclePlatform.EfApi.Controllers.HouseDetailsController",
+    "Method": "GetByListingId",
+    "RelativePath": "api/HouseDetails/GetByListing/{listingId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "listingId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstateVehiclePlatform.EfApi.Controllers.HouseDetailsController",
+    "Method": "Update",
+    "RelativePath": "api/HouseDetails/Update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "houseDetail",
+        "Type": "RealEstateVehiclePlatform.Entities.Concrete.HouseDetail",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstateVehiclePlatform.EfApi.Controllers.LandDetailsController",
+    "Method": "Create",
+    "RelativePath": "api/LandDetails/Create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "landDetail",
+        "Type": "RealEstateVehiclePlatform.Entities.Concrete.LandDetail",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstateVehiclePlatform.EfApi.Controllers.LandDetailsController",
+    "Method": "Delete",
+    "RelativePath": "api/LandDetails/Delete/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstateVehiclePlatform.EfApi.Controllers.LandDetailsController",
+    "Method": "GetByListingId",
+    "RelativePath": "api/LandDetails/GetByListing/{listingId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "listingId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstateVehiclePlatform.EfApi.Controllers.LandDetailsController",
+    "Method": "Update",
+    "RelativePath": "api/LandDetails/Update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "landDetail",
+        "Type": "RealEstateVehiclePlatform.Entities.Concrete.LandDetail",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstateVehiclePlatform.EfApi.Controllers.ListingImagesController",
+    "Method": "Create",
+    "RelativePath": "api/ListingImages/Create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "listingImage",
+        "Type": "RealEstateVehiclePlatform.Entities.Concrete.ListingImage",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstateVehiclePlatform.EfApi.Controllers.ListingImagesController",
+    "Method": "Delete",
+    "RelativePath": "api/ListingImages/Delete/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstateVehiclePlatform.EfApi.Controllers.ListingImagesController",
+    "Method": "GetByListingId",
+    "RelativePath": "api/ListingImages/GetByListing/{listingId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "listingId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstateVehiclePlatform.EfApi.Controllers.ListingImagesController",
+    "Method": "SetMainImage",
+    "RelativePath": "api/ListingImages/SetMainImage/{imageId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "imageId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstateVehiclePlatform.EfApi.Controllers.ListingsController",
+    "Method": "GetAll",
+    "RelativePath": "api/Listings",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstateVehiclePlatform.EfApi.Controllers.ListingsController",
+    "Method": "Create",
+    "RelativePath": "api/Listings",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "listing",
+        "Type": "RealEstateVehiclePlatform.Entities.Concrete.Listing",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstateVehiclePlatform.EfApi.Controllers.ListingsController",
+    "Method": "Update",
+    "RelativePath": "api/Listings",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "listing",
+        "Type": "RealEstateVehiclePlatform.Entities.Concrete.Listing",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstateVehiclePlatform.EfApi.Controllers.ListingsController",
+    "Method": "GetById",
+    "RelativePath": "api/Listings/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstateVehiclePlatform.EfApi.Controllers.ListingsController",
+    "Method": "Delete",
+    "RelativePath": "api/Listings/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstateVehiclePlatform.EfApi.Controllers.ListingTypesController",
+    "Method": "GetAll",
+    "RelativePath": "api/ListingTypes",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstateVehiclePlatform.EfApi.Controllers.ListingTypesController",
+    "Method": "Create",
+    "RelativePath": "api/ListingTypes",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "listingType",
+        "Type": "RealEstateVehiclePlatform.Entities.Concrete.ListingType",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstateVehiclePlatform.EfApi.Controllers.ListingTypesController",
+    "Method": "Update",
+    "RelativePath": "api/ListingTypes",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "listingType",
+        "Type": "RealEstateVehiclePlatform.Entities.Concrete.ListingType",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstateVehiclePlatform.EfApi.Controllers.ListingTypesController",
+    "Method": "GetById",
+    "RelativePath": "api/ListingTypes/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstateVehiclePlatform.EfApi.Controllers.ListingTypesController",
+    "Method": "Delete",
+    "RelativePath": "api/ListingTypes/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstateVehiclePlatform.EfApi.Controllers.MessagesController",
+    "Method": "GetConversationMessages",
+    "RelativePath": "api/Messages/ConversationMessages/{conversationId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "conversationId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstateVehiclePlatform.EfApi.Controllers.MessagesController",
+    "Method": "MarkAsRead",
+    "RelativePath": "api/Messages/MarkAsRead/{messageId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "messageId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstateVehiclePlatform.EfApi.Controllers.MessagesController",
+    "Method": "SendMessage",
+    "RelativePath": "api/Messages/Send",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "message",
+        "Type": "RealEstateVehiclePlatform.Entities.Concrete.Message",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstateVehiclePlatform.EfApi.Controllers.VehicleDetailsController",
+    "Method": "Create",
+    "RelativePath": "api/VehicleDetails/Create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "vehicleDetail",
+        "Type": "RealEstateVehiclePlatform.Entities.Concrete.VehicleDetail",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstateVehiclePlatform.EfApi.Controllers.VehicleDetailsController",
+    "Method": "Delete",
+    "RelativePath": "api/VehicleDetails/Delete/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstateVehiclePlatform.EfApi.Controllers.VehicleDetailsController",
+    "Method": "GetByListingId",
+    "RelativePath": "api/VehicleDetails/GetByListing/{listingId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "listingId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstateVehiclePlatform.EfApi.Controllers.VehicleDetailsController",
+    "Method": "Update",
+    "RelativePath": "api/VehicleDetails/Update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "vehicleDetail",
+        "Type": "RealEstateVehiclePlatform.Entities.Concrete.VehicleDetail",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RealEstateVehiclePlatform.EfApi.Controllers.WeatherForecastController",
+    "Method": "Get",
+    "RelativePath": "WeatherForecast",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[RealEstateVehiclePlatform.EfApi.WeatherForecast, RealEstateVehiclePlatform.EfApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "GetWeatherForecast"
+  }
+]

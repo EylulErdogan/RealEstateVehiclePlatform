@@ -1,0 +1,8 @@
+<Solution>
+  <Project Path="RealEstateVehiclePlatform.Business/RealEstateVehiclePlatform.Business.csproj" />
+  <Project Path="RealEstateVehiclePlatform.DapperApi/RealEstateVehiclePlatform.DapperApi.csproj" />
+  <Project Path="RealEstateVehiclePlatform.DataAccess/RealEstateVehiclePlatform.DataAccess.csproj" />
+  <Project Path="RealEstateVehiclePlatform.EfApi/RealEstateVehiclePlatform.EfApi.csproj" />
+  <Project Path="RealEstateVehiclePlatform.Entities/RealEstateVehiclePlatform.Entities.csproj" />
+  <Project Path="RealEstateVehiclePlatform.WebUI/RealEstateVehiclePlatform.WebUI.csproj" />
+</Solution>
