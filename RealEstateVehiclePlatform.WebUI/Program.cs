@@ -1,8 +1,17 @@
+using RealEstateVehiclePlatform.WebUI.Services;
+
 var builder = WebApplication.CreateBuilder(args);
-
+builder.Services.AddHttpClient("EfApi", client =>
+{
+    client.BaseAddress = new Uri(
+        builder.Configuration["ApiSettings:EfApiBaseUrl"]!);
+});
 // Add services to the container.
+builder.Services.AddSession();
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddScoped<ApiService>();
+builder.Services.AddScoped<ListingImageHelperService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -15,7 +24,7 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseRouting();
-
+app.UseSession();
 app.UseAuthorization();
 
 app.MapStaticAssets();

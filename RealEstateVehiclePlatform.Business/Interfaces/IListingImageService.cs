@@ -6,6 +6,8 @@ namespace RealEstateVehiclePlatform.Business.Interfaces
     {
         void Create(ListingImage listingImage);
 
+        ListingImage? GetById(int id);
+
         List<ListingImage> GetByListingId(int listingId);
 
         void SetMainImage(int imageId);

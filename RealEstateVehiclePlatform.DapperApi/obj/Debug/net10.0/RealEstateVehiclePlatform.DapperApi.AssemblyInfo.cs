@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RealEstateVehiclePlatform.DapperApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3b4510f90f42a5b3a38537bfd507823cfaabd89f")]
 [assembly: System.Reflection.AssemblyProductAttribute("RealEstateVehiclePlatform.DapperApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RealEstateVehiclePlatform.DapperApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

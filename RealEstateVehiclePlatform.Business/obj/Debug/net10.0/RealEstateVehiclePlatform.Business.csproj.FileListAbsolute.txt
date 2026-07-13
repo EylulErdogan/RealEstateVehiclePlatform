@@ -15,3 +15,21 @@ C:\Users\eylul\Desktop\Softito Projelerim ve gerekli kodlar\11. Projem Bitirme P
 C:\Users\eylul\Desktop\Softito Projelerim ve gerekli kodlar\11. Projem Bitirme Projesi\RealEstateVehiclePlatform\RealEstateVehiclePlatform.Business\bin\Debug\net10.0\RealEstateVehiclePlatform.DataAccess.pdb
 C:\Users\eylul\Desktop\Softito Projelerim ve gerekli kodlar\11. Projem Bitirme Projesi\RealEstateVehiclePlatform\RealEstateVehiclePlatform.Business\bin\Debug\net10.0\RealEstateVehiclePlatform.Entities.pdb
 C:\Users\eylul\Desktop\Softito Projelerim ve gerekli kodlar\11. Projem Bitirme Projesi\RealEstateVehiclePlatform\RealEstateVehiclePlatform.Business\obj\Debug\net10.0\RealEsta.41AEC7E3.Up2Date
+C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.Business\bin\Debug\net10.0\RealEstateVehiclePlatform.Business.deps.json
+C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.Business\bin\Debug\net10.0\RealEstateVehiclePlatform.Business.dll
+C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.Business\bin\Debug\net10.0\RealEstateVehiclePlatform.Business.pdb
+C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.Business\bin\Debug\net10.0\RealEstateVehiclePlatform.DataAccess.dll
+C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.Business\bin\Debug\net10.0\RealEstateVehiclePlatform.Entities.dll
+C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.Business\bin\Debug\net10.0\RealEstateVehiclePlatform.DataAccess.pdb
+C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.Business\bin\Debug\net10.0\RealEstateVehiclePlatform.Entities.pdb
+C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.Business\obj\Debug\net10.0\RealEstateVehiclePlatform.Business.csproj.AssemblyReference.cache
+C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.Business\obj\Debug\net10.0\RealEstateVehiclePlatform.Business.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.Business\obj\Debug\net10.0\RealEstateVehiclePlatform.Business.AssemblyInfoInputs.cache
+C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.Business\obj\Debug\net10.0\RealEstateVehiclePlatform.Business.AssemblyInfo.cs
+C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.Business\obj\Debug\net10.0\RealEstateVehiclePlatform.Business.csproj.CoreCompileInputs.cache
+C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.Business\obj\Debug\net10.0\RealEstateVehiclePlatform.Business.sourcelink.json
+C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.Business\obj\Debug\net10.0\RealEsta.41AEC7E3.Up2Date
+C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.Business\obj\Debug\net10.0\RealEstateVehiclePlatform.Business.dll
+C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.Business\obj\Debug\net10.0\refint\RealEstateVehiclePlatform.Business.dll
+C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.Business\obj\Debug\net10.0\RealEstateVehiclePlatform.Business.pdb
+C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.Business\obj\Debug\net10.0\ref\RealEstateVehiclePlatform.Business.dll

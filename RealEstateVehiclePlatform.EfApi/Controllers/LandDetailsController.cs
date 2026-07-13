@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using RealEstateVehiclePlatform.Business.Interfaces;
 using RealEstateVehiclePlatform.Entities.Concrete;
 
@@ -6,6 +7,7 @@ namespace RealEstateVehiclePlatform.EfApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class LandDetailsController : ControllerBase
     {
         private readonly ILandDetailService _landDetailService;
@@ -42,7 +44,7 @@ namespace RealEstateVehiclePlatform.EfApi.Controllers
             try
             {
                 _landDetailService.Update(landDetail);
-                return Ok("Arsa detayı güncellendi.");
+                return Ok("Arsa detayı guncellendi.");
             }
             catch (Exception ex)
             {

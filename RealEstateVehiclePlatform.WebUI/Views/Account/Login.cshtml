@@ -1,0 +1,136 @@
+﻿@model RealEstateVehiclePlatform.WebUI.ViewModels.Auth.LoginViewModel
+
+@{
+    ViewData["Title"] = "Admin Giriş";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html lang="tr">
+<head>
+
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Admin Giriş</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+
+            body {
+                background: linear-gradient(135deg,#2563eb,#1e3a8a);
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-family: Segoe UI;
+            }
+
+            .login-card {
+                width: 420px;
+                background: white;
+                border-radius: 22px;
+                padding: 40px;
+                box-shadow: 0 20px 60px rgba(0,0,0,.2);
+            }
+
+            .login-logo {
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+                background: #eff6ff;
+                color: #2563eb;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: auto;
+                font-size: 36px;
+                margin-bottom: 20px;
+            }
+
+            .btn-login {
+                background: #2563eb;
+                color: white;
+                border-radius: 12px;
+                padding: 12px;
+                font-weight: 600;
+            }
+
+                .btn-login:hover {
+                    background: #1d4ed8;
+                    color: white;
+                }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="login-card">
+
+        <div class="login-logo">
+
+            <i class="bi bi-buildings"></i>
+
+        </div>
+
+        <h3 class="text-center fw-bold mb-1">
+
+            Admin Paneli
+
+        </h3>
+
+        <p class="text-center text-muted mb-4">
+
+            RealEstateVehiclePlatform
+
+        </p>
+
+        @if (ViewBag.ErrorMessage != null)
+        {
+            <div class="alert alert-danger">
+
+                @ViewBag.ErrorMessage
+
+            </div>
+        }
+
+        <form asp-action="Login" method="post">
+
+            <div class="mb-3">
+
+                <label>Email</label>
+
+                <input asp-for="Email" class="form-control" />
+
+            </div>
+
+            <div class="mb-4">
+
+                <label>Şifre</label>
+
+                <input asp-for="Password" type="password" class="form-control" />
+
+            </div>
+
+            <button class="btn btn-login w-100">
+
+                <i class="bi bi-box-arrow-in-right"></i>
+
+                Giriş Yap
+
+            </button>
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>

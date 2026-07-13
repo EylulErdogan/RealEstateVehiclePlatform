@@ -1,0 +1,379 @@
+﻿@model List<RealEstateVehiclePlatform.WebUI.ViewModels.Favorite.FavoriteListItemViewModel>
+
+@{
+    ViewData["Title"] = "Favorilerim";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="favorite-page-header">
+    <div class="container">
+        <span class="page-label">Kullanıcı Paneli</span>
+
+        <div class="d-flex justify-content-between align-items-end flex-wrap gap-3">
+            <div>
+                <h1>Favorilerim</h1>
+                <p>Beğendiğin ilanları burada saklayabilir ve yeniden inceleyebilirsin.</p>
+            </div>
+
+            <span class="favorite-count">
+                @Model.Count favori ilan
+            </span>
+        </div>
+    </div>
+</section>
+
+<section class="favorite-page-content">
+    <div class="container">
+
+        @if (Model.Any())
+        {
+            <div class="row g-4">
+                @foreach (var item in Model)
+                {
+                    <div class="col-md-6 col-xl-4">
+                        <article class="favorite-card" id="favorite-card-@item.ListingId">
+
+                            <div class="favorite-image">
+                                <div class="favorite-image-placeholder">
+                                    <i class="bi bi-buildings"></i>
+                                </div>
+
+                                <span class="listing-number">
+                                    @item.ListingNo
+                                </span>
+
+                                <button type="button"
+                                        class="remove-favorite-button"
+                                        data-listing-id="@item.ListingId"
+                                        aria-label="Favorilerden çıkar">
+                                    <i class="bi bi-heart-fill"></i>
+                                </button>
+                            </div>
+
+                            <div class="favorite-content">
+                                <div class="favorite-meta">
+                                    <span>
+                                        <i class="bi bi-eye"></i>
+                                        @item.ViewCount görüntülenme
+                                    </span>
+
+                                    <span>
+                                        <i class="bi bi-clock"></i>
+                                        @item.CreatedDate.ToString("dd.MM.yyyy")
+                                    </span>
+                                </div>
+
+                                <h3>@item.Title</h3>
+
+                                <p class="favorite-address">
+                                    <i class="bi bi-geo-alt"></i>
+                                    @item.Address
+                                </p>
+
+                                <div class="favorite-footer">
+                                    <strong>
+                                        @item.Price.ToString("N0") ₺
+                                    </strong>
+
+                                    <a href="/Listing/Detail/@item.ListingId"
+                                       class="detail-link">
+                                        İlanı İncele
+                                        <i class="bi bi-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </article>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <div class="empty-favorites">
+                <div class="empty-icon">
+                    <i class="bi bi-heart"></i>
+                </div>
+
+                <h3>Henüz favori ilanın yok</h3>
+
+                <p>
+                    Beğendiğin ilanların üzerindeki kalp simgesine tıklayarak
+                    onları favorilerine ekleyebilirsin.
+                </p>
+
+                <a href="/Listing" class="btn btn-primary">
+                    <i class="bi bi-search me-1"></i>
+                    İlanları Keşfet
+                </a>
+            </div>
+        }
+
+    </div>
+</section>
+
+<style>
+    .favorite-page-header {
+        padding: 65px 0 45px;
+        background: radial-gradient(circle at 15% 20%, rgba(239, 68, 68, .12), transparent 30%), linear-gradient(135deg, #fff1f2, #f8fafc);
+    }
+
+    .page-label {
+        display: block;
+        margin-bottom: 8px;
+        color: #ef4444;
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+    }
+
+    .favorite-page-header h1 {
+        margin-bottom: 10px;
+        color: #0f172a;
+        font-size: clamp(34px, 5vw, 52px);
+        font-weight: 850;
+        letter-spacing: -1.5px;
+    }
+
+    .favorite-page-header p {
+        margin: 0;
+        color: #64748b;
+        font-size: 17px;
+    }
+
+    .favorite-count {
+        padding: 9px 15px;
+        border-radius: 999px;
+        background: #fff;
+        color: #ef4444;
+        font-weight: 700;
+        box-shadow: 0 10px 30px rgba(15, 23, 42, .08);
+    }
+
+    .favorite-page-content {
+        padding: 50px 0 90px;
+    }
+
+    .favorite-card {
+        height: 100%;
+        overflow: hidden;
+        border: 1px solid #e2e8f0;
+        border-radius: 23px;
+        background: #fff;
+        box-shadow: 0 12px 35px rgba(15, 23, 42, .06);
+        transition: .25s ease;
+    }
+
+        .favorite-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 24px 55px rgba(15, 23, 42, .13);
+        }
+
+    .favorite-image {
+        position: relative;
+        min-height: 235px;
+    }
+
+    .favorite-image-placeholder {
+        min-height: 235px;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(135deg, #2563eb, #1e3a8a);
+        color: rgba(255, 255, 255, .65);
+        font-size: 72px;
+    }
+
+    .listing-number {
+        position: absolute;
+        left: 16px;
+        bottom: 16px;
+        padding: 7px 11px;
+        border-radius: 9px;
+        background: rgba(15, 23, 42, .7);
+        color: #fff;
+        font-size: 12px;
+        font-weight: 700;
+    }
+
+    .remove-favorite-button {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        width: 44px;
+        height: 44px;
+        display: grid;
+        place-items: center;
+        border: 0;
+        border-radius: 50%;
+        background: #ef4444;
+        color: #fff;
+        font-size: 19px;
+        box-shadow: 0 9px 25px rgba(15, 23, 42, .14);
+        transition: .2s ease;
+    }
+
+        .remove-favorite-button:hover {
+            background: #dc2626;
+            transform: scale(1.06);
+        }
+
+    .favorite-content {
+        padding: 23px;
+    }
+
+    .favorite-meta {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 14px;
+        color: #94a3b8;
+        font-size: 13px;
+    }
+
+    .favorite-content h3 {
+        min-height: 58px;
+        margin-bottom: 10px;
+        color: #0f172a;
+        font-size: 20px;
+        font-weight: 800;
+        line-height: 1.45;
+    }
+
+    .favorite-address {
+        min-height: 44px;
+        margin-bottom: 20px;
+        color: #64748b;
+        font-size: 14px;
+    }
+
+    .favorite-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        padding-top: 18px;
+        border-top: 1px solid #eef2f7;
+    }
+
+        .favorite-footer strong {
+            color: #2563eb;
+            font-size: 21px;
+        }
+
+    .detail-link {
+        color: #0f172a;
+        font-size: 14px;
+        font-weight: 700;
+        text-decoration: none;
+    }
+
+        .detail-link:hover {
+            color: #2563eb;
+        }
+
+    .empty-favorites {
+        max-width: 650px;
+        margin: 0 auto;
+        padding: 75px 30px;
+        border: 1px dashed #cbd5e1;
+        border-radius: 25px;
+        background: #fff;
+        text-align: center;
+    }
+
+    .empty-icon {
+        width: 92px;
+        height: 92px;
+        margin: 0 auto;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: #fef2f2;
+        color: #ef4444;
+        font-size: 42px;
+    }
+
+    .empty-favorites h3 {
+        margin-top: 22px;
+        font-weight: 800;
+    }
+
+    .empty-favorites p {
+        max-width: 480px;
+        margin: 12px auto 25px;
+        color: #64748b;
+        line-height: 1.7;
+    }
+</style>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        document.querySelectorAll(".remove-favorite-button").forEach(function (button) {
+        button.addEventListener("click", async function () {
+        const listingId = this.dataset.listingId;
+
+        const confirmation = await Swal.fire({
+        title: "Favorilerden çıkarılsın mı?",
+        text: "Bu ilan favori listenizden kaldırılacak.",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Evet, çıkar",
+        cancelButtonText: "Vazgeç",
+        confirmButtonColor: "#dc2626",
+        cancelButtonColor: "#64748b"
+        });
+
+        if (!confirmation.isConfirmed) {
+        return;
+        }
+
+        const response = await fetch("/UserFavorite/Toggle", {
+        method: "POST",
+        headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: new URLSearchParams({
+        listingId: listingId
+        })
+        });
+
+        const result = await response.json();
+
+        if (!result.success) {
+        Swal.fire({
+        icon: "error",
+        title: "Hata",
+        text: result.message,
+        confirmButtonColor: "#dc2626"
+        });
+
+        return;
+        }
+
+        const card = document.getElementById(`favorite-card-${listingId}`);
+
+        if (card) {
+        card.closest(".col-md-6").remove();
+        }
+
+        Swal.fire({
+        icon: "success",
+        title: "Favorilerden çıkarıldı",
+        text: result.message,
+        timer: 1400,
+        showConfirmButton: false
+        });
+
+        const remainingCards = document.querySelectorAll(".favorite-card");
+
+        if (remainingCards.length === 0) {
+        window.location.reload();
+        }
+        });
+        });
+    </script>
+}

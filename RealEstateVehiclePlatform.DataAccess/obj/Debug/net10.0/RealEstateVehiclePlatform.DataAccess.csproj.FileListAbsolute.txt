@@ -15,3 +15,21 @@ C:\Users\eylul\Desktop\Softito Projelerim ve gerekli kodlar\11. Projem Bitirme P
 C:\Users\eylul\Desktop\Softito Projelerim ve gerekli kodlar\11. Projem Bitirme Projesi\RealEstateVehiclePlatform\RealEstateVehiclePlatform.DataAccess\obj\Debug\net10.0\RealEstateVehiclePlatform.DataAccess.pdb
 C:\Users\eylul\Desktop\Softito Projelerim ve gerekli kodlar\11. Projem Bitirme Projesi\RealEstateVehiclePlatform\RealEstateVehiclePlatform.DataAccess\obj\Debug\net10.0\RealEstateVehiclePlatform.DataAccess.genruntimeconfig.cache
 C:\Users\eylul\Desktop\Softito Projelerim ve gerekli kodlar\11. Projem Bitirme Projesi\RealEstateVehiclePlatform\RealEstateVehiclePlatform.DataAccess\obj\Debug\net10.0\ref\RealEstateVehiclePlatform.DataAccess.dll
+C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.DataAccess\bin\Debug\net10.0\RealEstateVehiclePlatform.DataAccess.deps.json
+C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.DataAccess\bin\Debug\net10.0\RealEstateVehiclePlatform.DataAccess.runtimeconfig.json
+C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.DataAccess\bin\Debug\net10.0\RealEstateVehiclePlatform.DataAccess.dll
+C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.DataAccess\bin\Debug\net10.0\RealEstateVehiclePlatform.DataAccess.pdb
+C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.DataAccess\bin\Debug\net10.0\RealEstateVehiclePlatform.Entities.dll
+C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.DataAccess\bin\Debug\net10.0\RealEstateVehiclePlatform.Entities.pdb
+C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.DataAccess\obj\Debug\net10.0\RealEstateVehiclePlatform.DataAccess.csproj.AssemblyReference.cache
+C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.DataAccess\obj\Debug\net10.0\RealEstateVehiclePlatform.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.DataAccess\obj\Debug\net10.0\RealEstateVehiclePlatform.DataAccess.AssemblyInfoInputs.cache
+C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.DataAccess\obj\Debug\net10.0\RealEstateVehiclePlatform.DataAccess.AssemblyInfo.cs
+C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.DataAccess\obj\Debug\net10.0\RealEstateVehiclePlatform.DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.DataAccess\obj\Debug\net10.0\RealEstateVehiclePlatform.DataAccess.sourcelink.json
+C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.DataAccess\obj\Debug\net10.0\RealEsta.70B9B426.Up2Date
+C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.DataAccess\obj\Debug\net10.0\RealEstateVehiclePlatform.DataAccess.dll
+C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.DataAccess\obj\Debug\net10.0\refint\RealEstateVehiclePlatform.DataAccess.dll
+C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.DataAccess\obj\Debug\net10.0\RealEstateVehiclePlatform.DataAccess.pdb
+C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.DataAccess\obj\Debug\net10.0\RealEstateVehiclePlatform.DataAccess.genruntimeconfig.cache
+C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.DataAccess\obj\Debug\net10.0\ref\RealEstateVehiclePlatform.DataAccess.dll

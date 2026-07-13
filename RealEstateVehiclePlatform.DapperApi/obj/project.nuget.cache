@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "fjyQQAMOHxk=",
+  "dgSpecHash": "EPLG8/BkD4s=",
   "success": true,
-  "projectFilePath": "C:\\Users\\eylul\\Desktop\\Softito Projelerim ve gerekli kodlar\\11. Projem Bitirme Projesi\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.DapperApi\\RealEstateVehiclePlatform.DapperApi.csproj",
+  "projectFilePath": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.DapperApi\\RealEstateVehiclePlatform.DapperApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\eylul\\.nuget\\packages\\dapper\\2.1.79\\dapper.2.1.79.nupkg.sha512",
     "C:\\Users\\eylul\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\10.0.9\\microsoft.aspnetcore.identity.entityframeworkcore.10.0.9.nupkg.sha512",

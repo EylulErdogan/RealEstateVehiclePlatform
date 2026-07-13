@@ -1,0 +1,67 @@
+﻿@model RealEstateVehiclePlatform.WebUI.ViewModels.Category.UpdateCategoryViewModel
+
+@{
+    ViewData["Title"] = "Kategori Güncelle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="admin-card">
+
+    <div class="mb-4">
+        <h4 class="fw-bold">
+            Kategori Güncelle
+        </h4>
+
+        <small class="text-muted">
+            Kategori bilgilerini düzenleyebilirsiniz.
+        </small>
+    </div>
+
+    @if (ViewBag.ErrorMessage != null)
+    {
+        <div class="alert alert-danger">
+
+            @ViewBag.ErrorMessage
+
+        </div>
+    }
+
+    <form asp-action="Update" method="post">
+
+        <input asp-for="Id" type="hidden" />
+
+        <div class="mb-4">
+
+            <label class="form-label fw-semibold">
+
+                Kategori Adı
+
+            </label>
+
+            <input asp-for="Name"
+                   class="form-control form-control-lg" />
+
+        </div>
+
+        <div class="d-flex gap-2">
+
+            <button class="btn btn-success">
+
+                <i class="bi bi-arrow-repeat"></i>
+
+                Güncelle
+
+            </button>
+
+            <a href="/AdminCategory"
+               class="btn btn-light">
+
+                Vazgeç
+
+            </a>
+
+        </div>
+
+    </form>
+
+</div>

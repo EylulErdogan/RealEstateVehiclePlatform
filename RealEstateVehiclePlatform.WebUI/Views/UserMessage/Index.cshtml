@@ -1,0 +1,163 @@
+﻿@model List<RealEstateVehiclePlatform.WebUI.ViewModels.Conversation.ConversationViewModel>
+
+@{
+    ViewData["Title"] = "Mesajlarım";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="message-header">
+    <div class="container">
+        <span>Kullanıcı Paneli</span>
+        <h1>Mesajlarım</h1>
+        <p>İlan sahipleriyle yaptığın görüşmeleri buradan takip et.</p>
+    </div>
+</section>
+
+<section class="message-content">
+    <div class="container">
+        @if (Model.Any())
+        {
+            <div class="conversation-list">
+                @foreach (var item in Model.OrderByDescending(x => x.CreatedDate))
+                {
+                    <a href="/UserMessage/Detail/@item.Id"
+                       class="conversation-card">
+
+                        <div class="conversation-icon">
+                            <i class="bi bi-chat-dots"></i>
+                        </div>
+
+                        <div class="conversation-info">
+                            <span>Konuşma #@item.Id</span>
+                            <h4>İlan #@item.ListingId hakkında görüşme</h4>
+                            <small>
+                                @item.CreatedDate.ToString("dd.MM.yyyy HH:mm")
+                            </small>
+                        </div>
+
+                        <i class="bi bi-chevron-right conversation-arrow"></i>
+                    </a>
+                }
+            </div>
+        }
+        else
+        {
+            <div class="empty-message">
+                <i class="bi bi-chat-square-text"></i>
+                <h3>Henüz mesajın bulunmuyor</h3>
+                <p>Bir ilan sahibine mesaj gönderdiğinde konuşman burada görünür.</p>
+                <a href="/Listing" class="btn btn-primary">İlanları Keşfet</a>
+            </div>
+        }
+    </div>
+</section>
+
+<style>
+    .message-header {
+        padding: 65px 0 45px;
+        background: linear-gradient(135deg, #eff6ff, #f8fafc);
+    }
+
+        .message-header > .container > span {
+            color: #2563eb;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .message-header h1 {
+            margin: 8px 0;
+            color: #0f172a;
+            font-size: 48px;
+            font-weight: 850;
+        }
+
+        .message-header p {
+            margin: 0;
+            color: #64748b;
+        }
+
+    .message-content {
+        padding: 50px 0 90px;
+    }
+
+    .conversation-list {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .conversation-card {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        padding: 22px;
+        border: 1px solid #e2e8f0;
+        border-radius: 20px;
+        background: #fff;
+        color: #0f172a;
+        text-decoration: none;
+        box-shadow: 0 10px 30px rgba(15, 23, 42, .05);
+        transition: .2s;
+    }
+
+        .conversation-card:hover {
+            color: #0f172a;
+            border-color: #bfdbfe;
+            transform: translateY(-3px);
+        }
+
+    .conversation-icon {
+        width: 60px;
+        height: 60px;
+        display: grid;
+        place-items: center;
+        border-radius: 17px;
+        background: #eff6ff;
+        color: #2563eb;
+        font-size: 27px;
+    }
+
+    .conversation-info {
+        flex: 1;
+    }
+
+        .conversation-info span,
+        .conversation-info small {
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        .conversation-info h4 {
+            margin: 5px 0;
+            font-weight: 800;
+        }
+
+    .conversation-arrow {
+        color: #94a3b8;
+        font-size: 20px;
+    }
+
+    .empty-message {
+        padding: 75px 25px;
+        border: 1px dashed #cbd5e1;
+        border-radius: 24px;
+        background: #fff;
+        text-align: center;
+    }
+
+        .empty-message > i {
+            color: #2563eb;
+            font-size: 60px;
+        }
+
+        .empty-message h3 {
+            margin-top: 20px;
+            font-weight: 800;
+        }
+
+        .empty-message p {
+            color: #64748b;
+        }
+</style>

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "lCU1ejn26Lc=",
+  "dgSpecHash": "rqkWey3URkk=",
   "success": true,
-  "projectFilePath": "C:\\Users\\eylul\\Desktop\\Softito Projelerim ve gerekli kodlar\\11. Projem Bitirme Projesi\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\RealEstateVehiclePlatform.WebUI.csproj",
+  "projectFilePath": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\RealEstateVehiclePlatform.WebUI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\eylul\\.nuget\\packages\\newtonsoft.json\\13.0.4\\newtonsoft.json.13.0.4.nupkg.sha512"
   ],

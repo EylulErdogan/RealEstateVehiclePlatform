@@ -1,0 +1,429 @@
+﻿@model List<RealEstateVehiclePlatform.WebUI.ViewModels.Listing.ListingViewModel>
+
+@{
+    ViewData["Title"] = "İlanlarım";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="user-listing-header">
+    <div class="container">
+        <span class="page-label">Kullanıcı Paneli</span>
+
+        <div class="d-flex justify-content-between align-items-end flex-wrap gap-3">
+            <div>
+                <h1>İlanlarım</h1>
+                <p>Eklediğin ilanları ve yayın durumlarını buradan takip edebilirsin.</p>
+            </div>
+
+            <a href="/UserListing/Create" class="create-listing-button">
+                <i class="bi bi-plus-circle"></i>
+                Yeni İlan Ver
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="user-listing-content">
+    <div class="container">
+
+        @if (Model.Any())
+        {
+            <div class="row g-4">
+                @foreach (var item in Model)
+                {
+                    var statusText = item.Status switch
+                    {
+                        0 => "Onay Bekliyor",
+                        1 => "Aktif",
+                        2 => "Pasif",
+                        3 => "Reddedildi",
+                        _ => "Bilinmiyor"
+                    };
+
+                    var statusClass = item.Status switch
+                    {
+                        0 => "status-pending",
+                        1 => "status-active",
+                        2 => "status-passive",
+                        3 => "status-rejected",
+                        _ => "status-passive"
+                    };
+
+                    <div class="col-md-6 col-xl-4">
+                        <article class="my-listing-card">
+
+                            <div class="listing-visual">
+
+                                @if (!string.IsNullOrWhiteSpace(item.MainImageUrl))
+                                {
+                                    <img src="@item.MainImageUrl"
+                                         alt="@item.Title"
+                                         class="my-listing-image" />
+                                }
+                                else
+                                {
+                                    <i class="bi bi-buildings"></i>
+                                }
+
+                                <span class="listing-number">
+                                    @item.ListingNo
+                                </span>
+
+                                <span class="listing-status @statusClass">
+                                    @statusText
+                                </span>
+                            </div>
+
+                            <div class="listing-body">
+                                <h3>@item.Title</h3>
+
+                                <p class="listing-address">
+                                    <i class="bi bi-geo-alt"></i>
+                                    @item.Address
+                                </p>
+
+                                <div class="listing-information">
+                                    <span>
+                                        <i class="bi bi-eye"></i>
+                                        @item.ViewCount görüntülenme
+                                    </span>
+
+                                    <strong>
+                                        @item.Price.ToString("N0") ₺
+                                    </strong>
+                                </div>
+                                <div class="listing-actions">
+                                    <a href="/Listing/Detail/@item.Id"
+                                       class="view-button">
+                                        <i class="bi bi-eye"></i>
+                                        Gör
+                                    </a>
+
+                                    <a href="/UserListing/Update/@item.Id"
+                                       class="update-button">
+                                        <i class="bi bi-pencil-square"></i>
+                                        Güncelle
+                                    </a>
+
+                                    <button type="button"
+                                            class="delete-listing-button"
+                                            data-listing-id="@item.Id"
+                                            data-listing-title="@item.Title">
+                                        <i class="bi bi-trash"></i>
+                                        Sil
+                                    </button>
+                                </div>
+                            </div>
+
+                        </article>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <div class="empty-listings">
+                <div class="empty-icon">
+                    <i class="bi bi-house-add"></i>
+                </div>
+
+                <h3>Henüz ilan vermedin</h3>
+
+                <p>
+                    Ev, arsa veya araç ilanını oluşturarak
+                    platformda yayınlanmak üzere gönderebilirsin.
+                </p>
+
+                <a href="/UserListing/Create"
+                   class="btn btn-primary">
+                    <i class="bi bi-plus-circle me-1"></i>
+                    İlk İlanımı Oluştur
+                </a>
+            </div>
+        }
+
+    </div>
+</section>
+
+<style>
+    .user-listing-header {
+        padding: 65px 0 45px;
+        background: radial-gradient(circle at 15% 20%, rgba(37, 99, 235, .14), transparent 30%), linear-gradient(135deg, #eff6ff, #f8fafc);
+    }
+
+    .page-label {
+        color: #2563eb;
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+    }
+
+    .user-listing-header h1 {
+        margin: 8px 0;
+        color: #0f172a;
+        font-size: clamp(34px, 5vw, 52px);
+        font-weight: 850;
+    }
+
+    .user-listing-header p {
+        margin: 0;
+        color: #64748b;
+    }
+
+    .create-listing-button {
+        min-height: 48px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 0 18px;
+        border-radius: 13px;
+        background: #2563eb;
+        color: #fff;
+        font-weight: 800;
+        text-decoration: none;
+    }
+
+    .user-listing-content {
+        padding: 50px 0 90px;
+    }
+
+    .my-listing-card {
+        height: 100%;
+        overflow: hidden;
+        border: 1px solid #e2e8f0;
+        border-radius: 23px;
+        background: #fff;
+        box-shadow: 0 12px 35px rgba(15, 23, 42, .06);
+    }
+
+    .listing-visual {
+        position: relative;
+        min-height: 220px;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(135deg, #2563eb, #1e3a8a);
+        color: rgba(255, 255, 255, .65);
+        font-size: 70px;
+    }
+
+    .listing-number {
+        position: absolute;
+        left: 15px;
+        bottom: 15px;
+        padding: 7px 10px;
+        border-radius: 9px;
+        background: rgba(15, 23, 42, .7);
+        color: #fff;
+        font-size: 12px;
+        font-weight: 700;
+    }
+
+    .listing-status {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        padding: 7px 11px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 800;
+    }
+
+    .status-pending {
+        background: #fef3c7;
+        color: #b45309;
+    }
+
+    .status-active {
+        background: #dcfce7;
+        color: #15803d;
+    }
+
+    .status-passive {
+        background: #e2e8f0;
+        color: #475569;
+    }
+
+    .status-rejected {
+        background: #fee2e2;
+        color: #b91c1c;
+    }
+
+    .listing-body {
+        padding: 23px;
+    }
+
+        .listing-body h3 {
+            min-height: 56px;
+            color: #0f172a;
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+    .listing-address {
+        min-height: 42px;
+        color: #64748b;
+    }
+
+    .listing-information {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        padding: 18px 0;
+        border-top: 1px solid #eef2f7;
+    }
+
+        .listing-information span {
+            color: #94a3b8;
+            font-size: 13px;
+        }
+
+        .listing-information strong {
+            color: #2563eb;
+            font-size: 20px;
+        }
+
+    .listing-actions {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 9px;
+        padding-top: 15px;
+        border-top: 1px solid #eef2f7;
+    }
+
+    .view-button,
+    .update-button,
+    .delete-listing-button {
+        min-height: 42px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 6px;
+        border-radius: 10px;
+        font-size: 13px;
+        font-weight: 700;
+    }
+
+    .update-button {
+        background: #fef3c7;
+        color: #b45309;
+        text-decoration: none;
+    }
+
+    .view-button {
+        background: #eff6ff;
+        color: #1d4ed8;
+        text-decoration: none;
+    }
+
+    .delete-listing-button {
+        border: 1px solid #fecaca;
+        background: #fff;
+        color: #dc2626;
+    }
+
+        .delete-listing-button:hover {
+            background: #fef2f2;
+        }
+
+    .view-button {
+        width: 100%;
+        min-height: 43px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 7px;
+        border-radius: 11px;
+        background: #eff6ff;
+        color: #1d4ed8;
+        font-weight: 700;
+        text-decoration: none;
+    }
+
+    .empty-listings {
+        max-width: 650px;
+        margin: auto;
+        padding: 75px 30px;
+        border: 1px dashed #cbd5e1;
+        border-radius: 25px;
+        background: #fff;
+        text-align: center;
+    }
+
+    .empty-icon {
+        width: 92px;
+        height: 92px;
+        margin: auto;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: #eff6ff;
+        color: #2563eb;
+        font-size: 42px;
+    }
+
+    .empty-listings h3 {
+        margin-top: 22px;
+        font-weight: 800;
+    }
+
+    .empty-listings p {
+        max-width: 480px;
+        margin: 12px auto 25px;
+        color: #64748b;
+    }
+
+    .my-listing-image {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+</style>
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        document.querySelectorAll(".delete-listing-button")
+        .forEach(function (button) {
+
+        button.addEventListener("click", async function () {
+        const listingId = this.dataset.listingId;
+        const listingTitle = this.dataset.listingTitle;
+
+        const result = await Swal.fire({
+        title: "İlan silinsin mi?",
+        text: `"${listingTitle}" ilanı kalıcı olarak silinecek.`,
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Evet, sil",
+        cancelButtonText: "Vazgeç",
+        confirmButtonColor: "#dc2626",
+        cancelButtonColor: "#64748b",
+        reverseButtons: true
+        });
+
+        if (!result.isConfirmed) {
+        return;
+        }
+
+        const form = document.createElement("form");
+
+        form.method = "post";
+        form.action = "/UserListing/Delete";
+
+        const input = document.createElement("input");
+
+        input.type = "hidden";
+        input.name = "id";
+        input.value = listingId;
+
+        form.appendChild(input);
+        document.body.appendChild(form);
+        form.submit();
+        });
+        });
+    </script>
+}

@@ -1,0 +1,38 @@
+﻿@model RealEstateVehiclePlatform.WebUI.ViewModels.District.CreateDistrictViewModel
+
+@{
+    ViewData["Title"] = "Yeni İlçe";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="admin-card">
+    <div class="mb-4">
+        <h4 class="fw-bold">Yeni İlçe</h4>
+        <small class="text-muted">Seçilen şehre bağlı yeni ilçe ekleyebilirsiniz.</small>
+    </div>
+
+    <form asp-action="Create" method="post">
+        <div class="mb-4">
+            <label class="form-label fw-semibold">İlçe Adı</label>
+            <input asp-for="Name" class="form-control form-control-lg" />
+        </div>
+
+        <div class="mb-4">
+            <label class="form-label fw-semibold">Şehir</label>
+            <select asp-for="CityId" asp-items="Model.Cities" class="form-select form-select-lg">
+                <option value="">Şehir seçiniz</option>
+            </select>
+        </div>
+
+        <div class="d-flex gap-2">
+            <button class="btn btn-primary">
+                <i class="bi bi-check-circle"></i>
+                Kaydet
+            </button>
+
+            <a href="/AdminDistrict" class="btn btn-light">
+                Vazgeç
+            </a>
+        </div>
+    </form>
+</div>

@@ -61,11 +61,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\eylul\\Desktop\\Softito Projelerim ve gerekli kodlar\\11. Projem Bitirme Projesi\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\RealEstateVehiclePlatform.WebUI.csproj",
+      "projectUniqueName": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\RealEstateVehiclePlatform.WebUI.csproj",
       "projectName": "RealEstateVehiclePlatform.WebUI",
-      "projectPath": "C:\\Users\\eylul\\Desktop\\Softito Projelerim ve gerekli kodlar\\11. Projem Bitirme Projesi\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\RealEstateVehiclePlatform.WebUI.csproj",
+      "projectPath": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\RealEstateVehiclePlatform.WebUI.csproj",
       "packagesPath": "C:\\Users\\eylul\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\eylul\\Desktop\\Softito Projelerim ve gerekli kodlar\\11. Projem Bitirme Projesi\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\obj\\",
+      "outputPath": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

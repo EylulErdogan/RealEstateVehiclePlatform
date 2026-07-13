@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\eylul\\Desktop\\Softito Projelerim ve gerekli kodlar\\11. Projem Bitirme Projesi\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.EfApi\\RealEstateVehiclePlatform.EfApi.csproj": {}
+    "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.EfApi\\RealEstateVehiclePlatform.EfApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\eylul\\Desktop\\Softito Projelerim ve gerekli kodlar\\11. Projem Bitirme Projesi\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.Business\\RealEstateVehiclePlatform.Business.csproj": {
+    "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.Business\\RealEstateVehiclePlatform.Business.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\eylul\\Desktop\\Softito Projelerim ve gerekli kodlar\\11. Projem Bitirme Projesi\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.Business\\RealEstateVehiclePlatform.Business.csproj",
+        "projectUniqueName": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.Business\\RealEstateVehiclePlatform.Business.csproj",
         "projectName": "RealEstateVehiclePlatform.Business",
-        "projectPath": "C:\\Users\\eylul\\Desktop\\Softito Projelerim ve gerekli kodlar\\11. Projem Bitirme Projesi\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.Business\\RealEstateVehiclePlatform.Business.csproj",
+        "projectPath": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.Business\\RealEstateVehiclePlatform.Business.csproj",
         "packagesPath": "C:\\Users\\eylul\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\eylul\\Desktop\\Softito Projelerim ve gerekli kodlar\\11. Projem Bitirme Projesi\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.Business\\obj\\",
+        "outputPath": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.Business\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -33,11 +33,11 @@
             "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {
-              "C:\\Users\\eylul\\Desktop\\Softito Projelerim ve gerekli kodlar\\11. Projem Bitirme Projesi\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.DataAccess\\RealEstateVehiclePlatform.DataAccess.csproj": {
-                "projectPath": "C:\\Users\\eylul\\Desktop\\Softito Projelerim ve gerekli kodlar\\11. Projem Bitirme Projesi\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.DataAccess\\RealEstateVehiclePlatform.DataAccess.csproj"
+              "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.DataAccess\\RealEstateVehiclePlatform.DataAccess.csproj": {
+                "projectPath": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.DataAccess\\RealEstateVehiclePlatform.DataAccess.csproj"
               },
-              "C:\\Users\\eylul\\Desktop\\Softito Projelerim ve gerekli kodlar\\11. Projem Bitirme Projesi\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.Entities\\RealEstateVehiclePlatform.Entities.csproj": {
-                "projectPath": "C:\\Users\\eylul\\Desktop\\Softito Projelerim ve gerekli kodlar\\11. Projem Bitirme Projesi\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.Entities\\RealEstateVehiclePlatform.Entities.csproj"
+              "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.Entities\\RealEstateVehiclePlatform.Entities.csproj": {
+                "projectPath": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.Entities\\RealEstateVehiclePlatform.Entities.csproj"
               }
             }
           }
@@ -358,14 +358,14 @@
         }
       }
     },
-    "C:\\Users\\eylul\\Desktop\\Softito Projelerim ve gerekli kodlar\\11. Projem Bitirme Projesi\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.DataAccess\\RealEstateVehiclePlatform.DataAccess.csproj": {
+    "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.DataAccess\\RealEstateVehiclePlatform.DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\eylul\\Desktop\\Softito Projelerim ve gerekli kodlar\\11. Projem Bitirme Projesi\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.DataAccess\\RealEstateVehiclePlatform.DataAccess.csproj",
+        "projectUniqueName": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.DataAccess\\RealEstateVehiclePlatform.DataAccess.csproj",
         "projectName": "RealEstateVehiclePlatform.DataAccess",
-        "projectPath": "C:\\Users\\eylul\\Desktop\\Softito Projelerim ve gerekli kodlar\\11. Projem Bitirme Projesi\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.DataAccess\\RealEstateVehiclePlatform.DataAccess.csproj",
+        "projectPath": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.DataAccess\\RealEstateVehiclePlatform.DataAccess.csproj",
         "packagesPath": "C:\\Users\\eylul\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\eylul\\Desktop\\Softito Projelerim ve gerekli kodlar\\11. Projem Bitirme Projesi\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.DataAccess\\obj\\",
+        "outputPath": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.DataAccess\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -387,8 +387,8 @@
             "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {
-              "C:\\Users\\eylul\\Desktop\\Softito Projelerim ve gerekli kodlar\\11. Projem Bitirme Projesi\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.Entities\\RealEstateVehiclePlatform.Entities.csproj": {
-                "projectPath": "C:\\Users\\eylul\\Desktop\\Softito Projelerim ve gerekli kodlar\\11. Projem Bitirme Projesi\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.Entities\\RealEstateVehiclePlatform.Entities.csproj"
+              "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.Entities\\RealEstateVehiclePlatform.Entities.csproj": {
+                "projectPath": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.Entities\\RealEstateVehiclePlatform.Entities.csproj"
               }
             }
           }
@@ -733,14 +733,14 @@
         }
       }
     },
-    "C:\\Users\\eylul\\Desktop\\Softito Projelerim ve gerekli kodlar\\11. Projem Bitirme Projesi\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.EfApi\\RealEstateVehiclePlatform.EfApi.csproj": {
+    "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.EfApi\\RealEstateVehiclePlatform.EfApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\eylul\\Desktop\\Softito Projelerim ve gerekli kodlar\\11. Projem Bitirme Projesi\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.EfApi\\RealEstateVehiclePlatform.EfApi.csproj",
+        "projectUniqueName": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.EfApi\\RealEstateVehiclePlatform.EfApi.csproj",
         "projectName": "RealEstateVehiclePlatform.EfApi",
-        "projectPath": "C:\\Users\\eylul\\Desktop\\Softito Projelerim ve gerekli kodlar\\11. Projem Bitirme Projesi\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.EfApi\\RealEstateVehiclePlatform.EfApi.csproj",
+        "projectPath": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.EfApi\\RealEstateVehiclePlatform.EfApi.csproj",
         "packagesPath": "C:\\Users\\eylul\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\eylul\\Desktop\\Softito Projelerim ve gerekli kodlar\\11. Projem Bitirme Projesi\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.EfApi\\obj\\",
+        "outputPath": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.EfApi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -762,14 +762,14 @@
             "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {
-              "C:\\Users\\eylul\\Desktop\\Softito Projelerim ve gerekli kodlar\\11. Projem Bitirme Projesi\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.Business\\RealEstateVehiclePlatform.Business.csproj": {
-                "projectPath": "C:\\Users\\eylul\\Desktop\\Softito Projelerim ve gerekli kodlar\\11. Projem Bitirme Projesi\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.Business\\RealEstateVehiclePlatform.Business.csproj"
+              "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.Business\\RealEstateVehiclePlatform.Business.csproj": {
+                "projectPath": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.Business\\RealEstateVehiclePlatform.Business.csproj"
               },
-              "C:\\Users\\eylul\\Desktop\\Softito Projelerim ve gerekli kodlar\\11. Projem Bitirme Projesi\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.DataAccess\\RealEstateVehiclePlatform.DataAccess.csproj": {
-                "projectPath": "C:\\Users\\eylul\\Desktop\\Softito Projelerim ve gerekli kodlar\\11. Projem Bitirme Projesi\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.DataAccess\\RealEstateVehiclePlatform.DataAccess.csproj"
+              "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.DataAccess\\RealEstateVehiclePlatform.DataAccess.csproj": {
+                "projectPath": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.DataAccess\\RealEstateVehiclePlatform.DataAccess.csproj"
               },
-              "C:\\Users\\eylul\\Desktop\\Softito Projelerim ve gerekli kodlar\\11. Projem Bitirme Projesi\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.Entities\\RealEstateVehiclePlatform.Entities.csproj": {
-                "projectPath": "C:\\Users\\eylul\\Desktop\\Softito Projelerim ve gerekli kodlar\\11. Projem Bitirme Projesi\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.Entities\\RealEstateVehiclePlatform.Entities.csproj"
+              "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.Entities\\RealEstateVehiclePlatform.Entities.csproj": {
+                "projectPath": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.Entities\\RealEstateVehiclePlatform.Entities.csproj"
               }
             }
           }
@@ -791,6 +791,10 @@
           "framework": "net10.0",
           "targetAlias": "net10.0",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[16.2.0, )"
+            },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
               "version": "[10.0.9, )"
@@ -1251,14 +1255,14 @@
         }
       }
     },
-    "C:\\Users\\eylul\\Desktop\\Softito Projelerim ve gerekli kodlar\\11. Projem Bitirme Projesi\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.Entities\\RealEstateVehiclePlatform.Entities.csproj": {
+    "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.Entities\\RealEstateVehiclePlatform.Entities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\eylul\\Desktop\\Softito Projelerim ve gerekli kodlar\\11. Projem Bitirme Projesi\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.Entities\\RealEstateVehiclePlatform.Entities.csproj",
+        "projectUniqueName": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.Entities\\RealEstateVehiclePlatform.Entities.csproj",
         "projectName": "RealEstateVehiclePlatform.Entities",
-        "projectPath": "C:\\Users\\eylul\\Desktop\\Softito Projelerim ve gerekli kodlar\\11. Projem Bitirme Projesi\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.Entities\\RealEstateVehiclePlatform.Entities.csproj",
+        "projectPath": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.Entities\\RealEstateVehiclePlatform.Entities.csproj",
         "packagesPath": "C:\\Users\\eylul\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\eylul\\Desktop\\Softito Projelerim ve gerekli kodlar\\11. Projem Bitirme Projesi\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.Entities\\obj\\",
+        "outputPath": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.Entities\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

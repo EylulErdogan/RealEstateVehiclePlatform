@@ -23,10 +23,12 @@ namespace RealEstateVehiclePlatform.Business.Services
             return _unitOfWork.Listings.GetById(id);
         }
 
-        public void Create(Listing listing)
+        public int Create(Listing listing)
         {
             _unitOfWork.Listings.Insert(listing);
             _unitOfWork.Save();
+
+            return listing.Id;
         }
 
         public void Update(Listing listing)
@@ -57,6 +59,10 @@ namespace RealEstateVehiclePlatform.Business.Services
 
             _unitOfWork.Listings.Delete(value);
             _unitOfWork.Save();
+        }
+        public Listing? GetByIdWithDetails(int id)
+        {
+            return _unitOfWork.Listings.GetByIdWithDetails(id);
         }
     }
 }

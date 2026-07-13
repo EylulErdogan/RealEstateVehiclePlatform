@@ -1,0 +1,93 @@
+﻿@model List<RealEstateVehiclePlatform.WebUI.ViewModels.Appointment.AppointmentViewModel>
+
+@{
+    ViewData["Title"] = "Randevu Yönetimi";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="admin-card">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h5 class="fw-bold mb-1">Randevular</h5>
+            <small class="text-muted">İlanlar için oluşturulan randevu taleplerini buradan yönetebilirsin.</small>
+        </div>
+    </div>
+
+    <table class="table align-middle table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Kullanıcı ID</th>
+                <th>İlan ID</th>
+                <th>Tarih</th>
+                <th>Not</th>
+                <th>Durum</th>
+                <th class="text-end" style="width:260px;">İşlemler</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <span class="badge bg-primary-subtle text-primary">#@item.Id</span>
+                    </td>
+
+                    <td>@item.UserId</td>
+
+                    <td>@item.ListingId</td>
+
+                    <td>@item.AppointmentDate.ToString("dd.MM.yyyy HH:mm")</td>
+
+                    <td>@item.Note</td>
+
+                    <td>
+                        @if (item.Status == 1)
+                        {
+                            <span class="badge bg-warning">Bekliyor</span>
+                        }
+                        else if (item.Status == 2)
+                        {
+                            <span class="badge bg-success">Onaylandı</span>
+                        }
+                        else if (item.Status == 3)
+                        {
+                            <span class="badge bg-danger">Reddedildi</span>
+                        }
+                        else if (item.Status == 4)
+                        {
+                            <span class="badge bg-info">Tamamlandı</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-secondary">İptal</span>
+                        }
+                    </td>
+
+                    <td class="text-end">
+                        <a href="/AdminAppointment/Approve/@item.Id"
+                           class="btn btn-sm btn-success me-1">
+                            <i class="bi bi-check-circle"></i>
+                        </a>
+
+                        <a href="/AdminAppointment/Reject/@item.Id"
+                           class="btn btn-sm btn-danger me-1">
+                            <i class="bi bi-x-circle"></i>
+                        </a>
+
+                        <a href="/AdminAppointment/Complete/@item.Id"
+                           class="btn btn-sm btn-info text-white me-1">
+                            <i class="bi bi-check2-all"></i>
+                        </a>
+
+                        <a href="/AdminAppointment/Cancel/@item.Id"
+                           class="btn btn-sm btn-secondary">
+                            <i class="bi bi-slash-circle"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

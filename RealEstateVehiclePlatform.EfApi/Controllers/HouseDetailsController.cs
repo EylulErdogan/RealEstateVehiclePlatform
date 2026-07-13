@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using RealEstateVehiclePlatform.Business.Interfaces;
 using RealEstateVehiclePlatform.Entities.Concrete;
 
@@ -6,6 +7,7 @@ namespace RealEstateVehiclePlatform.EfApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class HouseDetailsController : ControllerBase
     {
         private readonly IHouseDetailService _houseDetailService;
@@ -42,7 +44,7 @@ namespace RealEstateVehiclePlatform.EfApi.Controllers
             try
             {
                 _houseDetailService.Update(houseDetail);
-                return Ok("Ev detayı güncellendi.");
+                return Ok("Ev detayı guncellendi.");
             }
             catch (Exception ex)
             {

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using RealEstateVehiclePlatform.Business.Interfaces;
 using RealEstateVehiclePlatform.Entities.Concrete;
 
@@ -6,6 +7,7 @@ namespace RealEstateVehiclePlatform.EfApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class VehicleDetailsController : ControllerBase
     {
         private readonly IVehicleDetailService _vehicleDetailService;
@@ -21,7 +23,7 @@ namespace RealEstateVehiclePlatform.EfApi.Controllers
             try
             {
                 _vehicleDetailService.Create(vehicleDetail);
-                return Ok("Araç detayı eklendi.");
+                return Ok("Arac detayı eklendi.");
             }
             catch (Exception ex)
             {
@@ -42,7 +44,7 @@ namespace RealEstateVehiclePlatform.EfApi.Controllers
             try
             {
                 _vehicleDetailService.Update(vehicleDetail);
-                return Ok("Araç detayı güncellendi.");
+                return Ok("Araç detayı guncellendi.");
             }
             catch (Exception ex)
             {

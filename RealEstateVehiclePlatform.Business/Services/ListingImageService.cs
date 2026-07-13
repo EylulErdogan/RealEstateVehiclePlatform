@@ -24,47 +24,71 @@ namespace RealEstateVehiclePlatform.Business.Services
             _unitOfWork.Save();
         }
 
+        public ListingImage? GetById(int id)
+        {
+            return _unitOfWork.ListingImages
+                .GetAll()
+                .FirstOrDefault(x =>
+                    x.Id == id &&
+                    !x.IsDeleted);
+        }
+
         public List<ListingImage> GetByListingId(int listingId)
         {
             return _unitOfWork.ListingImages
                 .GetAll()
-                .Where(x => x.ListingId == listingId)
-                .OrderBy(x => x.DisplayOrder)
+                .Where(x =>
+                    x.ListingId == listingId &&
+                    !x.IsDeleted)
+                .OrderByDescending(x => x.IsMainImage)
+                .ThenBy(x => x.DisplayOrder)
                 .ToList();
         }
 
         public void SetMainImage(int imageId)
         {
-            var image = _unitOfWork.ListingImages.GetById(imageId);
+            var image = GetById(imageId);
 
             if (image == null)
                 throw new Exception("Resim bulunamadı.");
 
-            var listingImages = _unitOfWork.ListingImages
-                .GetAll()
-                .Where(x => x.ListingId == image.ListingId)
-                .ToList();
+            var listingImages = GetByListingId(image.ListingId);
 
             foreach (var item in listingImages)
             {
-                item.IsMainImage = false;
+                item.IsMainImage = item.Id == imageId;
+
                 _unitOfWork.ListingImages.Update(item);
             }
-
-            image.IsMainImage = true;
-            _unitOfWork.ListingImages.Update(image);
 
             _unitOfWork.Save();
         }
 
         public void Delete(int id)
         {
-            var image = _unitOfWork.ListingImages.GetById(id);
+            var image = GetById(id);
 
             if (image == null)
                 throw new Exception("Resim bulunamadı.");
 
+            var listingId = image.ListingId;
+            var wasMainImage = image.IsMainImage;
+
             _unitOfWork.ListingImages.Delete(image);
+            _unitOfWork.Save();
+
+            if (!wasMainImage)
+                return;
+
+            var nextImage = GetByListingId(listingId)
+                .FirstOrDefault();
+
+            if (nextImage == null)
+                return;
+
+            nextImage.IsMainImage = true;
+
+            _unitOfWork.ListingImages.Update(nextImage);
             _unitOfWork.Save();
         }
     }

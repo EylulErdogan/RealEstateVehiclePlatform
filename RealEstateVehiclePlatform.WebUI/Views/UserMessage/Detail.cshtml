@@ -1,0 +1,244 @@
+﻿@model RealEstateVehiclePlatform.WebUI.ViewModels.Conversation.ConversationDetailViewModel
+
+@{
+    ViewData["Title"] = "Mesajlaşma";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="chat-page">
+    <div class="container">
+
+        <div class="chat-card">
+            <div class="chat-header">
+                <div>
+                    <span>Konuşma #@Model.ConversationId</span>
+                    <h3>İlan #@Model.ListingId hakkında görüşme</h3>
+                </div>
+
+                <a href="/Listing/Detail/@Model.ListingId"
+                   class="btn btn-outline-primary">
+                    <i class="bi bi-eye me-1"></i>
+                    İlanı Gör
+                </a>
+            </div>
+
+            <div class="chat-messages">
+                @if (Model.Messages.Any())
+                {
+                    @foreach (var message in Model.Messages.OrderBy(x => x.CreatedDate))
+                    {
+                        var isMine = message.SenderId == Model.CurrentUserId;
+
+                        <div class="message-row @(isMine ? "my-message-row" : "other-message-row")">
+                            <div class="message-bubble @(isMine ? "my-message" : "other-message")">
+                                <p>@message.Content</p>
+
+                                <small>
+                                    @message.CreatedDate.ToString("dd.MM.yyyy HH:mm")
+                                </small>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="no-message">
+                        <i class="bi bi-chat"></i>
+                        <p>Henüz mesaj bulunmuyor. İlk mesajı sen gönder.</p>
+                    </div>
+                }
+            </div>
+
+            <form asp-action="Send"
+                  method="post"
+                  class="message-form">
+
+                <input asp-for="NewMessage.ConversationId"
+                       name="ConversationId"
+                       type="hidden" />
+
+                <input asp-for="NewMessage.ReceiverId"
+                       name="ReceiverId"
+                       type="hidden" />
+
+                <textarea asp-for="NewMessage.Content"
+                          name="Content"
+                          rows="2"
+                          placeholder="Mesajınızı yazın..."
+                          required></textarea>
+
+                <button type="submit">
+                    <i class="bi bi-send"></i>
+                    Gönder
+                </button>
+            </form>
+        </div>
+
+    </div>
+</section>
+
+<style>
+    .chat-page {
+        min-height: calc(100vh - 150px);
+        padding: 55px 0 90px;
+        background: #f8fafc;
+    }
+
+    .chat-card {
+        max-width: 900px;
+        margin: 0 auto;
+        overflow: hidden;
+        border: 1px solid #e2e8f0;
+        border-radius: 25px;
+        background: #fff;
+        box-shadow: 0 20px 55px rgba(15, 23, 42, .10);
+    }
+
+    .chat-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        padding: 22px 25px;
+        border-bottom: 1px solid #e2e8f0;
+    }
+
+        .chat-header span {
+            color: #2563eb;
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        .chat-header h3 {
+            margin: 4px 0 0;
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+    .chat-messages {
+        height: 520px;
+        overflow-y: auto;
+        padding: 25px;
+        background: #f8fafc;
+    }
+
+    .message-row {
+        display: flex;
+        margin-bottom: 15px;
+    }
+
+    .my-message-row {
+        justify-content: flex-end;
+    }
+
+    .other-message-row {
+        justify-content: flex-start;
+    }
+
+    .message-bubble {
+        max-width: 68%;
+        padding: 13px 16px;
+        border-radius: 17px;
+    }
+
+        .message-bubble p {
+            margin: 0 0 6px;
+            line-height: 1.55;
+            white-space: pre-line;
+        }
+
+        .message-bubble small {
+            display: block;
+            font-size: 11px;
+            text-align: right;
+            opacity: .75;
+        }
+
+    .my-message {
+        border-bottom-right-radius: 4px;
+        background: #2563eb;
+        color: #fff;
+    }
+
+    .other-message {
+        border: 1px solid #e2e8f0;
+        border-bottom-left-radius: 4px;
+        background: #fff;
+        color: #0f172a;
+    }
+
+    .no-message {
+        height: 100%;
+        display: grid;
+        place-items: center;
+        align-content: center;
+        color: #94a3b8;
+        text-align: center;
+    }
+
+        .no-message i {
+            font-size: 55px;
+        }
+
+    .message-form {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 12px;
+        padding: 18px;
+        border-top: 1px solid #e2e8f0;
+    }
+
+        .message-form textarea {
+            resize: none;
+            border: 1px solid #dbe3ef;
+            border-radius: 14px;
+            padding: 13px 15px;
+            outline: none;
+        }
+
+            .message-form textarea:focus {
+                border-color: #2563eb;
+            }
+
+        .message-form button {
+            min-width: 125px;
+            border: 0;
+            border-radius: 14px;
+            background: #2563eb;
+            color: #fff;
+            font-weight: 800;
+        }
+
+    @@media (max-width: 767.98px) {
+        .chat-header {
+            align-items: flex-start;
+            flex-direction: column;
+        }
+
+        .chat-messages {
+            height: 430px;
+        }
+
+        .message-bubble {
+            max-width: 88%;
+        }
+
+        .message-form {
+            grid-template-columns: 1fr;
+        }
+
+            .message-form button {
+                min-height: 48px;
+            }
+    }
+</style>
+
+@section Scripts {
+    <script>
+        const messageArea = document.querySelector(".chat-messages");
+
+        if (messageArea) {
+            messageArea.scrollTop = messageArea.scrollHeight;
+        }
+    </script>
+}

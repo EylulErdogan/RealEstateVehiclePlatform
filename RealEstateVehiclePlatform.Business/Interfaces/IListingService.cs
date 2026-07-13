@@ -8,10 +8,11 @@ namespace RealEstateVehiclePlatform.Business.Interfaces
 
         Listing GetById(int id);
 
-        void Create(Listing listing);
+        int Create(Listing listing);
 
         void Update(Listing listing);
 
         void Delete(int id);
+        Listing? GetByIdWithDetails(int id);
     }
 }

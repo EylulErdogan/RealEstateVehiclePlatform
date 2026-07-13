@@ -1,0 +1,165 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] - Admin Panel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+            body {
+                background-color: #f4f6f9;
+                font-family: 'Segoe UI', sans-serif;
+            }
+
+            .admin-sidebar {
+                width: 260px;
+                min-height: 100vh;
+                background: #111827;
+                position: fixed;
+                left: 0;
+                top: 0;
+                padding: 24px 18px;
+            }
+
+            .admin-logo {
+                color: #fff;
+                font-size: 22px;
+                font-weight: 700;
+                margin-bottom: 35px;
+            }
+
+            .admin-menu a {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                color: #cbd5e1;
+                text-decoration: none;
+                padding: 12px 14px;
+                border-radius: 12px;
+                margin-bottom: 8px;
+                transition: .2s;
+            }
+
+            .admin-menu a:hover,
+            .admin-menu a.active {
+                background: #2563eb;
+                color: #fff;
+            }
+
+            .admin-content {
+                margin-left: 260px;
+                padding: 24px;
+            }
+
+            .admin-topbar {
+                background: #fff;
+                border-radius: 18px;
+                padding: 18px 24px;
+                margin-bottom: 24px;
+                box-shadow: 0 8px 24px rgba(15, 23, 42, .06);
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .admin-card {
+                background: #fff;
+                border-radius: 18px;
+                padding: 22px;
+                box-shadow: 0 8px 24px rgba(15, 23, 42, .06);
+            }
+
+            .table thead th {
+                background: #f8fafc;
+                color: #475569;
+                font-weight: 600;
+            }
+
+            .btn-soft-primary {
+                background: #eff6ff;
+                color: #2563eb;
+                border: none;
+            }
+
+            .btn-soft-danger {
+                background: #fef2f2;
+                color: #dc2626;
+                border: none;
+            }
+    </style>
+</head>
+<body>
+
+    <aside class="admin-sidebar">
+        <div class="admin-logo">
+            <i class="bi bi-buildings"></i> RealEstate Admin
+        </div>
+
+        <nav class="admin-menu">
+            <a href="/AdminDashboard"><i class="bi bi-speedometer2"></i> Dashboard</a>
+            <a href="/AdminCategory"><i class="bi bi-grid"></i> Kategoriler</a>
+            <a href="/AdminListingType"><i class="bi bi-tags"></i> İlan Tipleri</a>
+            <a href="/AdminCity"><i class="bi bi-geo-alt"></i> Şehirler</a>
+            <a href="/AdminDistrict"><i class="bi bi-map"></i> İlçeler</a>
+            <a href="/AdminListing"><i class="bi bi-house-door"></i> İlanlar</a>
+            <a href="/AdminAppointment"><i class="bi bi-calendar-check"></i> Randevular</a>
+            <a href="/AdminDashboard"><i class="bi bi-people"></i> Kullanıcılar</a>
+            <a href="/Account/Logout"><i class="bi bi-box-arrow-right"></i> Çıkış Yap</a>
+            <a href="/"><i class="bi bi-arrow-left-circle"></i> Siteye Dön</a>
+        </nav>
+    </aside>
+
+    <main class="admin-content">
+        <div class="admin-topbar">
+            <div>
+                <h4 class="mb-0">@ViewData["Title"]</h4>
+                <small class="text-muted">RealEstateVehiclePlatform yönetim paneli</small>
+            </div>
+
+            <div>
+                <span class="badge bg-primary rounded-pill px-3 py-2">
+                    Admin
+                </span>
+            </div>
+        </div>
+
+        @RenderBody()
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="~/js/admin.js"></script>
+    @if (TempData["Success"] != null)
+    {
+        <script>
+            showSuccess('@TempData["Success"]');
+        </script>
+    }
+
+    @if (TempData["Error"] != null)
+    {
+        <script>
+            showError('@TempData["Error"]');
+        </script>
+    }
+
+    @if (TempData["Info"] != null)
+    {
+        <script>
+            showInfo('@TempData["Info"]');
+        </script>
+    }
+
+    @if (TempData["Warning"] != null)
+    {
+        <script>
+            showWarning('@TempData["Warning"]');
+        </script>
+    }
+</body>
+</html>

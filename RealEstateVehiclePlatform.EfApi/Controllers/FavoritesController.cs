@@ -1,10 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using RealEstateVehiclePlatform.Business.Interfaces;
+using System.Security.Claims;
 
 namespace RealEstateVehiclePlatform.EfApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class FavoritesController : ControllerBase
     {
         private readonly IFavoriteService _favoriteService;
@@ -14,13 +17,25 @@ namespace RealEstateVehiclePlatform.EfApi.Controllers
             _favoriteService = favoriteService;
         }
 
-        [HttpPost("Add/{userId}/{listingId}")]
-        public IActionResult AddFavorite(int userId, int listingId)
+        [HttpPost("Toggle/{listingId}")]
+        public IActionResult ToggleFavorite(int listingId)
         {
             try
             {
-                _favoriteService.AddFavorite(userId, listingId);
-                return Ok("İlan favorilere eklendi.");
+                var userIdValue = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+                if (!int.TryParse(userIdValue, out var userId))
+                    return Unauthorized("Kullanıcı bilgisi alınamadı.");
+
+                var isFavorite = _favoriteService.ToggleFavorite(userId, listingId);
+
+                return Ok(new
+                {
+                    isFavorite,
+                    message = isFavorite
+                        ? "İlan favorilere eklendi."
+                        : "İlan favorilerden çıkarıldı."
+                });
             }
             catch (Exception ex)
             {
@@ -28,24 +43,32 @@ namespace RealEstateVehiclePlatform.EfApi.Controllers
             }
         }
 
-        [HttpDelete("Remove/{userId}/{listingId}")]
-        public IActionResult RemoveFavorite(int userId, int listingId)
+        [HttpGet("IsFavorite/{listingId}")]
+        public IActionResult IsFavorite(int listingId)
         {
-            try
+            var userIdValue = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            if (!int.TryParse(userIdValue, out var userId))
+                return Unauthorized("Kullanıcı bilgisi alınamadı.");
+
+            var isFavorite = _favoriteService.IsFavorite(userId, listingId);
+
+            return Ok(new
             {
-                _favoriteService.RemoveFavorite(userId, listingId);
-                return Ok("İlan favorilerden çıkarıldı.");
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+                isFavorite
+            });
         }
 
-        [HttpGet("UserFavorites/{userId}")]
-        public IActionResult GetUserFavorites(int userId)
+        [HttpGet("MyFavorites")]
+        public IActionResult GetMyFavorites()
         {
+            var userIdValue = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            if (!int.TryParse(userIdValue, out var userId))
+                return Unauthorized("Kullanıcı bilgisi alınamadı.");
+
             var values = _favoriteService.GetUserFavorites(userId);
+
             return Ok(values);
         }
     }

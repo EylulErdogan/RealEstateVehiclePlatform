@@ -29,7 +29,7 @@ namespace RealEstateVehiclePlatform.EfApi.Controllers
 
             if (value == null)
             {
-                return NotFound("İlan tipi bulunamadı.");
+                return NotFound("Ilan tipi bulunamadı.");
             }
 
             return Ok(value);
@@ -41,7 +41,7 @@ namespace RealEstateVehiclePlatform.EfApi.Controllers
             try
             {
                 _listingTypeService.Create(listingType);
-                return Ok("İlan tipi başarıyla eklendi.");
+                return Ok("Ilan tipi basariyla eklendi.");
             }
             catch (Exception ex)
             {
@@ -55,7 +55,7 @@ namespace RealEstateVehiclePlatform.EfApi.Controllers
             try
             {
                 _listingTypeService.Update(listingType);
-                return Ok("İlan tipi başarıyla güncellendi.");
+                return Ok("Ilan tipi basariyla guncellendi.");
             }
             catch (Exception ex)
             {
@@ -69,7 +69,7 @@ namespace RealEstateVehiclePlatform.EfApi.Controllers
             try
             {
                 _listingTypeService.Delete(id);
-                return Ok("İlan tipi başarıyla silindi.");
+                return Ok("Ilan tipi basariyla silindi.");
             }
             catch (Exception ex)
             {

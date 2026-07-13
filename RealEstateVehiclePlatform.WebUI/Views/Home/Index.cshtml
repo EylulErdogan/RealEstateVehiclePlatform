@@ -1,8 +1,867 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model RealEstateVehiclePlatform.WebUI.ViewModels.Home.HomeViewModel
+
+@{
+    ViewData["Title"] = "Ana Sayfa";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<section class="hero-section">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-7">
+                <span class="hero-badge">
+                    <i class="bi bi-stars me-1"></i>
+                    Yeni nesil ilan platformu
+                </span>
+
+                <h1 class="hero-title">
+                    Aradığın evi, arsayı veya aracı
+                    <span>kolayca bul.</span>
+                </h1>
+
+                <p class="hero-description">
+                    Güvenilir ilanları incele, favorilerine ekle,
+                    ilan sahibiyle iletişime geç ve randevu oluştur.
+                </p>
+
+                <form action="/Listing" method="get" class="hero-search">
+                    <div class="search-item">
+                        <i class="bi bi-search"></i>
+
+                        <input type="text"
+                               name="search"
+                               placeholder="Ne arıyorsunuz?" />
+                    </div>
+
+                    <div class="search-item search-location">
+                        <i class="bi bi-geo-alt"></i>
+
+                        <input type="text"
+                               name="city"
+                               placeholder="Şehir" />
+                    </div>
+
+                    <button type="submit" class="search-button">
+                        <i class="bi bi-search me-1"></i>
+                        İlan Ara
+                    </button>
+                </form>
+
+                <div class="hero-stats">
+                    <div>
+                        <strong>@Model.LatestListings.Count+</strong>
+                        <span>Güncel İlan</span>
+                    </div>
+
+                    <div>
+                        <strong>@Model.Categories.Count</strong>
+                        <span>Ana Kategori</span>
+                    </div>
+
+                    <div>
+                        <strong>7/24</strong>
+                        <span>Kolay Erişim</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-5">
+                <div class="hero-visual">
+                    <div class="hero-main-card">
+                        <div class="hero-visual-icon">
+                            <i class="bi bi-buildings"></i>
+                        </div>
+
+                        <h4>Hayalindeki ilana ulaş</h4>
+
+                        <p>
+                            Ev, arsa ve araç ilanlarını tek platformda keşfet.
+                        </p>
+                    </div>
+
+                    <div class="floating-card floating-card-top">
+                        <i class="bi bi-house-check"></i>
+
+                        <div>
+                            <strong>Güvenilir İlanlar</strong>
+                            <small>Kontrollü içerikler</small>
+                        </div>
+                    </div>
+
+                    <div class="floating-card floating-card-bottom">
+                        <i class="bi bi-calendar-check"></i>
+
+                        <div>
+                            <strong>Kolay Randevu</strong>
+                            <small>Hızlı görüşme talebi</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="category-section">
+    <div class="container">
+        <div class="section-heading">
+            <div>
+                <span class="section-label">Kategoriler</span>
+                <h2>Ne arıyorsun?</h2>
+                <p>İhtiyacına uygun kategoriyi seçerek ilanları keşfet.</p>
+            </div>
+
+            <a href="/Listing" class="section-link">
+                Tüm İlanları Gör
+                <i class="bi bi-arrow-right"></i>
+            </a>
+        </div>
+
+        <div class="row g-4">
+            @foreach (var category in Model.Categories)
+            {
+                var iconClass = category.Name.ToLower() switch
+                {
+                    "ev" => "bi-house-door",
+                    "arsa" => "bi-map",
+                    "araç" => "bi-car-front",
+                    "arac" => "bi-car-front",
+                    _ => "bi-grid"
+                };
+
+                <div class="col-md-4">
+                    <a href="/Listing?category=@category.Name"
+                       class="category-card">
+
+                        <div class="category-icon">
+                            <i class="bi @iconClass"></i>
+                        </div>
+
+                        <div>
+                            <h4>@category.Name İlanları</h4>
+                            <p>
+                                Güncel @category.Name.ToLower() ilanlarını incele.
+                            </p>
+                        </div>
+
+                        <span class="category-arrow">
+                            <i class="bi bi-arrow-up-right"></i>
+                        </span>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<section class="latest-listings-section">
+    <div class="container">
+        <div class="section-heading">
+            <div>
+                <span class="section-label">Yeni İlanlar</span>
+                <h2>Son Eklenen İlanlar</h2>
+                <p>Platforma yakın zamanda eklenen ilanları keşfet.</p>
+            </div>
+
+            <a href="/Listing" class="section-link">
+                Tüm İlanlar
+                <i class="bi bi-arrow-right"></i>
+            </a>
+        </div>
+
+        @if (Model.LatestListings.Any())
+        {
+            <div class="row g-4">
+                @foreach (var listing in Model.LatestListings)
+                {
+                    <div class="col-md-6 col-xl-4">
+                        <div class="listing-card">
+                            <div class="listing-image-placeholder">
+
+                                @if (!string.IsNullOrWhiteSpace(listing.MainImageUrl))
+                                {
+                                    <img src="@listing.MainImageUrl"
+                                         alt="@listing.Title"
+                                         class="home-listing-image" />
+                                }
+                                else
+                                {
+                                    <i class="bi bi-buildings"></i>
+                                }
+
+                                <span class="listing-number">
+                                    @listing.ListingNo
+                                </span>
+
+                                <button type="button"
+                                        class="favorite-button"
+                                        data-listing-id="@listing.Id">
+                                    <i class="bi bi-heart"></i>
+                                </button>
+                            </div>
+
+                            <div class="listing-content">
+                                <div class="listing-top">
+                                    <span class="listing-status">
+                                        Güncel İlan
+                                    </span>
+
+                                    <span class="listing-view">
+                                        <i class="bi bi-eye"></i>
+                                        @listing.ViewCount
+                                    </span>
+                                </div>
+
+                                <h4 class="listing-title">
+                                    @listing.Title
+                                </h4>
+
+                                <p class="listing-address">
+                                    <i class="bi bi-geo-alt"></i>
+                                    @listing.Address
+                                </p>
+
+                                <div class="listing-footer">
+                                    <strong class="listing-price">
+                                        @listing.Price.ToString("N0") ₺
+                                    </strong>
+
+                                    <a href="/Listing/Detail/@listing.Id"
+                                       class="detail-button">
+                                        İncele
+                                        <i class="bi bi-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <div class="empty-listing-card">
+                <i class="bi bi-house-exclamation"></i>
+
+                <h4>Henüz ilan bulunmuyor</h4>
+
+                <p>
+                    Yeni ilanlar eklendiğinde burada görüntülenecek.
+                </p>
+            </div>
+        }
+    </div>
+</section>
+
+<section class="features-section">
+    <div class="container">
+        <div class="features-wrapper">
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <i class="bi bi-shield-check"></i>
+                </div>
+
+                <div>
+                    <h5>Güvenli Platform</h5>
+                    <p>Rol bazlı güvenli kullanıcı ve ilan yönetimi.</p>
+                </div>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <i class="bi bi-heart"></i>
+                </div>
+
+                <div>
+                    <h5>Favori İlanlar</h5>
+                    <p>Beğendiğin ilanları kaydet ve daha sonra incele.</p>
+                </div>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <i class="bi bi-calendar2-check"></i>
+                </div>
+
+                <div>
+                    <h5>Randevu Sistemi</h5>
+                    <p>İlanlar için hızlıca görüşme talebi oluştur.</p>
+                </div>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <i class="bi bi-chat-dots"></i>
+                </div>
+
+                <div>
+                    <h5>Kolay İletişim</h5>
+                    <p>İlan sahibiyle platform üzerinden mesajlaş.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .hero-section {
+        position: relative;
+        overflow: hidden;
+        padding: 95px 0 105px;
+        background: radial-gradient(circle at 15% 20%, rgba(37, 99, 235, .14), transparent 30%), radial-gradient(circle at 90% 80%, rgba(14, 165, 233, .12), transparent 28%), linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%);
+    }
+
+    .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        padding: 8px 15px;
+        border-radius: 999px;
+        background: #dbeafe;
+        color: #1d4ed8;
+        font-size: 14px;
+        font-weight: 700;
+        margin-bottom: 22px;
+    }
+
+    .hero-title {
+        max-width: 760px;
+        margin-bottom: 22px;
+        color: #0f172a;
+        font-size: clamp(42px, 5vw, 68px);
+        font-weight: 850;
+        line-height: 1.08;
+        letter-spacing: -2px;
+    }
+
+        .hero-title span {
+            color: #2563eb;
+        }
+
+    .hero-description {
+        max-width: 650px;
+        margin-bottom: 34px;
+        color: #64748b;
+        font-size: 18px;
+        line-height: 1.75;
+    }
+
+    .hero-search {
+        display: grid;
+        grid-template-columns: 1.4fr .8fr auto;
+        gap: 10px;
+        max-width: 760px;
+        padding: 10px;
+        background: #fff;
+        border: 1px solid #dbe3ef;
+        border-radius: 18px;
+        box-shadow: 0 22px 55px rgba(15, 23, 42, .12);
+    }
+
+    .search-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-height: 54px;
+        padding: 0 14px;
+        border-right: 1px solid #e2e8f0;
+    }
+
+    .search-location {
+        border-right: 0;
+    }
+
+    .search-item i {
+        color: #2563eb;
+        font-size: 19px;
+    }
+
+    .search-item input {
+        width: 100%;
+        border: 0;
+        outline: 0;
+        color: #0f172a;
+        background: transparent;
+    }
+
+    .search-button {
+        border: 0;
+        border-radius: 13px;
+        padding: 0 24px;
+        background: #2563eb;
+        color: #fff;
+        font-weight: 700;
+        transition: .2s ease;
+    }
+
+        .search-button:hover {
+            background: #1d4ed8;
+        }
+
+    .hero-stats {
+        display: flex;
+        gap: 45px;
+        margin-top: 38px;
+    }
+
+        .hero-stats div {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .hero-stats strong {
+            color: #0f172a;
+            font-size: 25px;
+            font-weight: 800;
+        }
+
+        .hero-stats span {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+    .hero-visual {
+        min-height: 440px;
+        position: relative;
+        display: grid;
+        place-items: center;
+    }
+
+    .hero-main-card {
+        width: 82%;
+        min-height: 340px;
+        padding: 48px 35px;
+        border: 1px solid rgba(255,255,255,.45);
+        border-radius: 34px;
+        background: linear-gradient(145deg, #2563eb, #1e3a8a);
+        color: #fff;
+        text-align: center;
+        box-shadow: 0 35px 70px rgba(30, 64, 175, .28);
+        transform: rotate(2deg);
+    }
+
+    .hero-visual-icon {
+        width: 105px;
+        height: 105px;
+        margin: 15px auto 30px;
+        display: grid;
+        place-items: center;
+        border-radius: 30px;
+        background: rgba(255,255,255,.16);
+        font-size: 52px;
+    }
+
+    .hero-main-card h4 {
+        font-size: 26px;
+        font-weight: 800;
+    }
+
+    .hero-main-card p {
+        color: rgba(255,255,255,.75);
+    }
+
+    .floating-card {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        gap: 13px;
+        min-width: 215px;
+        padding: 16px 18px;
+        border-radius: 17px;
+        background: #fff;
+        box-shadow: 0 18px 45px rgba(15, 23, 42, .15);
+    }
+
+        .floating-card i {
+            width: 45px;
+            height: 45px;
+            display: grid;
+            place-items: center;
+            border-radius: 13px;
+            background: #eff6ff;
+            color: #2563eb;
+            font-size: 22px;
+        }
+
+        .floating-card strong,
+        .floating-card small {
+            display: block;
+        }
+
+        .floating-card strong {
+            color: #0f172a;
+        }
+
+        .floating-card small {
+            color: #64748b;
+        }
+
+    .floating-card-top {
+        top: 35px;
+        right: -10px;
+    }
+
+    .floating-card-bottom {
+        bottom: 28px;
+        left: -15px;
+    }
+
+    .category-section,
+    .latest-listings-section,
+    .features-section {
+        padding: 85px 0;
+    }
+
+    .latest-listings-section {
+        background: #fff;
+    }
+
+    .section-heading {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        gap: 25px;
+        margin-bottom: 38px;
+    }
+
+    .section-label {
+        display: block;
+        margin-bottom: 8px;
+        color: #2563eb;
+        font-size: 14px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+    }
+
+    .section-heading h2 {
+        margin-bottom: 8px;
+        color: #0f172a;
+        font-size: 35px;
+        font-weight: 800;
+    }
+
+    .section-heading p {
+        margin: 0;
+        color: #64748b;
+    }
+
+    .section-link {
+        color: #2563eb;
+        font-weight: 700;
+        text-decoration: none;
+        white-space: nowrap;
+    }
+
+        .section-link i {
+            margin-left: 5px;
+        }
+
+    .category-card {
+        position: relative;
+        min-height: 180px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding: 28px;
+        overflow: hidden;
+        border: 1px solid #e2e8f0;
+        border-radius: 23px;
+        background: #fff;
+        color: #0f172a;
+        text-decoration: none;
+        box-shadow: 0 12px 35px rgba(15, 23, 42, .05);
+        transition: .25s ease;
+    }
+
+        .category-card:hover {
+            border-color: #bfdbfe;
+            color: #0f172a;
+            transform: translateY(-7px);
+            box-shadow: 0 22px 50px rgba(37, 99, 235, .12);
+        }
+
+    .category-icon {
+        width: 72px;
+        height: 72px;
+        flex: 0 0 auto;
+        display: grid;
+        place-items: center;
+        border-radius: 21px;
+        background: #eff6ff;
+        color: #2563eb;
+        font-size: 34px;
+    }
+
+    .category-card h4 {
+        margin-bottom: 7px;
+        font-weight: 800;
+    }
+
+    .category-card p {
+        margin: 0;
+        color: #64748b;
+    }
+
+    .category-arrow {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        color: #94a3b8;
+        font-size: 19px;
+    }
+
+    .listing-card {
+        height: 100%;
+        overflow: hidden;
+        border: 1px solid #e2e8f0;
+        border-radius: 23px;
+        background: #fff;
+        box-shadow: 0 12px 35px rgba(15, 23, 42, .06);
+        transition: .25s ease;
+    }
+
+        .listing-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 24px 55px rgba(15, 23, 42, .13);
+        }
+
+    .listing-image-placeholder {
+        position: relative;
+        min-height: 225px;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(135deg, rgba(37,99,235,.94), rgba(30,58,138,.92));
+        color: rgba(255,255,255,.65);
+        font-size: 72px;
+    }
+
+    .listing-number {
+        position: absolute;
+        left: 16px;
+        bottom: 16px;
+        padding: 7px 11px;
+        border-radius: 9px;
+        background: rgba(15,23,42,.65);
+        color: #fff;
+        font-size: 12px;
+        font-weight: 700;
+    }
+
+    .favorite-button {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        width: 43px;
+        height: 43px;
+        display: grid;
+        place-items: center;
+        border: 0;
+        border-radius: 50%;
+        background: #fff;
+        color: #ef4444;
+        font-size: 19px;
+        box-shadow: 0 9px 25px rgba(15,23,42,.14);
+    }
+
+    .listing-content {
+        padding: 23px;
+    }
+
+    .listing-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 14px;
+    }
+
+    .listing-status {
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: #dcfce7;
+        color: #15803d;
+        font-size: 12px;
+        font-weight: 700;
+    }
+
+    .listing-view {
+        color: #94a3b8;
+        font-size: 13px;
+    }
+
+    .listing-title {
+        min-height: 58px;
+        margin-bottom: 9px;
+        color: #0f172a;
+        font-size: 19px;
+        font-weight: 800;
+    }
+
+    .listing-address {
+        min-height: 45px;
+        margin-bottom: 20px;
+        color: #64748b;
+        font-size: 14px;
+    }
+
+    .listing-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        padding-top: 18px;
+        border-top: 1px solid #eef2f7;
+    }
+
+    .listing-price {
+        color: #2563eb;
+        font-size: 21px;
+    }
+
+    .detail-button {
+        color: #0f172a;
+        font-size: 14px;
+        font-weight: 700;
+        text-decoration: none;
+    }
+
+        .detail-button:hover {
+            color: #2563eb;
+        }
+
+    .empty-listing-card {
+        padding: 70px 25px;
+        border: 1px dashed #cbd5e1;
+        border-radius: 24px;
+        text-align: center;
+        background: #f8fafc;
+    }
+
+        .empty-listing-card i {
+            color: #94a3b8;
+            font-size: 58px;
+        }
+
+        .empty-listing-card h4 {
+            margin-top: 18px;
+            font-weight: 800;
+        }
+
+        .empty-listing-card p {
+            margin-bottom: 0;
+            color: #64748b;
+        }
+
+    .features-section {
+        padding-top: 70px;
+    }
+
+    .features-wrapper {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        padding: 30px;
+        border: 1px solid #e2e8f0;
+        border-radius: 25px;
+        background: #fff;
+        box-shadow: 0 15px 45px rgba(15, 23, 42, .06);
+    }
+
+    .feature-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        padding: 10px;
+    }
+
+    .feature-icon {
+        width: 52px;
+        height: 52px;
+        flex: 0 0 auto;
+        display: grid;
+        place-items: center;
+        border-radius: 15px;
+        background: #eff6ff;
+        color: #2563eb;
+        font-size: 23px;
+    }
+
+    .feature-item h5 {
+        margin-bottom: 5px;
+        font-weight: 800;
+    }
+
+    .feature-item p {
+        margin: 0;
+        color: #64748b;
+        font-size: 14px;
+        line-height: 1.55;
+    }
+
+    @@media (max-width: 991.98px) {
+        .hero-section {
+            padding: 70px 0;
+        }
+
+        .hero-search {
+            grid-template-columns: 1fr;
+        }
+
+        .search-item {
+            border-right: 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .search-button {
+            min-height: 52px;
+        }
+
+        .hero-visual {
+            min-height: 420px;
+        }
+
+        .features-wrapper {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @@media (max-width: 767.98px) {
+        .hero-title {
+            letter-spacing: -1px;
+        }
+
+        .hero-stats {
+            flex-wrap: wrap;
+            gap: 25px;
+        }
+
+        .hero-main-card {
+            width: 92%;
+        }
+
+        .floating-card-top {
+            right: 0;
+        }
+
+        .floating-card-bottom {
+            left: 0;
+        }
+
+        .section-heading {
+            align-items: flex-start;
+            flex-direction: column;
+        }
+
+        .features-wrapper {
+            grid-template-columns: 1fr;
+        }
+
+        .home-listing-image {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+</style>

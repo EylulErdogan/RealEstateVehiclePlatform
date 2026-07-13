@@ -13,50 +13,42 @@ namespace RealEstateVehiclePlatform.Business.Services
             _unitOfWork = unitOfWork;
         }
 
-        public void AddFavorite(int userId, int listingId)
+        public bool ToggleFavorite(int userId, int listingId)
         {
-            var listing = _unitOfWork.Listings.GetById(listingId);
-
-            if (listing == null)
-                throw new Exception("İlan bulunamadı.");
-
-            var exists = _unitOfWork.Favorites.GetByFilter(x =>
-                x.UserId == userId &&
-                x.ListingId == listingId &&
-                !x.IsDeleted);
-
-            if (exists != null)
-                throw new Exception("Bu ilan zaten favorilerde.");
-
-            var favorite = new Favorite
-            {
-                UserId = userId,
-                ListingId = listingId
-            };
-
-            _unitOfWork.Favorites.Insert(favorite);
-            _unitOfWork.Save();
-        }
-
-        public void RemoveFavorite(int userId, int listingId)
-        {
-            var favorite = _unitOfWork.Favorites.GetByFilter(x =>
-                x.UserId == userId &&
-                x.ListingId == listingId &&
-                !x.IsDeleted);
+            var favorite = _unitOfWork.Favorites
+                .GetByUserAndListing(userId, listingId);
 
             if (favorite == null)
-                throw new Exception("Favori bulunamadı.");
+            {
+                _unitOfWork.Favorites.Insert(new Favorite
+                {
+                    UserId = userId,
+                    ListingId = listingId
+                });
+
+                _unitOfWork.Save();
+
+                return true;
+            }
 
             _unitOfWork.Favorites.Delete(favorite);
+
             _unitOfWork.Save();
+
+            return false;
+        }
+
+        public bool IsFavorite(int userId, int listingId)
+        {
+            return _unitOfWork.Favorites
+                .GetByUserAndListing(userId, listingId) != null;
         }
 
         public List<Favorite> GetUserFavorites(int userId)
         {
             return _unitOfWork.Favorites
                 .GetAll()
-                .Where(x => x.UserId == userId)
+                .Where(x => x.UserId == userId && !x.IsDeleted)
                 .ToList();
         }
     }

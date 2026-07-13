@@ -1,0 +1,245 @@
+﻿@model RealEstateVehiclePlatform.WebUI.ViewModels.ListingImage.UploadListingImageViewModel
+
+@{
+    ViewData["Title"] = "Görsel Yükle";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<section class="upload-page">
+    <div class="container">
+
+        <div class="upload-card">
+            <div class="upload-header">
+                <div class="upload-icon">
+                    <i class="bi bi-cloud-arrow-up"></i>
+                </div>
+
+                <div>
+                    <span>İlan Görseli</span>
+                    <h2>Yeni görsel yükle</h2>
+                    <p>@ViewBag.ListingTitle</p>
+                </div>
+            </div>
+
+            <form asp-action="Upload"
+                  method="post"
+                  enctype="multipart/form-data">
+
+                <input asp-for="ListingId" type="hidden" />
+
+                <div asp-validation-summary="ModelOnly"
+                     class="text-danger mb-3"></div>
+
+                <div class="mb-4">
+                    <label asp-for="ImageFile"
+                           class="form-label">
+                        Görsel Dosyası
+                    </label>
+
+                    <input asp-for="ImageFile"
+                           type="file"
+                           accept=".jpg,.jpeg,.png,.webp"
+                           class="form-control form-control-lg"
+                           id="imageInput" />
+
+                    <span asp-validation-for="ImageFile"
+                          class="text-danger"></span>
+
+                    <small class="form-text">
+                        JPG, JPEG, PNG veya WEBP. En fazla 5 MB.
+                    </small>
+                </div>
+
+                <div class="image-preview-area"
+                     id="previewArea">
+                    <i class="bi bi-image"></i>
+                    <span>Görsel önizlemesi</span>
+                </div>
+
+                <div class="row g-4 mt-1">
+                    <div class="col-md-6">
+                        <label asp-for="DisplayOrder"
+                               class="form-label">
+                            Gösterim Sırası
+                        </label>
+
+                        <input asp-for="DisplayOrder"
+                               type="number"
+                               min="1"
+                               class="form-control" />
+                    </div>
+
+                    <div class="col-md-6 d-flex align-items-end">
+                        <div class="form-check mb-2">
+                            <input asp-for="IsMainImage"
+                                   class="form-check-input" />
+
+                            <label asp-for="IsMainImage"
+                                   class="form-check-label">
+                                Ana ilan görseli olarak kullan
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit"
+                            class="upload-submit-button">
+                        <i class="bi bi-cloud-check"></i>
+                        Görseli Yükle
+                    </button>
+
+                    <a href="/UserListingImage?listingId=@Model.ListingId"
+                       class="cancel-button">
+                        Vazgeç
+                    </a>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</section>
+
+<style>
+    .upload-page {
+        padding: 65px 0 100px;
+        background: #f8fafc;
+    }
+
+    .upload-card {
+        max-width: 760px;
+        margin: auto;
+        padding: 38px;
+        border: 1px solid #e2e8f0;
+        border-radius: 27px;
+        background: #fff;
+        box-shadow: 0 20px 55px rgba(15, 23, 42, .1);
+    }
+
+    .upload-header {
+        display: flex;
+        align-items: center;
+        gap: 17px;
+        margin-bottom: 32px;
+    }
+
+    .upload-icon {
+        width: 65px;
+        height: 65px;
+        display: grid;
+        place-items: center;
+        border-radius: 19px;
+        background: #eff6ff;
+        color: #2563eb;
+        font-size: 30px;
+    }
+
+    .upload-header span {
+        color: #2563eb;
+        font-size: 12px;
+        font-weight: 800;
+        text-transform: uppercase;
+    }
+
+    .upload-header h2 {
+        margin: 4px 0;
+        color: #0f172a;
+        font-weight: 850;
+    }
+
+    .upload-header p {
+        margin: 0;
+        color: #64748b;
+    }
+
+    .form-label {
+        color: #334155;
+        font-weight: 750;
+    }
+
+    .form-text {
+        display: block;
+        margin-top: 7px;
+        color: #94a3b8;
+    }
+
+    .image-preview-area {
+        min-height: 310px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        overflow: hidden;
+        border: 2px dashed #cbd5e1;
+        border-radius: 19px;
+        background: #f8fafc;
+        color: #94a3b8;
+    }
+
+        .image-preview-area i {
+            font-size: 55px;
+        }
+
+        .image-preview-area img {
+            width: 100%;
+            height: 310px;
+            object-fit: contain;
+        }
+
+    .form-actions {
+        display: flex;
+        gap: 11px;
+        margin-top: 30px;
+    }
+
+    .upload-submit-button,
+    .cancel-button {
+        min-height: 50px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        border-radius: 13px;
+        padding: 0 22px;
+        font-weight: 800;
+    }
+
+    .upload-submit-button {
+        border: 0;
+        background: #2563eb;
+        color: #fff;
+    }
+
+    .cancel-button {
+        background: #f1f5f9;
+        color: #475569;
+        text-decoration: none;
+    }
+</style>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        const imageInput = document.getElementById("imageInput");
+        const previewArea = document.getElementById("previewArea");
+
+        imageInput.addEventListener("change", function () {
+            const file = this.files[0];
+
+            if (!file) {
+                return;
+            }
+
+            const reader = new FileReader();
+
+            reader.onload = function (event) {
+                previewArea.innerHTML =
+                    `<img src="${event.target.result}" alt="Önizleme">`;
+            };
+
+            reader.readAsDataURL(file);
+        });
+    </script>
+}

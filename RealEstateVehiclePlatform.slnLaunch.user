@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "RealEstateVehiclePlatform.EfApi\\RealEstateVehiclePlatform.EfApi.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "RealEstateVehiclePlatform.WebUI\\RealEstateVehiclePlatform.WebUI.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

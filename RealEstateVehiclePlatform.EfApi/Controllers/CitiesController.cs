@@ -39,7 +39,7 @@ namespace RealEstateVehiclePlatform.EfApi.Controllers
             try
             {
                 _cityService.Create(city);
-                return Ok("Şehir başarıyla eklendi.");
+                return Ok("Şehir basariyla eklendi.");
             }
             catch (Exception ex)
             {
@@ -53,7 +53,7 @@ namespace RealEstateVehiclePlatform.EfApi.Controllers
             try
             {
                 _cityService.Update(city);
-                return Ok("Şehir başarıyla güncellendi.");
+                return Ok("Şehir basariyla guncellendi.");
             }
             catch (Exception ex)
             {
@@ -67,7 +67,7 @@ namespace RealEstateVehiclePlatform.EfApi.Controllers
             try
             {
                 _cityService.Delete(id);
-                return Ok("Şehir başarıyla silindi.");
+                return Ok("Şehir basariyla silindi.");
             }
             catch (Exception ex)
             {

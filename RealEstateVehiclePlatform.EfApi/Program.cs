@@ -74,12 +74,14 @@ builder.Services.AddScoped<IHouseDetailService, HouseDetailService>();
 builder.Services.AddScoped<ILandDetailService, LandDetailService>();
 builder.Services.AddScoped<IVehicleDetailService, VehicleDetailService>();
 builder.Services.AddScoped<IListingImageService, ListingImageService>();
+builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IAdminDashboardService, AdminDashboardService>();
 builder.Services.AddControllers();
 // Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
 var app = builder.Build();
+
 
 // Configure
 if (app.Environment.IsDevelopment())

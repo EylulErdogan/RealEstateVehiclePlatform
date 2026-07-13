@@ -46,7 +46,7 @@ namespace RealEstateVehiclePlatform.EfApi.Controllers
             try
             {
                 _districtService.Create(district);
-                return Ok("İlçe başarıyla eklendi.");
+                return Ok("İlçe basariyla eklendi.");
             }
             catch (Exception ex)
             {
@@ -60,7 +60,7 @@ namespace RealEstateVehiclePlatform.EfApi.Controllers
             try
             {
                 _districtService.Update(district);
-                return Ok("İlçe başarıyla güncellendi.");
+                return Ok("İlçe basariyla guncellendi.");
             }
             catch (Exception ex)
             {
@@ -74,7 +74,7 @@ namespace RealEstateVehiclePlatform.EfApi.Controllers
             try
             {
                 _districtService.Delete(id);
-                return Ok("İlçe başarıyla silindi.");
+                return Ok("İlçe basariyla silindi.");
             }
             catch (Exception ex)
             {

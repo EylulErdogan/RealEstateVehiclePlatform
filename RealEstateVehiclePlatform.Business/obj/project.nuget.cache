@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ZT0Aw7m4ObM=",
+  "dgSpecHash": "V1OA+N+c4AU=",
   "success": true,
-  "projectFilePath": "C:\\Users\\eylul\\Desktop\\Softito Projelerim ve gerekli kodlar\\11. Projem Bitirme Projesi\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.Business\\RealEstateVehiclePlatform.Business.csproj",
+  "projectFilePath": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.Business\\RealEstateVehiclePlatform.Business.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\eylul\\.nuget\\packages\\automapper\\16.2.0\\automapper.16.2.0.nupkg.sha512",
     "C:\\Users\\eylul\\.nuget\\packages\\azure.core\\1.47.1\\azure.core.1.47.1.nupkg.sha512",

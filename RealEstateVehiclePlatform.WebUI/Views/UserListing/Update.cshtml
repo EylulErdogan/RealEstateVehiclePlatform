@@ -1,0 +1,322 @@
+﻿@model RealEstateVehiclePlatform.WebUI.ViewModels.Listing.UserUpdateListingViewModel
+
+@{
+    ViewData["Title"] = "İlanı Güncelle";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<section class="update-listing-header">
+    <div class="container">
+        <span class="page-label">İlan Yönetimi</span>
+        <h1>İlanı Güncelle</h1>
+        <p>
+            İlan bilgilerini düzenlediğinde ilan yeniden yönetici
+            onayına gönderilecektir.
+        </p>
+    </div>
+</section>
+
+<section class="update-listing-content">
+    <div class="container">
+
+        <div class="update-listing-card">
+
+            <div class="form-header">
+                <div class="form-header-icon">
+                    <i class="bi bi-pencil-square"></i>
+                </div>
+
+                <div>
+                    <span>@Model.ListingNo</span>
+                    <h3>İlan Bilgileri</h3>
+                </div>
+            </div>
+
+            <form asp-action="Update" method="post">
+
+                <input asp-for="Id" type="hidden" />
+                <input asp-for="ListingNo" type="hidden" />
+
+                <div asp-validation-summary="ModelOnly"
+                     class="text-danger mb-3"></div>
+
+                <div class="row g-4">
+
+                    <div class="col-lg-8">
+                        <label asp-for="Title" class="form-label">
+                            İlan Başlığı
+                        </label>
+
+                        <input asp-for="Title"
+                               class="form-control form-control-lg" />
+
+                        <span asp-validation-for="Title"
+                              class="text-danger"></span>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <label asp-for="Price" class="form-label">
+                            Fiyat
+                        </label>
+
+                        <div class="input-group">
+                            <input asp-for="Price"
+                                   class="form-control form-control-lg" />
+
+                            <span class="input-group-text">₺</span>
+                        </div>
+
+                        <span asp-validation-for="Price"
+                              class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3">
+                        <label asp-for="CategoryId" class="form-label">
+                            Kategori
+                        </label>
+
+                        <select asp-for="CategoryId"
+                                asp-items="Model.Categories"
+                                class="form-select form-select-lg">
+                            <option value="">Kategori seçiniz</option>
+                        </select>
+
+                        <span asp-validation-for="CategoryId"
+                              class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3">
+                        <label asp-for="ListingTypeId" class="form-label">
+                            İlan Tipi
+                        </label>
+
+                        <select asp-for="ListingTypeId"
+                                asp-items="Model.ListingTypes"
+                                class="form-select form-select-lg">
+                            <option value="">İlan tipi seçiniz</option>
+                        </select>
+
+                        <span asp-validation-for="ListingTypeId"
+                              class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3">
+                        <label asp-for="CityId" class="form-label">
+                            Şehir
+                        </label>
+
+                        <select asp-for="CityId"
+                                asp-items="Model.Cities"
+                                class="form-select form-select-lg">
+                            <option value="">Şehir seçiniz</option>
+                        </select>
+
+                        <span asp-validation-for="CityId"
+                              class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3">
+                        <label asp-for="DistrictId" class="form-label">
+                            İlçe
+                        </label>
+
+                        <select asp-for="DistrictId"
+                                asp-items="Model.Districts"
+                                class="form-select form-select-lg">
+                            <option value="">İlçe seçiniz</option>
+                        </select>
+
+                        <span asp-validation-for="DistrictId"
+                              class="text-danger"></span>
+                    </div>
+
+                    <div class="col-12">
+                        <label asp-for="Address" class="form-label">
+                            Adres
+                        </label>
+
+                        <input asp-for="Address"
+                               class="form-control form-control-lg" />
+
+                        <span asp-validation-for="Address"
+                              class="text-danger"></span>
+                    </div>
+
+                    <div class="col-12">
+                        <label asp-for="Description" class="form-label">
+                            Açıklama
+                        </label>
+
+                        <textarea asp-for="Description"
+                                  rows="7"
+                                  class="form-control"></textarea>
+
+                        <span asp-validation-for="Description"
+                              class="text-danger"></span>
+                    </div>
+
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit"
+                            class="save-button">
+                        <i class="bi bi-check-circle"></i>
+                        Değişiklikleri Kaydet
+                    </button>
+
+                    <a href="/UserListing"
+                       class="cancel-button">
+                        Vazgeç
+                    </a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</section>
+
+<style>
+    .update-listing-header {
+        padding: 65px 0 45px;
+        background: radial-gradient(circle at 15% 20%, rgba(37, 99, 235, .14), transparent 30%), linear-gradient(135deg, #eff6ff, #f8fafc);
+    }
+
+    .page-label {
+        color: #2563eb;
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+    }
+
+    .update-listing-header h1 {
+        margin: 8px 0;
+        color: #0f172a;
+        font-size: clamp(34px, 5vw, 52px);
+        font-weight: 850;
+    }
+
+    .update-listing-header p {
+        max-width: 700px;
+        margin: 0;
+        color: #64748b;
+        font-size: 17px;
+    }
+
+    .update-listing-content {
+        padding: 55px 0 100px;
+    }
+
+    .update-listing-card {
+        max-width: 1050px;
+        margin: auto;
+        padding: 38px;
+        border: 1px solid #e2e8f0;
+        border-radius: 26px;
+        background: #fff;
+        box-shadow: 0 18px 50px rgba(15, 23, 42, .08);
+    }
+
+    .form-header {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 35px;
+    }
+
+    .form-header-icon {
+        width: 62px;
+        height: 62px;
+        display: grid;
+        place-items: center;
+        border-radius: 18px;
+        background: #eff6ff;
+        color: #2563eb;
+        font-size: 28px;
+    }
+
+    .form-header span {
+        color: #2563eb;
+        font-size: 12px;
+        font-weight: 800;
+    }
+
+    .form-header h3 {
+        margin: 4px 0 0;
+        color: #0f172a;
+        font-weight: 850;
+    }
+
+    .form-label {
+        color: #334155;
+        font-weight: 750;
+    }
+
+    .form-control,
+    .form-select,
+    .input-group-text {
+        border-color: #dbe3ef;
+    }
+
+        .form-control:focus,
+        .form-select:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 .2rem rgba(37, 99, 235, .12);
+        }
+
+    .text-danger {
+        display: block;
+        margin-top: 5px;
+        font-size: 13px;
+    }
+
+    .form-actions {
+        display: flex;
+        gap: 12px;
+        margin-top: 32px;
+        padding-top: 25px;
+        border-top: 1px solid #eef2f7;
+    }
+
+    .save-button,
+    .cancel-button {
+        min-height: 50px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        border-radius: 13px;
+        padding: 0 22px;
+        font-weight: 800;
+    }
+
+    .save-button {
+        border: 0;
+        background: #2563eb;
+        color: #fff;
+    }
+
+        .save-button:hover {
+            background: #1d4ed8;
+        }
+
+    .cancel-button {
+        background: #f1f5f9;
+        color: #475569;
+        text-decoration: none;
+    }
+
+    @@media (max-width: 575.98px) {
+        .update-listing-card {
+            padding: 24px;
+        }
+
+        .form-actions {
+            flex-direction: column;
+        }
+    }
+</style>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

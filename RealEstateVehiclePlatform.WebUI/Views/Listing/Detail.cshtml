@@ -1,0 +1,521 @@
+﻿@model RealEstateVehiclePlatform.WebUI.ViewModels.Listing.ListingDetailViewModel
+
+@{
+    ViewData["Title"] = Model.Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var mainImage = Model.Images
+        .OrderByDescending(x => x.IsMainImage)
+        .ThenBy(x => x.DisplayOrder)
+        .FirstOrDefault();
+}
+@{
+    var currentUserId =
+        Context.Session.GetInt32("UserId");
+
+    var isOwner =
+        currentUserId.HasValue &&
+        currentUserId.Value == Model.UserId;
+}
+
+<section class="listing-detail-section">
+    <div class="container">
+
+        <div class="detail-breadcrumb mb-4">
+            <a href="/">Ana Sayfa</a>
+            <i class="bi bi-chevron-right"></i>
+            <a href="/Listing">İlanlar</a>
+            <i class="bi bi-chevron-right"></i>
+            <span>@Model.Title</span>
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-lg-8">
+
+                <div class="detail-gallery-card">
+
+                    <div class="main-image-area">
+                        @if (mainImage != null && !string.IsNullOrWhiteSpace(mainImage.ImageUrl))
+                        {
+                            <img id="mainListingImage"
+                                 src="@mainImage.ImageUrl"
+                                 alt="@Model.Title" />
+                        }
+                        else
+                        {
+                            <div class="image-placeholder">
+                                <i class="bi bi-buildings"></i>
+                                <span>İlan görseli bulunmuyor</span>
+                            </div>
+                        }
+
+                        <span class="listing-no-badge">
+                            @Model.ListingNo
+                        </span>
+                    </div>
+
+                    @if (Model.Images.Count > 1)
+                    {
+                        <div class="thumbnail-list">
+                            @foreach (var image in Model.Images.OrderBy(x => x.DisplayOrder))
+                            {
+                                <button type="button"
+                                        class="thumbnail-button"
+                                        data-image-url="@image.ImageUrl">
+                                    <img src="@image.ImageUrl"
+                                         alt="@Model.Title" />
+                                </button>
+                            }
+                        </div>
+                    }
+
+                </div>
+
+                <div class="detail-content-card mt-4">
+
+                    <div class="d-flex justify-content-between align-items-start gap-3 mb-3">
+                        <div>
+                            <span class="detail-status">
+                                Güncel İlan
+                            </span>
+
+                            <h1 class="detail-title">
+                                @Model.Title
+                            </h1>
+                        </div>
+
+                        <button type="button"
+                                class="favorite-detail-button"
+                                data-listing-id="@Model.Id">
+                            <i class="bi bi-heart"></i>
+                        </button>
+                    </div>
+
+                    <div class="detail-meta">
+                        <p class="listing-address">
+                            <i class="bi bi-geo-alt"></i>
+
+                            @if (!string.IsNullOrWhiteSpace(Model.DistrictName) ||
+                                 !string.IsNullOrWhiteSpace(Model.CityName))
+                            {
+                                <span>
+                                    @Model.DistrictName / @Model.CityName
+                                </span>
+                            }
+
+                            <span>@Model.Address</span>
+                        </p>
+
+                        <span>
+                            <i class="bi bi-eye"></i>
+                            @Model.ViewCount görüntülenme
+                        </span>
+
+                        <span>
+                            <i class="bi bi-hash"></i>
+                            @Model.ListingNo
+                        </span>
+                    </div>
+
+                    <hr />
+
+                    <h5 class="section-title">
+                        İlan Açıklaması
+                    </h5>
+
+                    <p class="detail-description">
+                        @Model.Description
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-4">
+
+                <div class="price-card">
+                    <small>İlan Fiyatı</small>
+
+                    <h2>
+                        @Model.Price.ToString("N0") ₺
+                    </h2>
+
+                    <div class="action-list">
+
+                        @if (isOwner)
+                        {
+                            <a href="/UserListing/Update/@Model.Id"
+                               class="detail-action-button secondary-action">
+                                <i class="bi bi-pencil-square"></i>
+                                İlanımı Düzenle
+                            </a>
+
+                            <a href="/UserListingImage?listingId=@Model.Id"
+                               class="detail-action-button secondary-action">
+                                <i class="bi bi-images"></i>
+                                Görselleri Yönet
+                            </a>
+                        }
+                        else if (Context.Session.GetString("Token") != null)
+                        {
+                            <a href="/UserAppointment/Create?listingId=@Model.Id"
+                               class="detail-action-button primary-action">
+                                <i class="bi bi-calendar-check"></i>
+                                Randevu Oluştur
+                            </a>
+
+                            <a href="/UserMessage/Start?listingId=@Model.Id&receiverId=@Model.UserId"
+                               class="detail-action-button secondary-action">
+                                <i class="bi bi-chat-dots"></i>
+                                İlan Sahibine Mesaj Gönder
+                            </a>
+                        }
+                        else
+                        {
+                            <a href="/Account/Login"
+                               class="detail-action-button primary-action">
+                                <i class="bi bi-box-arrow-in-right"></i>
+                                İşlem yapmak için giriş yap
+                            </a>
+                        }
+
+                    </div>
+                </div>
+
+                <div class="info-card mt-4">
+                    <h5>İlan Bilgileri</h5>
+                    <div class="info-row">
+                        <span>Kategori</span>
+                        <strong>@Model.CategoryName</strong>
+                    </div>
+
+                    <div class="info-row">
+                        <span>İlan Tipi</span>
+                        <strong>@Model.ListingTypeName</strong>
+                    </div>
+
+                    <div class="info-row">
+                        <span>Şehir</span>
+                        <strong>@Model.CityName</strong>
+                    </div>
+
+                    <div class="info-row">
+                        <span>İlçe</span>
+                        <strong>@Model.DistrictName</strong>
+                    </div>
+
+                    <div class="info-row">
+                        <span>İlan Sahibi</span>
+                        <strong>@Model.OwnerFullName</strong>
+                    </div>
+                </div>
+
+                <div class="security-card mt-4">
+                    <i class="bi bi-shield-check"></i>
+
+                    <div>
+                        <h6>Güvenli işlem</h6>
+                        <p>
+                            Ödeme veya kişisel bilgilerinizi doğrulamadan paylaşmayın.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<style>
+    .listing-detail-section {
+        padding: 55px 0 90px;
+    }
+
+    .detail-breadcrumb {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #94a3b8;
+        font-size: 14px;
+    }
+
+        .detail-breadcrumb a {
+            color: #64748b;
+            text-decoration: none;
+        }
+
+            .detail-breadcrumb a:hover {
+                color: #2563eb;
+            }
+
+    .detail-gallery-card,
+    .detail-content-card,
+    .price-card,
+    .info-card,
+    .security-card {
+        border: 1px solid #e2e8f0;
+        border-radius: 24px;
+        background: #fff;
+        box-shadow: 0 14px 40px rgba(15, 23, 42, .06);
+    }
+
+    .detail-gallery-card {
+        overflow: hidden;
+    }
+
+    .main-image-area {
+        position: relative;
+        min-height: 480px;
+        background: linear-gradient(135deg, #2563eb, #1e3a8a);
+    }
+
+        .main-image-area > img {
+            width: 100%;
+            height: 480px;
+            object-fit: cover;
+        }
+
+    .image-placeholder {
+        min-height: 480px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+        color: rgba(255,255,255,.75);
+    }
+
+        .image-placeholder i {
+            font-size: 85px;
+        }
+
+    .listing-no-badge {
+        position: absolute;
+        left: 20px;
+        bottom: 20px;
+        padding: 8px 13px;
+        border-radius: 10px;
+        background: rgba(15,23,42,.72);
+        color: #fff;
+        font-weight: 700;
+    }
+
+    .thumbnail-list {
+        display: flex;
+        gap: 12px;
+        overflow-x: auto;
+        padding: 16px;
+    }
+
+    .thumbnail-button {
+        width: 95px;
+        height: 72px;
+        flex: 0 0 auto;
+        overflow: hidden;
+        border: 2px solid transparent;
+        border-radius: 12px;
+        padding: 0;
+        background: none;
+    }
+
+        .thumbnail-button:hover {
+            border-color: #2563eb;
+        }
+
+        .thumbnail-button img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+    .detail-content-card,
+    .price-card,
+    .info-card {
+        padding: 28px;
+    }
+
+    .detail-status {
+        display: inline-block;
+        margin-bottom: 12px;
+        padding: 7px 12px;
+        border-radius: 999px;
+        background: #dcfce7;
+        color: #15803d;
+        font-size: 12px;
+        font-weight: 700;
+    }
+
+    .detail-title {
+        margin: 0;
+        color: #0f172a;
+        font-size: clamp(27px, 4vw, 42px);
+        font-weight: 850;
+    }
+
+    .favorite-detail-button {
+        width: 48px;
+        height: 48px;
+        flex: 0 0 auto;
+        border: 0;
+        border-radius: 50%;
+        background: #fef2f2;
+        color: #ef4444;
+        font-size: 21px;
+    }
+
+    .detail-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 18px;
+        color: #64748b;
+        font-size: 14px;
+    }
+
+        .detail-meta span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+    .section-title {
+        margin-bottom: 16px;
+        color: #0f172a;
+        font-weight: 800;
+    }
+
+    .detail-description {
+        margin: 0;
+        color: #475569;
+        line-height: 1.8;
+        white-space: pre-line;
+    }
+
+    .price-card {
+        position: sticky;
+        top: 95px;
+    }
+
+        .price-card small {
+            color: #64748b;
+        }
+
+        .price-card h2 {
+            margin: 8px 0 25px;
+            color: #2563eb;
+            font-size: 34px;
+            font-weight: 850;
+        }
+
+    .action-list {
+        display: flex;
+        flex-direction: column;
+        gap: 11px;
+    }
+
+    .detail-action-button {
+        min-height: 52px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 9px;
+        border-radius: 13px;
+        font-weight: 700;
+        text-decoration: none;
+    }
+
+    .primary-action {
+        background: #2563eb;
+        color: #fff;
+    }
+
+        .primary-action:hover {
+            background: #1d4ed8;
+            color: #fff;
+        }
+
+    .secondary-action {
+        border: 1px solid #bfdbfe;
+        background: #eff6ff;
+        color: #1d4ed8;
+    }
+
+        .secondary-action:hover {
+            border-color: #2563eb;
+            color: #1d4ed8;
+        }
+
+    .info-card h5 {
+        margin-bottom: 18px;
+        font-weight: 800;
+    }
+
+    .info-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        padding: 13px 0;
+        border-bottom: 1px solid #eef2f7;
+    }
+
+        .info-row:last-child {
+            border-bottom: 0;
+        }
+
+        .info-row span {
+            color: #64748b;
+        }
+
+    .security-card {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        padding: 22px;
+    }
+
+        .security-card > i {
+            color: #16a34a;
+            font-size: 30px;
+        }
+
+        .security-card h6 {
+            margin-bottom: 5px;
+            font-weight: 800;
+        }
+
+        .security-card p {
+            margin: 0;
+            color: #64748b;
+            font-size: 14px;
+            line-height: 1.55;
+        }
+
+    @@media (max-width: 991.98px) {
+        .price-card {
+            position: static;
+        }
+
+        .main-image-area,
+        .main-image-area > img,
+        .image-placeholder {
+            min-height: 360px;
+            height: 360px;
+        }
+    }
+</style>
+
+@section Scripts {
+    <script>
+        document.querySelectorAll(".thumbnail-button").forEach(function (button) {
+            button.addEventListener("click", function () {
+                const imageUrl = this.dataset.imageUrl;
+                const mainImage = document.getElementById("mainListingImage");
+
+                if (mainImage && imageUrl) {
+                    mainImage.src = imageUrl;
+                }
+            });
+        });
+    </script>
+}
