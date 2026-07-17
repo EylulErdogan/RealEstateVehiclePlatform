@@ -82,6 +82,24 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
+// --- VERİTABANI ROLLENDİRME VE ADMİN SEED İŞLEMİ (YENİ EKLENDİ) ---
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    try
+    {
+        var roleManager = services.GetRequiredService<RoleManager<IdentityRole<int>>>();
+        var userManager = services.GetRequiredService<UserManager<AppUser>>();
+
+        await RoleSeedService.SeedRolesAsync(roleManager);
+        await AdminSeedService.SeedAdminAsync(userManager);
+    }
+    catch (Exception ex)
+    {
+        var logger = services.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "Veritabanı seed işlemi sırasında hata oluştu.");
+    }
+}
 
 // Configure
 if (app.Environment.IsDevelopment())

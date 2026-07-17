@@ -1,0 +1,191 @@
+﻿@{
+    ViewData["Title"] = "Platform İstatistikleri";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    var topListings = ViewBag.TopListings as List<RealEstateVehiclePlatform.WebUI.ViewModels.Listing.ListingViewModel> ?? new();
+    var categoryStats = ViewBag.CategoryStats as Dictionary<string, int> ?? new();
+    var cityStats = ViewBag.CityStats as Dictionary<string, int> ?? new();
+    var categoryMap = ViewBag.CategoryMap as Dictionary<int, string> ?? new();
+    var cityMap = ViewBag.CityMap as Dictionary<int, string> ?? new();
+}
+
+<!-- ÜST BAŞLIK VE KONTROLLER -->
+<div class="d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom">
+    <div>
+        <h5 class="fw-bold mb-1"><i class="bi bi-graph-up-arrow text-primary me-2"></i>Platform İstatistik Raporları</h5>
+        <small class="text-muted">İlanların kategori, konum ve popülerlik dağılımları.</small>
+    </div>
+</div>
+
+<div class="row g-4 mb-4">
+    <!-- SOL: Kategori Dağılımı Pasta Grafiği -->
+    <div class="col-lg-5">
+        <div class="admin-card h-100">
+            <h6 class="fw-bold text-dark mb-3"><i class="bi bi-pie-chart-fill text-primary me-2"></i>Kategori Dağılımı</h6>
+            <div class="chart-container d-flex justify-content-center align-items-center" style="position: relative; height: 260px; width: 100%;">
+                <canvas id="categoryPieChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- SAĞ: Şehirlere Göre İlan Yoğunluğu Bar Grafiği -->
+    <div class="col-lg-7">
+        <div class="admin-card h-100">
+            <h6 class="fw-bold text-dark mb-3"><i class="bi bi-bar-chart-line-fill text-primary me-2"></i>Şehirlere Göre İlan Yoğunluğu</h6>
+            <div class="chart-container" style="position: relative; height: 260px; width: 100%;">
+                <canvas id="cityHorizontalBarChart"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ALT PANEL: EN POPÜLER 5 İLAN -->
+<div class="admin-card mb-4">
+    <h6 class="fw-bold text-dark mb-4 border-bottom pb-2">
+        <i class="bi bi-fire text-danger me-2"></i> En Popüler 5 İlan (En Çok Tıklananlar)
+    </h6>
+
+    @if (topListings.Any())
+    {
+        <div class="table-responsive">
+            <table class="table align-middle table-hover">
+                <thead>
+                    <tr>
+                        <th>İlan No</th>
+                        <th>Başlık</th>
+                        <th>Kategori</th>
+                        <th>Şehir</th>
+                        <th>Fiyat</th>
+                        <th class="text-center">Görüntülenme (Tıklanma)</th>
+                        <th class="text-end">İncele</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in topListings)
+                    {
+                        var categoryName = categoryMap.ContainsKey(item.CategoryId) ? categoryMap[item.CategoryId] : "Belirtilmemiş";
+                        var cityName = cityMap.ContainsKey(item.CityId) ? cityMap[item.CityId] : "Belirtilmemiş";
+
+                        <tr>
+                            <td>
+                                <span class="badge bg-primary-subtle text-primary">@item.ListingNo</span>
+                            </td>
+                            <td>
+                                <strong>@item.Title</strong>
+                            </td>
+                            <td>@categoryName</td>
+                            <td>@cityName</td>
+                            <td class="fw-semibold text-primary">@item.Price.ToString("N0") ₺</td>
+                            <td class="text-center">
+                                <span class="badge bg-danger-subtle text-danger px-3 py-2 fw-bold">
+                                    <i class="bi bi-eye-fill me-1"></i> @item.ViewCount
+                                </span>
+                            </td>
+                            <td class="text-end">
+                                <a href="/AdminListing/Detail/@item.Id" class="btn btn-sm btn-outline-primary">
+                                    <i class="bi bi-search"></i> İncele
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <div class="text-center py-5 text-muted">
+            <i class="bi bi-card-list fs-1"></i>
+            <p class="m-0 mt-2">Popülerlik verisi oluşturacak ilan bulunamadı.</p>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+        // 1. KATEGORİ VERİLERİ EŞLEME
+        const categoryLabels = @Html.Raw(Json.Serialize(categoryStats.Keys));
+        const categoryValues = @Html.Raw(Json.Serialize(categoryStats.Values));
+
+        // Kategori Pasta Grafiği (Pie Chart)
+        const ctxCategory = document.getElementById('categoryPieChart').getContext('2d');
+        new Chart(ctxCategory, {
+        type: 'pie',
+        data: {
+        labels: categoryLabels,
+        datasets: [{
+        data: categoryValues,
+        backgroundColor: ['#2563eb', '#f59e0b', '#10b981', '#ef4444', '#8b5cf6'],
+        borderWidth: 2,
+        borderColor: '#ffffff'
+        }]
+        },
+        options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+        legend: {
+        position: 'bottom',
+        labels: {
+        boxWidth: 15,
+        font: {
+        family: 'Segoe UI',
+        size: 12
+        }
+        }
+        }
+        }
+        }
+        });
+
+        // 2. ŞEHİR VERİLERİ EŞLEME
+        const cityLabels = @Html.Raw(Json.Serialize(cityStats.Keys));
+        const cityValues = @Html.Raw(Json.Serialize(cityStats.Values));
+
+        // Şehir Yatay Bar Grafiği (Horizontal Bar Chart)
+        const ctxCity = document.getElementById('cityHorizontalBarChart').getContext('2d');
+        new Chart(ctxCity, {
+        type: 'bar',
+        data: {
+        labels: cityLabels,
+        datasets: [{
+        data: cityValues,
+        backgroundColor: '#2563eb',
+        borderRadius: 6,
+        barThickness: 20
+        }]
+        },
+        options: {
+        indexAxis: 'y', // Yatay bar grafiği yapar
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+        legend: {
+        display: false
+        }
+        },
+        scales: {
+        x: {
+        grid: {
+        color: '#f1f5f9'
+        },
+        ticks: {
+        precision: 0
+        }
+        },
+        y: {
+        grid: {
+        display: false
+        }
+        }
+        }
+        }
+        });
+
+        });
+    </script>
+}

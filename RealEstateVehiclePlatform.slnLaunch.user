@@ -3,12 +3,22 @@
     "Name": "New Profile",
     "Projects": [
       {
-        "Path": "RealEstateVehiclePlatform.EfApi\\RealEstateVehiclePlatform.EfApi.csproj",
+        "Path": "RealEstateVehiclePlatform.DapperApi\\RealEstateVehiclePlatform.DapperApi.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "RealEstateVehiclePlatform.Entities\\RealEstateVehiclePlatform.Entities.csproj",
         "Action": "Start"
       },
       {
         "Path": "RealEstateVehiclePlatform.WebUI\\RealEstateVehiclePlatform.WebUI.csproj",
-        "Action": "Start"
+        "Action": "Start",
+        "DebugTarget": "https"
+      },
+      {
+        "Path": "RealEstateVehiclePlatform.EfApi\\RealEstateVehiclePlatform.EfApi.csproj",
+        "Action": "Start",
+        "DebugTarget": "https"
       }
     ]
   }

@@ -126,6 +126,14 @@
                 border-radius: 9px;
                 padding: 10px 12px;
             }
+
+            .fs-7 {
+                font-size: 0.85rem;
+            }
+
+            .fs-8 {
+                font-size: 0.75rem;
+            }
     </style>
 </head>
 
@@ -192,6 +200,29 @@
                                 İlan Ver
                             </a>
 
+                            <!-- BİLDİRİM ZİLİ DROPDOWN (YENİ EKLENDİ) -->
+                            <div class="dropdown me-1">
+                                <button class="btn btn-light rounded-circle p-2 position-relative" type="button" data-bs-toggle="dropdown" id="notificationBellBtn" style="width: 42px; height: 42px; display: grid; place-items: center;">
+                                    <i class="bi bi-bell-fill text-secondary fs-5"></i>
+                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-none" id="notificationBadge" style="font-size: 10px; padding: 4px 6px;">
+                                        0
+                                    </span>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end p-2 mt-2 shadow border-0" style="width: 320px; border-radius: 14px;" id="notificationList">
+                                    <li class="dropdown-header text-dark fw-bold border-bottom pb-2 mb-2 d-flex justify-content-between align-items-center">
+                                        <span>Bildirimler</span>
+                                        <span class="badge bg-primary rounded-pill" id="notificationHeaderBadge">0 Yeni</span>
+                                    </li>
+                                    <div id="notificationItemsContainer" style="max-height: 250px; overflow-y: auto;">
+                                        <!-- AJAX Bildirimleri Buraya Yüklenecek -->
+                                    </div>
+                                    <li class="text-center pt-2 border-top mt-2">
+                                        <a href="/UserMessage" class="text-primary text-decoration-none fs-8 fw-bold">Tüm Mesajları Gör</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- PROFİL AÇILIR MENÜSÜ -->
                             <div class="dropdown profile-dropdown">
                                 <button class="btn btn-light dropdown-toggle"
                                         type="button"
@@ -220,7 +251,7 @@
 
                                     <li>
                                         <a class="dropdown-item" href="/UserListing">
-                                            <i class="bi bi-heart me-2"></i>
+                                            <i class="bi bi-house me-2"></i>
                                             İlanlarım
                                         </a>
                                     </li>
@@ -343,7 +374,415 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    @await RenderSectionAsync("Scripts", required: false)
+    <!-- SweetAlert2 Global Kütüphane Entegrasyonu -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    <!-- BİLDİRİM AJAN DÖNGÜSÜ SCRIPT'I (Sadece Oturum Açıkken Çalışır) -->
+    @if (Context.Session.GetString("Token") != null)
+    {
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+            let lastUnreadCount = 0;
+
+            async function checkNotifications() {
+            try {
+            const response = await fetch('/Notification/GetNotifications');
+            const result = await response.json();
+
+            if (result.success) {
+            const badge = document.getElementById('notificationBadge');
+            const headerBadge = document.getElementById('notificationHeaderBadge');
+            const container = document.getElementById('notificationItemsContainer');
+
+            // Sayaç Güncellemeleri
+            if (result.unreadCount > 0) {
+            badge.textContent = result.unreadCount;
+            badge.classList.remove('d-none');
+            headerBadge.textContent = `${result.unreadCount} Yeni`;
+            } else {
+            badge.classList.add('d-none');
+            headerBadge.textContent = '0 Yeni';
+            }
+
+            // Eğer yeni okunmamış mesaj gelirse sağ üst köşede Toast fırlat
+            if (result.unreadCount > lastUnreadCount && lastUnreadCount > 0) {
+            Swal.fire({
+            toast: true,
+            position: 'top-end',
+            icon: 'info',
+            title: 'Yeni bir mesajınız var!',
+            showConfirmButton: false,
+            timer: 3000
+            });
+            }
+            lastUnreadCount = result.unreadCount;
+
+            // Arayüze bildirimleri yerleştirme
+            if (result.data && result.data.length > 0) {
+            container.innerHTML = '';
+            result.data.forEach(item => {
+            const li = document.createElement('li');
+            li.className = 'p-2 border-bottom';
+            li.style.listStyle = 'none';
+            li.innerHTML = `
+            <a href="${item.url}" class="d-flex align-items-start gap-2 text-decoration-none text-dark">
+            <div class="rounded-circle bg-light d-grid place-items-center" style="width:36px; height:36px; flex-shrink:0; margin-top:2px;">
+            <i class="bi ${item.icon} fs-5"></i>
+            </div>
+            <div class="flex-grow-1" style="min-width: 0;">
+            <div class="d-flex justify-content-between align-items-center">
+            <span class="fw-bold text-dark fs-7" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${item.title}</span>
+            <small class="text-muted fs-8">${item.time}</small>
+            </div>
+            <p class="m-0 text-secondary fs-8 text-truncate">${item.message}</p>
+            </div>
+            </a>
+            `;
+            container.appendChild(li);
+            });
+            } else {
+            container.innerHTML = `
+            <div class="text-center py-4 text-muted">
+            <i class="bi bi-bell-slash fs-3"></i>
+            <p class="m-0 mt-2 fs-8">Yeni bildiriminiz bulunmuyor</p>
+            </div>
+            `;
+            }
+            }
+            } catch (error) {
+            console.error('Bildirimler yüklenirken hata oluştu:', error);
+            }
+            }
+
+            // İlk yüklemede çalıştır
+            checkNotifications();
+
+            // Her 20 saniyede bir arka planda kontrol et (AJAX Polling)
+            setInterval(checkNotifications, 20000);
+            });
+        </script>
+    }
+
+    @await RenderSectionAsync("Scripts", required: false)
+    <!-- ================= CHATBOT YAPAY ZEKA ASİSTANI WIDGET ================= -->
+    <div id="aiChatbotWidget" class="ai-chatbot-widget">
+        <!-- Sohbet Aç/Kapat Yuvarlak Butonu -->
+        <button id="aiChatbotToggleBtn" class="ai-chatbot-toggle-btn shadow-lg" title="Yapay Zeka Asistanı">
+            <i class="bi bi-robot fs-3 text-white"></i>
+            <span class="pulse-ring"></span>
+        </button>
+
+        <!-- Sohbet Penceresi Kutusu -->
+        <div id="aiChatWindow" class="ai-chat-window shadow-2xl d-none">
+            <!-- Header -->
+            <div class="ai-chat-header">
+                <div class="d-flex align-items-center gap-2">
+                    <div class="ai-avatar">
+                        <i class="bi bi-robot text-white"></i>
+                    </div>
+                    <div class="text-start">
+                        <h6 class="m-0 fw-bold text-white fs-7">RealEstate AI Asistanı</h6>
+                        <small class="text-white-50 fs-8"><span class="online-indicator"></span> Çevrimiçi</small>
+                    </div>
+                </div>
+                <button id="aiChatCloseBtn" class="btn btn-sm btn-link text-white p-0 border-0">
+                    <i class="bi bi-x-lg text-white"></i>
+                </button>
+            </div>
+
+            <!-- Mesajların Aktığı Body -->
+            <div id="aiChatBody" class="ai-chat-body">
+                <div class="ai-message assistant">
+                    <div class="message-bubble shadow-sm">
+                        Merhaba! 🤖 Ben RealEstate Yapay Zeka Asistanıyım. <br /><br />
+                        Sizin için sistemdeki en uygun fiyatlı ilanları bulabilir, şehir bazlı arama yapabilirim. Neyi listelemek istersiniz?
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hazır Öneriler Şeridi -->
+            <div class="ai-chat-suggestions px-3 py-1 border-top bg-light">
+                <div class="d-flex gap-1 overflow-auto py-1" style="white-space: nowrap; -webkit-overflow-scrolling: touch;">
+                    <button type="button" class="btn btn-xs btn-outline-primary chat-suggest-btn rounded-pill">En ucuz ilanlar</button>
+                    <button type="button" class="btn btn-xs btn-outline-primary chat-suggest-btn rounded-pill">İstanbul İlanları</button>
+                    <button type="button" class="btn btn-xs btn-outline-primary chat-suggest-btn rounded-pill">Ev İlanları</button>
+                    <button type="button" class="btn btn-xs btn-outline-primary chat-suggest-btn rounded-pill">Araç İlanları</button>
+                </div>
+            </div>
+
+            <!-- Mesaj Giriş Alanı -->
+            <div class="ai-chat-footer p-2 border-top bg-white">
+                <form id="aiChatForm" class="d-flex gap-2 m-0" onsubmit="return false;">
+                    <input type="text" id="aiChatInput" class="form-control form-control-sm border-2 rounded-3" placeholder="Sorunuzu buraya yazın..." required autocomplete="off" style="font-size: 13px; height: 38px;" />
+                    <button type="submit" class="btn btn-sm btn-primary d-flex align-items-center justify-content-center" style="width: 38px; height: 38px; border-radius: 8px;">
+                        <i class="bi bi-send-fill text-white fs-6"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- CHATBOT TASARIM CSS -->
+    <style>
+        .ai-chatbot-widget {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        z-index: 9999;
+        font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        .ai-chatbot-toggle-btn {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #2563eb, #1d4ed8);
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        position: relative;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        outline: none;
+        }
+
+        .ai-chatbot-toggle-btn:hover {
+        transform: scale(1.1) rotate(5deg);
+        background: linear-gradient(135deg, #1d4ed8, #1e40af);
+        }
+
+        .ai-chatbot-toggle-btn .pulse-ring {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background: rgba(37, 99, 235, 0.4);
+        animation: chatbot-pulse-anim 2.5s infinite;
+        z-index: -1;
+        left: 0;
+        top: 0;
+        }
+
+        @@keyframes chatbot-pulse-anim {
+        0% {
+        transform: scale(1);
+        opacity: 1;
+        }
+
+        100% {
+        transform: scale(1.6);
+        opacity: 0;
+        }
+        }
+
+        .ai-chat-window {
+        position: absolute;
+        bottom: 75px;
+        right: 0;
+        width: 350px;
+        height: 480px;
+        background: white;
+        border-radius: 18px;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        box-shadow: 0 15px 35px rgba(15, 23, 42, 0.16);
+        border: 1px solid #e2e8f0;
+        transition: all 0.3s ease;
+        }
+
+        .ai-chat-header {
+        background: linear-gradient(135deg, #1e293b, #0f172a);
+        color: white;
+        padding: 12px 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        }
+
+        .ai-avatar {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: #2563eb;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 15px;
+        }
+
+        .online-indicator {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        background: #10b981;
+        border-radius: 50%;
+        margin-right: 4px;
+        }
+
+        .ai-chat-body {
+        flex-grow: 1;
+        padding: 16px;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        background: #f8fafc;
+        }
+
+        .ai-message {
+        display: flex;
+        flex-direction: column;
+        max-width: 85%;
+        }
+
+        .ai-message.assistant {
+        align-self: flex-start;
+        }
+
+        .ai-message.user {
+        align-self: flex-end;
+        }
+
+        .message-bubble {
+        padding: 10px 14px;
+        border-radius: 14px;
+        font-size: 13px;
+        line-height: 1.5;
+        word-wrap: break-word;
+        }
+
+        .ai-message.assistant .message-bubble {
+        background: white;
+        color: #1e293b;
+        border: 1px solid #e2e8f0;
+        border-top-left-radius: 2px;
+        }
+
+        .ai-message.user .message-bubble {
+        background: #2563eb;
+        color: white;
+        border-top-right-radius: 2px;
+        }
+
+        .btn-xs {
+        padding: 4px 10px;
+        font-size: 11px;
+        border-radius: 20px;
+        }
+
+        .ai-chat-suggestions::-webkit-scrollbar {
+        height: 4px;
+        }
+
+        .ai-chat-suggestions::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 2px;
+        }
+
+        .fs-7 {
+        font-size: 0.88rem;
+        }
+
+        .fs-8 {
+        font-size: 0.76rem;
+        }
+    </style>
+
+    <!-- CHATBOT FONKSİYON SCRIPT'I -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+        const toggleBtn = document.getElementById("aiChatbotToggleBtn");
+        const chatWindow = document.getElementById("aiChatWindow");
+        const closeBtn = document.getElementById("aiChatCloseBtn");
+        const chatForm = document.getElementById("aiChatForm");
+        const chatInput = document.getElementById("aiChatInput");
+        const chatBody = document.getElementById("aiChatBody");
+        const suggestBtns = document.querySelectorAll(".chat-suggest-btn");
+
+        // Paneli aç / kapat
+        toggleBtn.addEventListener("click", function () {
+        chatWindow.classList.toggle("d-none");
+        scrollToBottom();
+        });
+
+        closeBtn.addEventListener("click", function () {
+        chatWindow.classList.add("d-none");
+        });
+
+        // Hazır önerilere tıklama
+        suggestBtns.forEach(btn => {
+        btn.addEventListener("click", function () {
+        handleSendMessage(this.innerText);
+        });
+        });
+
+        // Form Gönderme
+        chatForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const text = chatInput.value.trim();
+        if (text) {
+        handleSendMessage(text);
+        chatInput.value = "";
+        }
+        });
+
+        function scrollToBottom() {
+        chatBody.scrollTop = chatBody.scrollHeight;
+        }
+
+        async function handleSendMessage(text) {
+        // 1. Kullanıcı mesajını ekrana yaz
+        appendMessage(text, "user");
+        scrollToBottom();
+
+        // 2. Yazıyor animasyonunu ekle
+        const typingDiv = document.createElement("div");
+        typingDiv.className = "ai-message assistant typing-indicator-msg";
+        typingDiv.innerHTML = `
+        <div class="message-bubble bg-light text-muted py-2">
+        <span class="spinner-grow spinner-grow-sm text-primary me-1" role="status"></span>
+        Asistan düşünüyor...
+        </div>
+        `;
+        chatBody.appendChild(typingDiv);
+        scrollToBottom();
+
+        try {
+        // 3. Controller'a AJAX isteği fırlat
+        const response = await fetch("/Chatbot/Ask", {
+        method: "POST",
+        headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: new URLSearchParams({ message: text })
+        });
+
+        const result = await response.json();
+
+        // Animasyonu kaldır
+        typingDiv.remove();
+
+        // 4. Gelen cevabı ekrana yaz
+        appendMessage(result.reply, "assistant");
+        scrollToBottom();
+
+        } catch (error) {
+        typingDiv.remove();
+        appendMessage("Üzgünüm, şu anda yanıt veremiyorum. Lütfen bağlantınızı kontrol edin.", "assistant");
+        scrollToBottom();
+        }
+        }
+
+        function appendMessage(htmlContent, sender) {
+        const msgDiv = document.createElement("div");
+        msgDiv.className = `ai-message ${sender}`;
+        msgDiv.innerHTML = `<div class="message-bubble shadow-sm">${htmlContent}</div>`;
+        chatBody.appendChild(msgDiv);
+        }
+        });
+    </script>
 </body>
 </html>

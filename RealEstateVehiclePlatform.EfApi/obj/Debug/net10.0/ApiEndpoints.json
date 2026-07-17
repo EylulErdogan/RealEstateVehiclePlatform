@@ -418,7 +418,7 @@
   },
   {
     "ContainingType": "RealEstateVehiclePlatform.EfApi.Controllers.DistrictsController",
-    "Method": "GetByCityId",
+    "Method": "GetByCity",
     "RelativePath": "api/Districts/GetByCity/{cityId}",
     "HttpMethod": "GET",
     "IsController": true,

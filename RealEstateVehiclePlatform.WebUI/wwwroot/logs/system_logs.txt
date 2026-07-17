@@ -1,0 +1,10 @@
+[2026-07-18 01:14:57] [INFO] [User: basak erdogan] Başarılı kullanıcı girişi yapıldı.
+[2026-07-18 01:47:41] [WARNING] [User: System/Guest] Kullanıcı kayıt işlemi başarısız. Kullanıcı Adı: Sedanur Eylül, E-posta: eylulbasak0148@gmail.com
+[2026-07-18 01:47:57] [WARNING] [User: System/Guest] Kullanıcı kayıt işlemi başarısız. Kullanıcı Adı: Sedanur Eylül, E-posta: test@gmail.com
+[2026-07-18 01:48:16] [WARNING] [User: System/Guest] Kullanıcı kayıt işlemi başarısız. Kullanıcı Adı: Sedanur Eylül, E-posta: testtt@gmail.com
+[2026-07-18 01:48:56] [WARNING] [User: System/Guest] Kullanıcı kayıt işlemi başarısız. Kullanıcı Adı: Sedanur Eylül, E-posta: sedanureylulerdogan@gmail.com
+[2026-07-18 01:52:19] [WARNING] [User: System/Guest] Hatalı giriş denemesi. Kullanılan E-posta: admin@test.com
+[2026-07-18 01:52:46] [WARNING] [User: System/Guest] Hatalı giriş denemesi. Kullanılan E-posta: admin@test.com
+[2026-07-18 01:55:57] [WARNING] [User: System/Guest] Hatalı giriş denemesi. Kullanılan E-posta: admin@test.com
+[2026-07-18 01:59:38] [WARNING] [User: System/Guest] Hatalı giriş denemesi. Kullanılan E-posta: admin@test.com
+[2026-07-18 02:00:29] [INFO] [User: Admin User] Başarılı kullanıcı girişi yapıldı.

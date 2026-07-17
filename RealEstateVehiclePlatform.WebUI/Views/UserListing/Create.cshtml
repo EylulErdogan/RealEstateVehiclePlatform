@@ -21,14 +21,28 @@
 <section class="create-listing-content">
     <div class="container">
 
+        <!-- Hata ve Uyarı Mesajlarının Gösterimi -->
+        @if (TempData["Error"] != null)
+        {
+            <div class="alert alert-danger mb-4" style="border-radius: 13px; padding: 15px 20px;">
+                <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                @TempData["Error"]
+            </div>
+        }
+        @if (TempData["Warning"] != null)
+        {
+            <div class="alert alert-warning mb-4" style="border-radius: 13px; padding: 15px 20px;">
+                <i class="bi bi-exclamation-circle-fill me-2"></i>
+                @TempData["Warning"]
+            </div>
+        }
+
         <form asp-controller="UserListing"
               asp-action="Create"
               method="post"
               id="createListingForm">
 
             @Html.AntiForgeryToken()
-
-            <input asp-for="ListingNo" type="hidden" />
 
             <input asp-for="ListingNo" type="hidden" />
 
@@ -65,11 +79,11 @@
 
                         <div class="input-group">
                             <input asp-for="Price"
-                                        type="number"
-                                        min="1"
-                                        step="1"
-                                        class="form-control form-control-lg"
-                                        placeholder="Örneğin: 1500000" />
+                                   type="number"
+                                   min="1"
+                                   step="1"
+                                   class="form-control form-control-lg"
+                                   placeholder="Örneğin: 1500000" />
 
                             <span class="input-group-text">₺</span>
                         </div>
@@ -137,6 +151,7 @@
 
                         <select asp-for="CityId"
                                 asp-items="Model.Cities"
+                                id="citySelect"
                                 class="form-select form-select-lg">
                             <option value="">Şehir seçiniz</option>
                         </select>
@@ -146,11 +161,11 @@
                         <label asp-for="DistrictId" class="form-label">
                             İlçe
                         </label>
-
                         <select asp-for="DistrictId"
                                 asp-items="Model.Districts"
+                                id="districtSelect"
                                 class="form-select form-select-lg">
-                            <option value="">İlçe seçiniz</option>
+                            <option value="">Önce şehir seçiniz</option>
                         </select>
                     </div>
 
@@ -459,16 +474,19 @@
                     Vazgeç
                 </a>
 
-                <button type="submit" class="save-button">
+                <button type="submit"
+                        class="save-button">
                     <i class="bi bi-check-circle"></i>
                     İlanı Kaydet
                 </button>
+            </div>
 
-            </form>
+        </form>
     </div>
 </section>
 
 <style>
+    /* CSS kodları aynen kalıyor... */
     .create-listing-header {
         padding: 65px 0 45px;
         background: radial-gradient( circle at 15% 20%, rgba(37, 99, 235, .14), transparent 30%), linear-gradient(135deg, #eff6ff, #f8fafc);
@@ -722,5 +740,57 @@
             showDetailFields);
 
         showDetailFields();
+
+        const citySelect =
+            document.getElementById("citySelect");
+
+        const districtSelect =
+            document.getElementById("districtSelect");
+
+        citySelect.addEventListener("change", async function () {
+            const cityId = this.value;
+
+            districtSelect.innerHTML =
+                '<option value="">İlçe seçiniz</option>';
+
+            districtSelect.disabled = true;
+
+            if (!cityId) {
+                districtSelect.innerHTML =
+                    '<option value="">Önce şehir seçiniz</option>';
+
+                return;
+            }
+
+            try {
+                // Dinamik ASP.NET Route eşlemesi yapıldı
+                const response = await fetch(
+                    `@Url.Action("GetDistrictsByCity", "UserListing")?cityId=${cityId}`
+                );
+
+                if (!response.ok) {
+                    throw new Error("İlçeler alınamadı.");
+                }
+
+                const districts = await response.json();
+
+                districts.forEach(function (district) {
+                    const option = document.createElement("option");
+
+                    option.value = district.id;
+                    option.textContent = district.name;
+
+                    districtSelect.appendChild(option);
+                });
+
+                districtSelect.disabled = false;
+            }
+            catch (error) {
+                districtSelect.innerHTML =
+                    '<option value="">İlçeler yüklenemedi</option>';
+
+                console.error(error);
+            }
+        });
     </script>
 }

@@ -5,6 +5,8 @@ using RealEstateVehiclePlatform.WebUI.ViewModels.Category;
 using RealEstateVehiclePlatform.WebUI.ViewModels.City;
 using RealEstateVehiclePlatform.WebUI.ViewModels.District;
 using RealEstateVehiclePlatform.WebUI.ViewModels.Listing;
+using RealEstateVehiclePlatform.WebUI.ViewModels.ListingDetail; // Namespace eklendi
+using RealEstateVehiclePlatform.WebUI.ViewModels.ListingImage;  // Namespace eklendi
 using RealEstateVehiclePlatform.WebUI.ViewModels.ListingType;
 
 namespace RealEstateVehiclePlatform.WebUI.Controllers
@@ -25,6 +27,39 @@ namespace RealEstateVehiclePlatform.WebUI.Controllers
 
             return View(values);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Detail(int id)
+        {
+            var listing = await _apiService.GetAsync<ListingDetailViewModel>($"Listings/{id}");
+
+            if (listing == null)
+            {
+                TempData["Error"] = "İlan bulunamadı.";
+                return RedirectToAction(nameof(Index));
+            }
+
+            var images = await _apiService.GetListAsync<ListingImageViewModel>($"ListingImages/GetByListing/{id}");
+            listing.Images = images;
+
+            // Kategoriye göre detay bilgilerini çek
+            if (string.Equals(listing.CategoryName, "Ev", StringComparison.OrdinalIgnoreCase))
+            {
+                listing.HouseDetail = await _apiService.GetAsync<HouseDetailViewModel>($"HouseDetails/GetByListing/{id}");
+            }
+            else if (string.Equals(listing.CategoryName, "Arsa", StringComparison.OrdinalIgnoreCase))
+            {
+                listing.LandDetail = await _apiService.GetAsync<LandDetailViewModel>($"LandDetails/GetByListing/{id}");
+            }
+            else if (string.Equals(listing.CategoryName, "Araç", StringComparison.OrdinalIgnoreCase) ||
+                     string.Equals(listing.CategoryName, "Arac", StringComparison.OrdinalIgnoreCase))
+            {
+                listing.VehicleDetail = await _apiService.GetAsync<VehicleDetailViewModel>($"VehicleDetails/GetByListing/{id}");
+            }
+
+            return View(listing);
+        }
+
         [HttpPost]
         public async Task<IActionResult> Approve(int id)
         {
@@ -39,6 +74,7 @@ namespace RealEstateVehiclePlatform.WebUI.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
         [HttpPost]
         public async Task<IActionResult> Reject(int id)
         {
@@ -53,6 +89,7 @@ namespace RealEstateVehiclePlatform.WebUI.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
         [HttpPost]
         public async Task<IActionResult> MakePassive(int id)
         {

@@ -7,11 +7,13 @@ builder.Services.AddHttpClient("EfApi", client =>
         builder.Configuration["ApiSettings:EfApiBaseUrl"]!);
 });
 // Add services to the container.
+builder.Services.AddMemoryCache();
 builder.Services.AddSession();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<ApiService>();
 builder.Services.AddScoped<ListingImageHelperService>();
+builder.Services.AddSingleton<LogService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

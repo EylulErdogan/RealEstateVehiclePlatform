@@ -43,11 +43,11 @@
                 transition: .2s;
             }
 
-            .admin-menu a:hover,
-            .admin-menu a.active {
-                background: #2563eb;
-                color: #fff;
-            }
+                .admin-menu a:hover,
+                .admin-menu a.active {
+                    background: #2563eb;
+                    color: #fff;
+                }
 
             .admin-content {
                 margin-left: 260px;
@@ -100,6 +100,7 @@
 
         <nav class="admin-menu">
             <a href="/AdminDashboard"><i class="bi bi-speedometer2"></i> Dashboard</a>
+            <a href="/AdminDashboard/Statistics"><i class="bi bi-graph-up-arrow"></i> İstatistikler</a> <!-- Yeni İstatistik Linki -->
             <a href="/AdminCategory"><i class="bi bi-grid"></i> Kategoriler</a>
             <a href="/AdminListingType"><i class="bi bi-tags"></i> İlan Tipleri</a>
             <a href="/AdminCity"><i class="bi bi-geo-alt"></i> Şehirler</a>
@@ -107,6 +108,7 @@
             <a href="/AdminListing"><i class="bi bi-house-door"></i> İlanlar</a>
             <a href="/AdminAppointment"><i class="bi bi-calendar-check"></i> Randevular</a>
             <a href="/AdminDashboard"><i class="bi bi-people"></i> Kullanıcılar</a>
+            <a href="/AdminDashboard/Logs"><i class="bi bi-journal-text"></i> Sistem Logları</a>
             <a href="/Account/Logout"><i class="bi bi-box-arrow-right"></i> Çıkış Yap</a>
             <a href="/"><i class="bi bi-arrow-left-circle"></i> Siteye Dön</a>
         </nav>
@@ -134,6 +136,7 @@
     @await RenderSectionAsync("Scripts", required: false)
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="~/js/admin.js"></script>
+
     @if (TempData["Success"] != null)
     {
         <script>

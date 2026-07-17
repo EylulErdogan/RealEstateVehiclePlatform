@@ -7,10 +7,12 @@ namespace RealEstateVehiclePlatform.WebUI.Controllers
     public class AccountController : Controller
     {
         private readonly ApiService _apiService;
+        private readonly LogService _logService; // LogService eklendi
 
-        public AccountController(ApiService apiService)
+        public AccountController(ApiService apiService, LogService logService)
         {
             _apiService = apiService;
+            _logService = logService;
         }
 
         [HttpGet]
@@ -26,6 +28,7 @@ namespace RealEstateVehiclePlatform.WebUI.Controllers
 
             if (result == null)
             {
+                _logService.LogWarning($"Hatalı giriş denemesi. Kullanılan E-posta: {model.Email}");
                 ViewBag.ErrorMessage = "Email veya şifre hatalı.";
                 return View(model);
             }
@@ -35,6 +38,9 @@ namespace RealEstateVehiclePlatform.WebUI.Controllers
             HttpContext.Session.SetString("FullName", result.FullName);
             HttpContext.Session.SetString("Email", result.Email);
             HttpContext.Session.SetString("Role", result.Role);
+
+            _logService.LogInfo($"Başarılı kullanıcı girişi yapıldı.", result.FullName);
+
             if (result.Role == "Admin")
             {
                 return RedirectToAction("Index", "AdminDashboard");
@@ -42,6 +48,7 @@ namespace RealEstateVehiclePlatform.WebUI.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+
         [HttpGet]
         public IActionResult Register()
         {
@@ -75,11 +82,14 @@ namespace RealEstateVehiclePlatform.WebUI.Controllers
 
             if (!result)
             {
+                _logService.LogWarning($"Kullanıcı kayıt işlemi başarısız. Kullanıcı Adı: {model.UserName}, E-posta: {model.Email}");
                 ViewBag.ErrorMessage =
                     "Kayıt işlemi gerçekleştirilemedi. Email veya kullanıcı adı daha önce kullanılmış olabilir.";
 
                 return View(model);
             }
+
+            _logService.LogInfo($"Yeni kullanıcı kaydı oluşturuldu. Kullanıcı Adı: {model.UserName}", model.FullName);
 
             TempData["Success"] =
                 "Kayıt işleminiz başarıyla tamamlandı. Giriş yapabilirsiniz.";
@@ -89,9 +99,11 @@ namespace RealEstateVehiclePlatform.WebUI.Controllers
 
         public IActionResult Logout()
         {
+            var fullName = HttpContext.Session.GetString("FullName");
+            _logService.LogInfo("Oturum kapatıldı.", fullName);
+
             HttpContext.Session.Clear();
             return RedirectToAction("Login", "Account");
         }
-
     }
 }

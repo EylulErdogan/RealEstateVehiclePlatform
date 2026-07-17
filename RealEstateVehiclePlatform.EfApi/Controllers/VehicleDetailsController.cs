@@ -7,23 +7,25 @@ namespace RealEstateVehiclePlatform.EfApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
     public class VehicleDetailsController : ControllerBase
     {
         private readonly IVehicleDetailService _vehicleDetailService;
 
-        public VehicleDetailsController(IVehicleDetailService vehicleDetailService)
+        public VehicleDetailsController(
+            IVehicleDetailService vehicleDetailService)
         {
             _vehicleDetailService = vehicleDetailService;
         }
 
         [HttpPost("Create")]
+        [Authorize]
         public IActionResult Create(VehicleDetail vehicleDetail)
         {
             try
             {
                 _vehicleDetailService.Create(vehicleDetail);
-                return Ok("Arac detayı eklendi.");
+
+                return Ok("Araç detayı eklendi.");
             }
             catch (Exception ex)
             {
@@ -31,20 +33,30 @@ namespace RealEstateVehiclePlatform.EfApi.Controllers
             }
         }
 
-        [HttpGet("GetByListing/{listingId}")]
+        [HttpGet("GetByListing/{listingId:int}")]
+        [AllowAnonymous]
         public IActionResult GetByListingId(int listingId)
         {
-            var value = _vehicleDetailService.GetByListingId(listingId);
+            var value = _vehicleDetailService
+                .GetByListingId(listingId);
+
+            if (value == null)
+            {
+                return NotFound("Araç detayı bulunamadı.");
+            }
+
             return Ok(value);
         }
 
         [HttpPut("Update")]
+        [Authorize]
         public IActionResult Update(VehicleDetail vehicleDetail)
         {
             try
             {
                 _vehicleDetailService.Update(vehicleDetail);
-                return Ok("Araç detayı guncellendi.");
+
+                return Ok("Araç detayı güncellendi.");
             }
             catch (Exception ex)
             {
@@ -52,12 +64,14 @@ namespace RealEstateVehiclePlatform.EfApi.Controllers
             }
         }
 
-        [HttpDelete("Delete/{id}")]
+        [HttpDelete("Delete/{id:int}")]
+        [Authorize]
         public IActionResult Delete(int id)
         {
             try
             {
                 _vehicleDetailService.Delete(id);
+
                 return Ok("Araç detayı silindi.");
             }
             catch (Exception ex)

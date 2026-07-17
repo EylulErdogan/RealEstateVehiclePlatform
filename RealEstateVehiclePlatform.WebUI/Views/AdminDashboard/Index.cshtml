@@ -5,6 +5,7 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
+<!-- HOŞ GELDİNİZ VE ÖZET BAR BARLARI -->
 <div class="row g-4 mb-4">
     <div class="col-lg-8">
         <div class="admin-card dashboard-hero">
@@ -18,19 +19,34 @@
     </div>
 
     <div class="col-lg-4">
-        <div class="admin-card h-100">
-            <small class="text-muted">Bugünkü Özet</small>
-            <h3 class="fw-bold mt-2 mb-3">@Model.PendingAppointmentCount Bekleyen İşlem</h3>
-
-            <div class="progress mb-3" style="height:10px;">
-                <div class="progress-bar" style="width:70%"></div>
+        <div class="admin-card h-100 d-flex flex-column justify-content-between p-4">
+            <div>
+                <small class="text-muted text-uppercase fw-bold fs-8">Bugünkü Özet</small>
+                <h3 class="fw-bold mt-2 mb-3 text-warning-emphasis">
+                    <i class="bi bi-hourglass-split me-1 text-warning"></i> @Model.PendingListingCount İlan Onay Bekliyor
+                </h3>
             </div>
 
-            <small class="text-muted">Sistem aktiviteleri admin onayı bekleyen işlemler üzerinden takip edilir.</small>
+            <div>
+                <div class="d-flex justify-content-between mb-2">
+                    <small class="text-muted">Onay Bekleme Oranı</small>
+                    @{
+                        double ratio = Model.TotalListingCount > 0
+                            ? Math.Round(((double)Model.PendingListingCount / Model.TotalListingCount) * 100, 1)
+                            : 0;
+                    }
+                    <strong class="text-primary">%@ratio</strong>
+                </div>
+                <div class="progress" style="height:10px; border-radius: 99px;">
+                    <div class="progress-bar bg-warning" style="width: @ratio%"></div>
+                </div>
+                <small class="text-muted d-block mt-3 fs-8">Sistem aktiviteleri admin onayı bekleyen işlemler üzerinden takip edilir.</small>
+            </div>
         </div>
     </div>
 </div>
 
+<!-- 4 BÜYÜK İSTATİSTİK KARTI -->
 <div class="row g-4 mb-4">
     <div class="col-md-3">
         <div class="admin-card stat-card">
@@ -52,7 +68,7 @@
             <div class="d-flex justify-content-between">
                 <div>
                     <small class="text-muted">Aktif İlan</small>
-                    <h3 class="fw-bold mt-2 mb-0">@Model.ActiveListingCount</h3>
+                    <h3 class="fw-bold mt-2 mb-0 text-success">@Model.ActiveListingCount</h3>
                     <small class="text-success">Yayındaki ilanlar</small>
                 </div>
                 <div class="stat-icon bg-success-subtle text-success">
@@ -66,9 +82,9 @@
         <div class="admin-card stat-card">
             <div class="d-flex justify-content-between">
                 <div>
-                    <small class="text-muted">Kullanıcı</small>
+                    <small class="text-muted">Kayıtlı Kullanıcı</small>
                     <h3 class="fw-bold mt-2 mb-0">@Model.UserCount</h3>
-                    <small class="text-warning">Kayıtlı kullanıcı</small>
+                    <small class="text-warning">Kayıtlı üye sayısı</small>
                 </div>
                 <div class="stat-icon bg-warning-subtle text-warning">
                     <i class="bi bi-people"></i>
@@ -81,8 +97,8 @@
         <div class="admin-card stat-card">
             <div class="d-flex justify-content-between">
                 <div>
-                    <small class="text-muted">Randevu</small>
-                    <h3 class="fw-bold mt-2 mb-0">@Model.AppointmentCount</h3>
+                    <small class="text-muted">Randevular</small>
+                    <h3 class="fw-bold mt-2 mb-0 text-danger">@Model.AppointmentCount</h3>
                     <small class="text-danger">@Model.PendingAppointmentCount bekliyor</small>
                 </div>
                 <div class="stat-icon bg-danger-subtle text-danger">
@@ -93,70 +109,63 @@
     </div>
 </div>
 
+<!-- DİNAMİK GRAFİK BÖLÜMÜ (YENİLENDİ) -->
 <div class="row g-4 mb-4">
+    <!-- SOL: Sistem Metrikleri Bar Grafiği -->
     <div class="col-lg-7">
-        <div class="admin-card">
+        <div class="admin-card h-100">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <div>
-                    <h5 class="fw-bold mb-1">Platform Özeti</h5>
-                    <small class="text-muted">Temel sistem verileri</small>
+                    <h5 class="fw-bold mb-1">Platform Dağılım Grafiği</h5>
+                    <small class="text-muted">Sistem genelindeki kayıtlı veri hacmi</small>
                 </div>
-                <span class="badge bg-primary-subtle text-primary">Canlı Veri</span>
+                <span class="badge bg-primary-subtle text-primary">Canlı Metrik</span>
             </div>
 
-            <div class="summary-grid">
-                <div>
-                    <i class="bi bi-grid"></i>
-                    <span>Kategori</span>
-                    <strong>@Model.CategoryCount</strong>
-                </div>
-
-                <div>
-                    <i class="bi bi-geo-alt"></i>
-                    <span>Şehir</span>
-                    <strong>@Model.CityCount</strong>
-                </div>
-
-                <div>
-                    <i class="bi bi-hourglass-split"></i>
-                    <span>Onay Bekleyen İlan</span>
-                    <strong>@Model.PendingListingCount</strong>
-                </div>
-
-                <div>
-                    <i class="bi bi-calendar-event"></i>
-                    <span>Bekleyen Randevu</span>
-                    <strong>@Model.PendingAppointmentCount</strong>
-                </div>
+            <!-- Grafik Konteyneri -->
+            <div class="chart-container" style="position: relative; height:320px; width:100%;">
+                <canvas id="systemMetricsChart"></canvas>
             </div>
         </div>
     </div>
 
+    <!-- SAĞ: İlan Durumu Dairesel Grafiği -->
     <div class="col-lg-5">
-        <div class="admin-card">
-            <h5 class="fw-bold mb-1">İlan Durumu</h5>
-            <small class="text-muted">Aktif / bekleyen ilan oranı</small>
-
-            <div class="status-ring my-4">
-                <div class="ring-center">
-                    <strong>@Model.TotalListingCount</strong>
-                    <small>Toplam</small>
+        <div class="admin-card h-100">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+                <div>
+                    <h5 class="fw-bold mb-1">İlan Durum Analizi</h5>
+                    <small class="text-muted">Aktif, bekleyen ve pasif ilanların dağılımı</small>
                 </div>
             </div>
 
-            <div class="d-flex justify-content-between">
-                <span><i class="bi bi-circle-fill text-success"></i> Aktif İlan</span>
-                <span class="fw-semibold">@Model.ActiveListingCount</span>
+            <!-- Grafik Konteyneri -->
+            <div class="chart-container my-4 d-flex justify-content-center align-items-center" style="position: relative; height:240px; width:100%;">
+                <canvas id="listingStatusChart"></canvas>
             </div>
 
-            <div class="d-flex justify-content-between mt-2">
-                <span><i class="bi bi-circle-fill text-warning"></i> Bekleyen İlan</span>
-                <span class="fw-semibold">@Model.PendingListingCount</span>
+            <div class="d-flex justify-content-around border-top pt-3 text-center">
+                <div>
+                    <span class="d-block text-muted fs-8"><i class="bi bi-circle-fill text-success me-1"></i> Aktif</span>
+                    <strong class="text-dark fs-6">@Model.ActiveListingCount</strong>
+                </div>
+                <div>
+                    <span class="d-block text-muted fs-8"><i class="bi bi-circle-fill text-warning me-1"></i> Bekleyen</span>
+                    <strong class="text-dark fs-6">@Model.PendingListingCount</strong>
+                </div>
+                <div>
+                    @{
+                        int passiveCount = Math.Max(0, Model.TotalListingCount - Model.ActiveListingCount - Model.PendingListingCount);
+                    }
+                    <span class="d-block text-muted fs-8"><i class="bi bi-circle-fill text-secondary me-1"></i> Pasif/Diğer</span>
+                    <strong class="text-dark fs-6">@passiveCount</strong>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
+<!-- ALT PANEL: HIZLI LİNKLER VE SİSTEM TİMELİNE -->
 <div class="row g-4">
     <div class="col-lg-7">
         <div class="admin-card">
@@ -166,24 +175,24 @@
             </div>
 
             <div class="quick-actions">
-                <a href="/Category" class="quick-action">
-                    <i class="bi bi-grid"></i>
+                <a href="/AdminCategory" class="quick-action">
+                    <i class="bi bi-grid text-primary"></i>
                     <span>Kategoriler</span>
                 </a>
 
-                <a href="/Listing" class="quick-action">
-                    <i class="bi bi-house-door"></i>
-                    <span>İlanlar</span>
+                <a href="/AdminListing" class="quick-action">
+                    <i class="bi bi-house-door text-success"></i>
+                    <span>İlan Yönetimi</span>
                 </a>
 
-                <a href="/AdminDashboard" class="quick-action">
-                    <i class="bi bi-calendar-check"></i>
+                <a href="/AdminAppointment" class="quick-action">
+                    <i class="bi bi-calendar-check text-danger"></i>
                     <span>Randevular</span>
                 </a>
 
-                <a href="/AdminDashboard" class="quick-action">
-                    <i class="bi bi-people"></i>
-                    <span>Kullanıcılar</span>
+                <a href="/AdminCity" class="quick-action">
+                    <i class="bi bi-geo-alt text-warning"></i>
+                    <span>Şehir Tanımları</span>
                 </a>
             </div>
         </div>
@@ -191,32 +200,32 @@
 
     <div class="col-lg-5">
         <div class="admin-card">
-            <h5 class="fw-bold mb-3">Sistem Durumu</h5>
+            <h5 class="fw-bold mb-3">Sistem Sağlık Durumu</h5>
 
             <div class="timeline-item">
                 <span></span>
                 <div>
-                    <strong>Dashboard verileri yüklendi</strong>
-                    <p>Özet bilgiler EF API üzerinden başarıyla alındı.</p>
-                    <small>Canlı veri</small>
+                    <strong>Dinamik Dashboard Grafikleri Aktif</strong>
+                    <p>Chart.js entegrasyonu ile canlı veriler görselleştirildi.</p>
+                    <small>Grafik Sistemi Hazır</small>
                 </div>
             </div>
 
             <div class="timeline-item">
                 <span></span>
                 <div>
-                    <strong>JWT ve rol sistemi aktif</strong>
+                    <strong>JWT ve Güvenlik Sistemi Aktif</strong>
                     <p>Admin yetkileri ile korumalı endpoint yapısı hazır.</p>
-                    <small>Güvenlik aktif</small>
+                    <small>Güvenlik Durumu: Stabil</small>
                 </div>
             </div>
 
             <div class="timeline-item">
                 <span></span>
                 <div>
-                    <strong>WebUI API bağlantısı hazır</strong>
-                    <p>MVC projesi HttpClient ile EF API üzerinden veri çekiyor.</p>
-                    <small>Bağlantı başarılı</small>
+                    <strong>EF API Bağlantı Durumu</strong>
+                    <p>MVC projesi HttpClient ile EF API üzerinden sorunsuz veri çekiyor.</p>
+                    <small>Bağlantı: Başarılı</small>
                 </div>
             </div>
         </div>
@@ -224,8 +233,9 @@
 </div>
 
 <style>
+    /* CSS Tasarım İyileştirmeleri */
     .dashboard-hero {
-        background: linear-gradient(135deg, #2563eb, #1e40af);
+        background: linear-gradient(135deg, #1e3a8a, #0f172a);
         color: white;
         min-height: 210px;
         display: flex;
@@ -248,17 +258,18 @@
 
     .hero-badge {
         display: inline-block;
-        background: rgba(255,255,255,.18);
+        background: rgba(255, 255, 255, 0.12);
         color: white;
-        padding: 7px 14px;
+        padding: 6px 14px;
         border-radius: 30px;
-        font-size: 13px;
+        font-size: 12px;
         margin-bottom: 18px;
+        backdrop-filter: blur(4px);
     }
 
     .hero-icon {
         font-size: 110px;
-        opacity: .18;
+        opacity: .12;
         position: absolute;
         right: 35px;
         bottom: 15px;
@@ -274,71 +285,12 @@
     }
 
     .stat-card {
-        transition: .2s ease;
+        transition: all 0.2s ease;
     }
 
         .stat-card:hover {
             transform: translateY(-4px);
-        }
-
-    .summary-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 18px;
-    }
-
-        .summary-grid div {
-            background: #f8fafc;
-            border-radius: 18px;
-            padding: 22px;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .summary-grid i {
-            font-size: 28px;
-            color: #2563eb;
-        }
-
-        .summary-grid span {
-            color: #64748b;
-            font-size: 14px;
-        }
-
-        .summary-grid strong {
-            font-size: 26px;
-            color: #0f172a;
-        }
-
-    .status-ring {
-        width: 190px;
-        height: 190px;
-        margin-inline: auto;
-        border-radius: 50%;
-        background: conic-gradient(#22c55e 0 65%, #f59e0b 65% 100%);
-        display: grid;
-        place-items: center;
-    }
-
-    .ring-center {
-        width: 120px;
-        height: 120px;
-        border-radius: 50%;
-        background: white;
-        display: grid;
-        place-items: center;
-        text-align: center;
-    }
-
-        .ring-center strong {
-            font-size: 30px;
-            line-height: 1;
-        }
-
-        .ring-center small {
-            color: #64748b;
-            margin-top: -20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
         }
 
     .quick-actions {
@@ -349,6 +301,7 @@
 
     .quick-action {
         background: #f8fafc;
+        border: 1px solid #f1f5f9;
         border-radius: 18px;
         padding: 22px;
         text-decoration: none;
@@ -356,17 +309,23 @@
         display: flex;
         align-items: center;
         gap: 14px;
-        transition: .2s;
+        transition: all 0.2s ease;
     }
 
         .quick-action:hover {
             background: #2563eb;
             color: white;
+            border-color: #2563eb;
             transform: translateY(-3px);
         }
 
+            .quick-action:hover i {
+                color: white !important;
+            }
+
         .quick-action i {
-            font-size: 28px;
+            font-size: 26px;
+            transition: color 0.2s ease;
         }
 
     .timeline-item {
@@ -376,6 +335,20 @@
         position: relative;
     }
 
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 20px;
+            bottom: 0;
+            width: 2px;
+            background: #e2e8f0;
+        }
+
+        .timeline-item:last-child::before {
+            display: none;
+        }
+
         .timeline-item > span {
             width: 12px;
             height: 12px;
@@ -383,14 +356,161 @@
             border-radius: 50%;
             margin-top: 6px;
             flex: 0 0 auto;
+            z-index: 1;
         }
 
         .timeline-item p {
             margin: 4px 0;
             color: #64748b;
+            font-size: 13px;
         }
 
         .timeline-item small {
             color: #94a3b8;
+            font-size: 11px;
         }
+
+    .fs-8 {
+        font-size: 0.75rem;
+    }
 </style>
+
+@section Scripts {
+    <!-- Chart.js Kütüphanesi CDN Bağlantısı -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+        // 1. DİNAMİK VERİ TANIMLAMALARI (C# Modelinden JS Değişkenlerine Aktarım)
+        const activeListings = @Model.ActiveListingCount;
+        const pendingListings = @Model.PendingListingCount;
+        const totalListings = @Model.TotalListingCount;
+        const passiveListings = Math.max(0, totalListings - activeListings - pendingListings);
+
+        const userCount = @Model.UserCount;
+        const appointmentCount = @Model.AppointmentCount;
+        const categoryCount = @Model.CategoryCount;
+        const cityCount = @Model.CityCount;
+
+        // 2. İLAN DURUM DAĞILIMI (Doughnut Chart)
+        const ctxStatus = document.getElementById('listingStatusChart').getContext('2d');
+
+        // Dairenin ortasında Toplam İlan yazan custom plugin
+        const centerTextPlugin = {
+        id: 'centerText',
+        afterDraw(chart) {
+        const { ctx, chartArea: { top, width, height } } = chart;
+        ctx.save();
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+
+        // Toplam Sayı
+        ctx.font = 'bold 26px Outfit, Inter, sans-serif';
+        ctx.fillStyle = '#0f172a';
+        ctx.fillText(totalListings, width / 2, top + (height / 2) - 8);
+
+        // Alt Yazı
+        ctx.font = '600 11px Outfit, Inter, sans-serif';
+        ctx.fillStyle = '#64748b';
+        ctx.fillText('Toplam İlan', width / 2, top + (height / 2) + 16);
+        ctx.restore();
+        }
+        };
+
+        new Chart(ctxStatus, {
+        type: 'doughnut',
+        data: {
+        labels: ['Aktif İlanlar', 'Onay Bekleyenler', 'Pasif İlanlar'],
+        datasets: [{
+        data: [activeListings, pendingListings, passiveListings],
+        backgroundColor: ['#22c55e', '#f59e0b', '#94a3b8'],
+        borderWidth: 3,
+        borderColor: '#ffffff',
+        hoverOffset: 4
+        }]
+        },
+        options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        cutout: '72%',
+        plugins: {
+        legend: {
+        display: false
+        },
+        tooltip: {
+        callbacks: {
+        label: function(context) {
+        let label = context.label || '';
+        if (label) {
+        label += ': ';
+        }
+        label += context.raw + ' adet';
+        return label;
+        }
+        }
+        }
+        }
+        },
+        plugins: [centerTextPlugin]
+        });
+
+        // 3. SİSTEM METRİKLERİ GRAFİĞİ (Bar Chart)
+        const ctxMetrics = document.getElementById('systemMetricsChart').getContext('2d');
+
+        // Mavi degrade renk geçişi oluşturma
+        const gradientBg = ctxMetrics.createLinearGradient(0, 0, 0, 300);
+        gradientBg.addColorStop(0, '#2563eb');
+        gradientBg.addColorStop(1, '#60a5fa');
+
+        new Chart(ctxMetrics, {
+        type: 'bar',
+        data: {
+        labels: ['İlanlar', 'Kullanıcılar', 'Randevular', 'Kategoriler', 'Şehirler'],
+        datasets: [{
+        label: 'Sistem Veri Hacmi',
+        data: [totalListings, userCount, appointmentCount, categoryCount, cityCount],
+        backgroundColor: gradientBg,
+        borderRadius: 8,
+        borderSkipped: false,
+        barThickness: 32
+        }]
+        },
+        options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+        legend: {
+        display: false // Set to false because we have single dataset
+        }
+        },
+        scales: {
+        x: {
+        grid: {
+        display: false
+        },
+        ticks: {
+        color: '#64748b',
+        font: {
+        family: 'Outfit, sans-serif',
+        weight: '600'
+        }
+        }
+        },
+        y: {
+        grid: {
+        color: '#f1f5f9',
+        drawTicks: false
+        },
+        ticks: {
+        color: '#64748b',
+        precision: 0
+        }
+        }
+        }
+        }
+        });
+
+        });
+    </script>
+}

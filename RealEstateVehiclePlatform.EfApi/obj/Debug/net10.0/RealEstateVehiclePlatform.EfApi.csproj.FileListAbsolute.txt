@@ -170,15 +170,6 @@ C:\Users\eylul\Desktop\Softito Projelerim ve gerekli kodlar\11. Projem Bitirme P
 C:\Users\eylul\Desktop\Softito Projelerim ve gerekli kodlar\11. Projem Bitirme Projesi\RealEstateVehiclePlatform\RealEstateVehiclePlatform.EfApi\bin\Debug\net10.0\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
 C:\Users\eylul\Desktop\Softito Projelerim ve gerekli kodlar\11. Projem Bitirme Projesi\RealEstateVehiclePlatform\RealEstateVehiclePlatform.EfApi\bin\Debug\net10.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
 C:\Users\eylul\Desktop\Softito Projelerim ve gerekli kodlar\11. Projem Bitirme Projesi\RealEstateVehiclePlatform\RealEstateVehiclePlatform.EfApi\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
-C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.EfApi\obj\Debug\net10.0\RealEstateVehiclePlatform.EfApi.csproj.AssemblyReference.cache
-C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.EfApi\obj\Debug\net10.0\rpswa.dswa.cache.json
-C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.EfApi\obj\Debug\net10.0\RealEstateVehiclePlatform.EfApi.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.EfApi\obj\Debug\net10.0\RealEstateVehiclePlatform.EfApi.AssemblyInfoInputs.cache
-C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.EfApi\obj\Debug\net10.0\RealEstateVehiclePlatform.EfApi.AssemblyInfo.cs
-C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.EfApi\obj\Debug\net10.0\RealEstateVehiclePlatform.EfApi.csproj.CoreCompileInputs.cache
-C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.EfApi\obj\Debug\net10.0\RealEstateVehiclePlatform.EfApi.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.EfApi\obj\Debug\net10.0\RealEstateVehiclePlatform.EfApi.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.EfApi\obj\Debug\net10.0\RealEstateVehiclePlatform.EfApi.sourcelink.json
 C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.EfApi\bin\Debug\net10.0\appsettings.Development.json
 C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.EfApi\bin\Debug\net10.0\appsettings.json
 C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.EfApi\bin\Debug\net10.0\RealEstateVehiclePlatform.EfApi.staticwebassets.endpoints.json
@@ -327,6 +318,15 @@ C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatf
 C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.EfApi\bin\Debug\net10.0\RealEstateVehiclePlatform.Business.pdb
 C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.EfApi\bin\Debug\net10.0\RealEstateVehiclePlatform.DataAccess.pdb
 C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.EfApi\bin\Debug\net10.0\RealEstateVehiclePlatform.Entities.pdb
+C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.EfApi\obj\Debug\net10.0\RealEstateVehiclePlatform.EfApi.csproj.AssemblyReference.cache
+C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.EfApi\obj\Debug\net10.0\rpswa.dswa.cache.json
+C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.EfApi\obj\Debug\net10.0\RealEstateVehiclePlatform.EfApi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.EfApi\obj\Debug\net10.0\RealEstateVehiclePlatform.EfApi.AssemblyInfoInputs.cache
+C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.EfApi\obj\Debug\net10.0\RealEstateVehiclePlatform.EfApi.AssemblyInfo.cs
+C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.EfApi\obj\Debug\net10.0\RealEstateVehiclePlatform.EfApi.csproj.CoreCompileInputs.cache
+C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.EfApi\obj\Debug\net10.0\RealEstateVehiclePlatform.EfApi.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.EfApi\obj\Debug\net10.0\RealEstateVehiclePlatform.EfApi.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.EfApi\obj\Debug\net10.0\RealEstateVehiclePlatform.EfApi.sourcelink.json
 C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.EfApi\obj\Debug\net10.0\rjimswa.dswa.cache.json
 C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.EfApi\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
 C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.EfApi\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json

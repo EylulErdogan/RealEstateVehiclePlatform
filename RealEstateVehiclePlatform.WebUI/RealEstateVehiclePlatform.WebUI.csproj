@@ -14,4 +14,8 @@
     <Folder Include="ViewModels\NewFolder\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\RealEstateVehiclePlatform.Entities\RealEstateVehiclePlatform.Entities.csproj" />
+  </ItemGroup>
+
 </Project>

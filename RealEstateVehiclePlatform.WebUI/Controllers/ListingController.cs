@@ -3,6 +3,7 @@ using RealEstateVehiclePlatform.WebUI.Services;
 using RealEstateVehiclePlatform.WebUI.ViewModels.Category;
 using RealEstateVehiclePlatform.WebUI.ViewModels.Favorite;
 using RealEstateVehiclePlatform.WebUI.ViewModels.Listing;
+using RealEstateVehiclePlatform.WebUI.ViewModels.ListingDetail;
 using RealEstateVehiclePlatform.WebUI.ViewModels.ListingImage;
 
 namespace RealEstateVehiclePlatform.WebUI.Controllers
@@ -102,8 +103,7 @@ namespace RealEstateVehiclePlatform.WebUI.Controllers
         public async Task<IActionResult> Detail(int id)
         {
             var listing = await _apiService
-                .GetAsync<ListingDetailViewModel>(
-                    $"Listings/{id}");
+                .GetAsync<ListingDetailViewModel>($"Listings/{id}");
 
             if (listing == null)
             {
@@ -117,6 +117,49 @@ namespace RealEstateVehiclePlatform.WebUI.Controllers
                     $"ListingImages/GetByListing/{id}");
 
             listing.Images = images;
+
+            if (HttpContext.Session.GetString("Token") != null)
+            {
+                var favoriteStatus = await _apiService
+                    .GetAsync<FavoriteStatusViewModel>(
+                        $"Favorites/IsFavorite/{id}");
+
+                listing.IsFavorite =
+                    favoriteStatus?.IsFavorite ?? false;
+            }
+
+            if (string.Equals(
+                    listing.CategoryName,
+                    "Ev",
+                    StringComparison.OrdinalIgnoreCase))
+            {
+                listing.HouseDetail = await _apiService
+                    .GetAsync<HouseDetailViewModel>(
+                        $"HouseDetails/GetByListing/{id}");
+            }
+            else if (string.Equals(
+                         listing.CategoryName,
+                         "Arsa",
+                         StringComparison.OrdinalIgnoreCase))
+            {
+                listing.LandDetail = await _apiService
+                    .GetAsync<LandDetailViewModel>(
+                        $"LandDetails/GetByListing/{id}");
+            }
+            else if (
+                string.Equals(
+                    listing.CategoryName,
+                    "Araç",
+                    StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(
+                    listing.CategoryName,
+                    "Arac",
+                    StringComparison.OrdinalIgnoreCase))
+            {
+                listing.VehicleDetail = await _apiService
+                    .GetAsync<VehicleDetailViewModel>(
+                        $"VehicleDetails/GetByListing/{id}");
+            }
 
             return View(listing);
         }

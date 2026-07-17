@@ -108,7 +108,13 @@ C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatf
 C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.WebUI\bin\Debug\net10.0\RealEstateVehiclePlatform.WebUI.runtimeconfig.json
 C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.WebUI\bin\Debug\net10.0\RealEstateVehiclePlatform.WebUI.dll
 C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.WebUI\bin\Debug\net10.0\RealEstateVehiclePlatform.WebUI.pdb
+C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.WebUI\bin\Debug\net10.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.WebUI\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.WebUI\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.WebUI\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.Relational.dll
 C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.WebUI\bin\Debug\net10.0\Newtonsoft.Json.dll
+C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.WebUI\bin\Debug\net10.0\RealEstateVehiclePlatform.Entities.dll
+C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.WebUI\bin\Debug\net10.0\RealEstateVehiclePlatform.Entities.pdb
 C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.WebUI\obj\Debug\net10.0\RealEstateVehiclePlatform.WebUI.csproj.AssemblyReference.cache
 C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.WebUI\obj\Debug\net10.0\rpswa.dswa.cache.json
 C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.WebUI\obj\Debug\net10.0\RealEstateVehiclePlatform.WebUI.GeneratedMSBuildEditorConfig.editorconfig
@@ -122,10 +128,12 @@ C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatf
 C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.WebUI\obj\Debug\net10.0\rjimswa.dswa.cache.json
 C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.WebUI\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
 C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.WebUI\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
+C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.WebUI\obj\Debug\net10.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.WebUI\obj\Debug\net10.0\scopedcss\bundle\RealEstateVehiclePlatform.WebUI.styles.css
 C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.WebUI\obj\Debug\net10.0\scopedcss\projectbundle\RealEstateVehiclePlatform.WebUI.bundle.scp.css
 C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.WebUI\obj\Debug\net10.0\compressed\jrjzemcur0-{0}-b9sayid5wm-b9sayid5wm.gz
 C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.WebUI\obj\Debug\net10.0\compressed\t283tchdqk-{0}-61n19gt1b8-61n19gt1b8.gz
+C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.WebUI\obj\Debug\net10.0\compressed\ywfsbgeg0a-{0}-d9m84ai59f-d9m84ai59f.gz
 C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.WebUI\obj\Debug\net10.0\compressed\8wfjonh08f-{0}-xtxxf3hu2r-xtxxf3hu2r.gz
 C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.WebUI\obj\Debug\net10.0\compressed\vmg2cubxxs-{0}-bqjiyaj88i-bqjiyaj88i.gz
 C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.WebUI\obj\Debug\net10.0\compressed\zixuciolh0-{0}-c2jlpeoesf-c2jlpeoesf.gz
@@ -186,6 +194,8 @@ C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatf
 C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.WebUI\obj\Debug\net10.0\compressed\4wvo0nxbsr-{0}-muycvpuwrr-muycvpuwrr.gz
 C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.WebUI\obj\Debug\net10.0\compressed\nooy6a72l2-{0}-87fc7y1x7t-87fc7y1x7t.gz
 C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.WebUI\obj\Debug\net10.0\compressed\466dxr3giy-{0}-mlv21k5csn-mlv21k5csn.gz
+C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.WebUI\obj\Debug\net10.0\compressed\5kxnqrue9f-{0}-pkaqsc82uo-pkaqsc82uo.gz
+C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.WebUI\obj\Debug\net10.0\compressed\ngm5tpsrv8-{0}-pkaqsc82uo-pkaqsc82uo.gz
 C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.WebUI\obj\Debug\net10.0\staticwebassets.build.json
 C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.WebUI\obj\Debug\net10.0\staticwebassets.build.json.cache
 C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.WebUI\obj\Debug\net10.0\staticwebassets.development.json
@@ -198,7 +208,4 @@ C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatf
 C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.WebUI\obj\Debug\net10.0\RealEstateVehiclePlatform.WebUI.pdb
 C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.WebUI\obj\Debug\net10.0\RealEstateVehiclePlatform.WebUI.genruntimeconfig.cache
 C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.WebUI\obj\Debug\net10.0\ref\RealEstateVehiclePlatform.WebUI.dll
-C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.WebUI\obj\Debug\net10.0\compressed\ywfsbgeg0a-{0}-d9m84ai59f-d9m84ai59f.gz
-C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.WebUI\obj\Debug\net10.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
-C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.WebUI\obj\Debug\net10.0\compressed\5kxnqrue9f-{0}-pkaqsc82uo-pkaqsc82uo.gz
-C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.WebUI\obj\Debug\net10.0\compressed\ngm5tpsrv8-{0}-pkaqsc82uo-pkaqsc82uo.gz
+C:\Users\eylul\Documents\GitHub\RealEstateVehiclePlatform\RealEstateVehiclePlatform.WebUI\obj\Debug\net10.0\compressed\mr10io6fjh-{0}-jqz2rmka75-jqz2rmka75.gz

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using RealEstateVehiclePlatform.Business.Interfaces;
 using RealEstateVehiclePlatform.Entities.Concrete;
 
@@ -16,37 +17,46 @@ namespace RealEstateVehiclePlatform.EfApi.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult GetAll()
         {
             var values = _districtService.GetAll();
+
             return Ok(values);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
+        [AllowAnonymous]
         public IActionResult GetById(int id)
         {
             var value = _districtService.GetById(id);
 
             if (value == null)
+            {
                 return NotFound("İlçe bulunamadı.");
+            }
 
             return Ok(value);
         }
 
-        [HttpGet("GetByCity/{cityId}")]
-        public IActionResult GetByCityId(int cityId)
+        [HttpGet("GetByCity/{cityId:int}")]
+        [AllowAnonymous]
+        public IActionResult GetByCity(int cityId)
         {
             var values = _districtService.GetByCityId(cityId);
+
             return Ok(values);
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public IActionResult Create(District district)
         {
             try
             {
                 _districtService.Create(district);
-                return Ok("İlçe basariyla eklendi.");
+
+                return Ok("İlçe başarıyla eklendi.");
             }
             catch (Exception ex)
             {
@@ -55,12 +65,14 @@ namespace RealEstateVehiclePlatform.EfApi.Controllers
         }
 
         [HttpPut]
+        [Authorize(Roles = "Admin")]
         public IActionResult Update(District district)
         {
             try
             {
                 _districtService.Update(district);
-                return Ok("İlçe basariyla guncellendi.");
+
+                return Ok("İlçe başarıyla güncellendi.");
             }
             catch (Exception ex)
             {
@@ -68,13 +80,15 @@ namespace RealEstateVehiclePlatform.EfApi.Controllers
             }
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{id:int}")]
+        [Authorize(Roles = "Admin")]
         public IActionResult Delete(int id)
         {
             try
             {
                 _districtService.Delete(id);
-                return Ok("İlçe basariyla silindi.");
+
+                return Ok("İlçe başarıyla silindi.");
             }
             catch (Exception ex)
             {

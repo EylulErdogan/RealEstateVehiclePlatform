@@ -2,7 +2,7 @@
 
 @{
     ViewData["Title"] = "İlanı Güncelle";
-    Layout = "~/Views/Shared/_UserLayout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <section class="update-listing-header">
@@ -10,14 +10,29 @@
         <span class="page-label">İlan Yönetimi</span>
         <h1>İlanı Güncelle</h1>
         <p>
-            İlan bilgilerini düzenlediğinde ilan yeniden yönetici
-            onayına gönderilecektir.
+            İlan bilgilerini veya detaylarını düzenlediğinde ilan onaylanmak üzere yeniden yöneticiye gönderilecektir.
         </p>
     </div>
 </section>
 
 <section class="update-listing-content">
     <div class="container">
+
+        <!-- Mesaj Gösterimi -->
+        @if (TempData["Error"] != null)
+        {
+            <div class="alert alert-danger mb-4" style="border-radius: 13px; padding: 15px 20px;">
+                <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                @TempData["Error"]
+            </div>
+        }
+        @if (TempData["Warning"] != null)
+        {
+            <div class="alert alert-warning mb-4" style="border-radius: 13px; padding: 15px 20px;">
+                <i class="bi bi-exclamation-circle-fill me-2"></i>
+                @TempData["Warning"]
+            </div>
+        }
 
         <div class="update-listing-card">
 
@@ -29,6 +44,7 @@
                 <div>
                     <span>@Model.ListingNo</span>
                     <h3>İlan Bilgileri</h3>
+                    <p>İlan temel verilerini ve detay kategorilerini buradan düzenle.</p>
                 </div>
             </div>
 
@@ -37,135 +53,199 @@
                 <input asp-for="Id" type="hidden" />
                 <input asp-for="ListingNo" type="hidden" />
 
-                <div asp-validation-summary="ModelOnly"
-                     class="text-danger mb-3"></div>
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
 
-                <div class="row g-4">
-
+                <!-- 1. KISIM: TEMEL BİLGİLER -->
+                <div class="row g-4 mb-4 pb-4 border-bottom border-light">
                     <div class="col-lg-8">
-                        <label asp-for="Title" class="form-label">
-                            İlan Başlığı
-                        </label>
-
-                        <input asp-for="Title"
-                               class="form-control form-control-lg" />
-
-                        <span asp-validation-for="Title"
-                              class="text-danger"></span>
+                        <label asp-for="Title" class="form-label">İlan Başlığı</label>
+                        <input asp-for="Title" class="form-control form-control-lg" placeholder="Örnek: Acil Satılık 3+1 Daire" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
                     </div>
 
                     <div class="col-lg-4">
-                        <label asp-for="Price" class="form-label">
-                            Fiyat
-                        </label>
-
+                        <label asp-for="Price" class="form-label">Fiyat</label>
                         <div class="input-group">
-                            <input asp-for="Price"
-                                   class="form-control form-control-lg" />
-
+                            <input asp-for="Price" type="number" min="1" class="form-control form-control-lg" />
                             <span class="input-group-text">₺</span>
                         </div>
-
-                        <span asp-validation-for="Price"
-                              class="text-danger"></span>
+                        <span asp-validation-for="Price" class="text-danger"></span>
                     </div>
 
                     <div class="col-md-6 col-lg-3">
-                        <label asp-for="CategoryId" class="form-label">
-                            Kategori
-                        </label>
-
-                        <select asp-for="CategoryId"
-                                asp-items="Model.Categories"
-                                class="form-select form-select-lg">
+                        <label asp-for="CategoryId" class="form-label">Kategori</label>
+                        <select asp-for="CategoryId" asp-items="Model.Categories" id="categorySelect" class="form-select form-select-lg">
                             <option value="">Kategori seçiniz</option>
                         </select>
-
-                        <span asp-validation-for="CategoryId"
-                              class="text-danger"></span>
+                        <span asp-validation-for="CategoryId" class="text-danger"></span>
                     </div>
 
                     <div class="col-md-6 col-lg-3">
-                        <label asp-for="ListingTypeId" class="form-label">
-                            İlan Tipi
-                        </label>
-
-                        <select asp-for="ListingTypeId"
-                                asp-items="Model.ListingTypes"
-                                class="form-select form-select-lg">
+                        <label asp-for="ListingTypeId" class="form-label">İlan Tipi</label>
+                        <select asp-for="ListingTypeId" asp-items="Model.ListingTypes" class="form-select form-select-lg">
                             <option value="">İlan tipi seçiniz</option>
                         </select>
-
-                        <span asp-validation-for="ListingTypeId"
-                              class="text-danger"></span>
+                        <span asp-validation-for="ListingTypeId" class="text-danger"></span>
                     </div>
 
                     <div class="col-md-6 col-lg-3">
-                        <label asp-for="CityId" class="form-label">
-                            Şehir
-                        </label>
-
-                        <select asp-for="CityId"
-                                asp-items="Model.Cities"
-                                class="form-select form-select-lg">
+                        <label asp-for="CityId" class="form-label">Şehir</label>
+                        <select asp-for="CityId" asp-items="Model.Cities" id="citySelect" class="form-select form-select-lg">
                             <option value="">Şehir seçiniz</option>
                         </select>
-
-                        <span asp-validation-for="CityId"
-                              class="text-danger"></span>
+                        <span asp-validation-for="CityId" class="text-danger"></span>
                     </div>
 
                     <div class="col-md-6 col-lg-3">
-                        <label asp-for="DistrictId" class="form-label">
-                            İlçe
-                        </label>
-
-                        <select asp-for="DistrictId"
-                                asp-items="Model.Districts"
-                                class="form-select form-select-lg">
+                        <label asp-for="DistrictId" class="form-label">İlçe</label>
+                        <select asp-for="DistrictId" asp-items="Model.Districts" id="districtSelect" class="form-select form-select-lg">
                             <option value="">İlçe seçiniz</option>
                         </select>
-
-                        <span asp-validation-for="DistrictId"
-                              class="text-danger"></span>
+                        <span asp-validation-for="DistrictId" class="text-danger"></span>
                     </div>
 
                     <div class="col-12">
-                        <label asp-for="Address" class="form-label">
-                            Adres
-                        </label>
-
-                        <input asp-for="Address"
-                               class="form-control form-control-lg" />
-
-                        <span asp-validation-for="Address"
-                              class="text-danger"></span>
+                        <label asp-for="Address" class="form-label">Açık Adres</label>
+                        <input asp-for="Address" class="form-control form-control-lg" placeholder="Açık adres giriniz" />
+                        <span asp-validation-for="Address" class="text-danger"></span>
                     </div>
 
                     <div class="col-12">
-                        <label asp-for="Description" class="form-label">
-                            Açıklama
-                        </label>
-
-                        <textarea asp-for="Description"
-                                  rows="7"
-                                  class="form-control"></textarea>
-
-                        <span asp-validation-for="Description"
-                              class="text-danger"></span>
+                        <label asp-for="Description" class="form-label">Açıklama</label>
+                        <textarea asp-for="Description" rows="6" class="form-control" placeholder="İlan hakkında detaylı açıklama girin"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
                     </div>
-
                 </div>
 
-                <div class="form-actions">
-                    <button type="submit"
-                            class="save-button">
-                        <i class="bi bi-check-circle"></i>
-                        Değişiklikleri Kaydet
-                    </button>
+                <!-- 2. KISIM: DİNAMİK KATEGORİ DETAY ALANLARI -->
+                <!-- Ev Detayları -->
+                <div id="houseFields" class="detail-section d-none mb-4 p-4 border rounded-4 bg-light bg-gradient">
+                    <h5 class="fw-bold mb-3 text-primary"><i class="bi bi-house-door-fill me-2"></i>Ev Detay Bilgileri</h5>
+                    <div class="row g-3">
+                        <div class="col-md-6 col-lg-3">
+                            <label asp-for="RoomCount" class="form-label">Oda Sayısı</label>
+                            <input asp-for="RoomCount" type="number" min="0" class="form-control" />
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <label asp-for="LivingRoomCount" class="form-label">Salon Sayısı</label>
+                            <input asp-for="LivingRoomCount" type="number" min="0" class="form-control" />
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <label asp-for="GrossSquareMeters" class="form-label">Brüt m²</label>
+                            <input asp-for="GrossSquareMeters" type="number" min="0" class="form-control" />
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <label asp-for="NetSquareMeters" class="form-label">Net m²</label>
+                            <input asp-for="NetSquareMeters" type="number" min="0" class="form-control" />
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <label asp-for="BuildingAge" class="form-label">Bina Yaşı</label>
+                            <input asp-for="BuildingAge" type="number" min="0" class="form-control" />
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <label asp-for="FloorNumber" class="form-label">Bulunduğu Kat</label>
+                            <input asp-for="FloorNumber" type="number" class="form-control" />
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <label asp-for="TotalFloors" class="form-label">Toplam Kat</label>
+                            <input asp-for="TotalFloors" type="number" min="0" class="form-control" />
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <label asp-for="HeatingType" class="form-label">Isıtma Tipi</label>
+                            <input asp-for="HeatingType" class="form-control" placeholder="Örn: Kombi (Doğalgaz)" />
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-check form-switch p-3 border rounded-3 bg-white ps-5">
+                                <input asp-for="HasBalcony" class="form-check-input" type="checkbox" />
+                                <label asp-for="HasBalcony" class="form-check-label fw-bold text-dark">Balkon Var</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-check form-switch p-3 border rounded-3 bg-white ps-5">
+                                <input asp-for="IsFurnished" class="form-check-input" type="checkbox" />
+                                <label asp-for="IsFurnished" class="form-check-label fw-bold text-dark">Eşyalı</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                    <a href="/UserListing"
-                       class="cancel-button">
+                <!-- Arsa Detayları -->
+                <div id="landFields" class="detail-section d-none mb-4 p-4 border rounded-4 bg-light bg-gradient">
+                    <h5 class="fw-bold mb-3 text-primary"><i class="bi bi-map-fill me-2"></i>Arsa Detay Bilgileri</h5>
+                    <div class="row g-3">
+                        <div class="col-md-6 col-lg-4">
+                            <label asp-for="SquareMeters" class="form-label">Metrekare (m²)</label>
+                            <input asp-for="SquareMeters" type="number" min="0" class="form-control" />
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <label asp-for="ZoningStatus" class="form-label">İmar Durumu</label>
+                            <input asp-for="ZoningStatus" class="form-control" placeholder="Örn: Konut, Ticari" />
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <label asp-for="BlockNo" class="form-label">Ada No</label>
+                            <input asp-for="BlockNo" class="form-control" />
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <label asp-for="ParcelNo" class="form-label">Parsel No</label>
+                            <input asp-for="ParcelNo" class="form-control" />
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <label asp-for="SheetNo" class="form-label">Pafta No</label>
+                            <input asp-for="SheetNo" class="form-control" />
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="form-check form-switch p-3 border rounded-3 bg-white ps-5 mt-md-4">
+                                <input asp-for="IsSuitableForCredit" class="form-check-input" type="checkbox" />
+                                <label asp-for="IsSuitableForCredit" class="form-check-label fw-bold text-dark">Krediye Uygun</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Araç Detayları -->
+                <div id="vehicleFields" class="detail-section d-none mb-4 p-4 border rounded-4 bg-light bg-gradient">
+                    <h5 class="fw-bold mb-3 text-primary"><i class="bi bi-car-front-fill me-2"></i>Araç Detay Bilgileri</h5>
+                    <div class="row g-3">
+                        <div class="col-md-6 col-lg-3">
+                            <label asp-for="Brand" class="form-label">Marka</label>
+                            <input asp-for="Brand" class="form-control" placeholder="Örn: Volkswagen" />
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <label asp-for="Model" class="form-label">Model</label>
+                            <input asp-for="Model" class="form-control" placeholder="Örn: Golf" />
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <label asp-for="Year" class="form-label">Model Yılı</label>
+                            <input asp-for="Year" type="number" min="1900" max="@DateTime.Now.Year" class="form-control" />
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <label asp-for="Kilometer" class="form-label">Kilometre (KM)</label>
+                            <input asp-for="Kilometer" type="number" min="0" class="form-control" />
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <label asp-for="FuelType" class="form-label">Yakıt Tipi</label>
+                            <input asp-for="FuelType" class="form-control" placeholder="Örn: Benzin/LPG, Dizel" />
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <label asp-for="GearType" class="form-label">Vites Tipi</label>
+                            <input asp-for="GearType" class="form-control" placeholder="Örn: Düz, Otomatik" />
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <label asp-for="BodyType" class="form-label">Kasa Tipi</label>
+                            <input asp-for="BodyType" class="form-control" placeholder="Örn: Sedan, Hatchback" />
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <label asp-for="Color" class="form-label">Renk</label>
+                            <input asp-for="Color" class="form-control" placeholder="Örn: Beyaz" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-actions border-top pt-4">
+                    <button type="submit" class="save-button btn btn-primary px-4 py-2 me-2">
+                        <i class="bi bi-check-circle me-1"></i> Değişiklikleri Kaydet
+                    </button>
+                    <a href="/UserListing" class="cancel-button btn btn-secondary px-4 py-2">
                         Vazgeç
                     </a>
                 </div>
@@ -177,8 +257,9 @@
 
 <style>
     .update-listing-header {
-        padding: 65px 0 45px;
-        background: radial-gradient(circle at 15% 20%, rgba(37, 99, 235, .14), transparent 30%), linear-gradient(135deg, #eff6ff, #f8fafc);
+        padding: 55px 0 35px;
+        background: linear-gradient(135deg, #f0f7ff, #f8fafc);
+        border-bottom: 1px solid #e2e8f0;
     }
 
     .page-label {
@@ -187,113 +268,138 @@
         font-weight: 800;
         letter-spacing: 1.5px;
         text-transform: uppercase;
+        display: block;
+        margin-bottom: 5px;
     }
 
     .update-listing-header h1 {
-        margin: 8px 0;
+        margin: 0 0 8px;
         color: #0f172a;
-        font-size: clamp(34px, 5vw, 52px);
-        font-weight: 850;
+        font-size: 2.2rem;
+        font-weight: 800;
     }
 
     .update-listing-header p {
-        max-width: 700px;
         margin: 0;
         color: #64748b;
-        font-size: 17px;
+        font-size: 16px;
     }
 
     .update-listing-content {
-        padding: 55px 0 100px;
+        padding: 40px 0 80px;
+        background-color: #f8fafc;
     }
 
     .update-listing-card {
-        max-width: 1050px;
+        max-width: 1000px;
         margin: auto;
-        padding: 38px;
+        padding: 35px;
         border: 1px solid #e2e8f0;
-        border-radius: 26px;
+        border-radius: 20px;
         background: #fff;
-        box-shadow: 0 18px 50px rgba(15, 23, 42, .08);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
     }
 
     .form-header {
         display: flex;
         align-items: center;
         gap: 16px;
-        margin-bottom: 35px;
+        margin-bottom: 30px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #f1f5f9;
     }
 
     .form-header-icon {
-        width: 62px;
-        height: 62px;
+        width: 55px;
+        height: 55px;
         display: grid;
         place-items: center;
-        border-radius: 18px;
+        border-radius: 14px;
         background: #eff6ff;
         color: #2563eb;
-        font-size: 28px;
+        font-size: 24px;
+        flex-shrink: 0;
     }
 
     .form-header span {
         color: #2563eb;
-        font-size: 12px;
+        font-size: 11px;
         font-weight: 800;
+        text-transform: uppercase;
+        display: block;
     }
 
     .form-header h3 {
-        margin: 4px 0 0;
+        margin: 2px 0;
         color: #0f172a;
-        font-weight: 850;
+        font-weight: 800;
+        font-size: 1.3rem;
+    }
+
+    .form-header p {
+        margin: 0;
+        color: #64748b;
+        font-size: 13px;
     }
 
     .form-label {
-        color: #334155;
-        font-weight: 750;
+        color: #475569;
+        font-weight: 700;
+        font-size: 14px;
+        margin-bottom: 6px;
     }
 
     .form-control,
     .form-select,
     .input-group-text {
-        border-color: #dbe3ef;
+        border-color: #cbd5e1;
+        border-radius: 10px;
+        font-size: 15px;
     }
 
-        .form-control:focus,
-        .form-select:focus {
-            border-color: #2563eb;
-            box-shadow: 0 0 0 .2rem rgba(37, 99, 235, .12);
-        }
+    .form-control-lg, .form-select-lg {
+        min-height: 48px;
+        font-size: 16px;
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+        border-color: #2563eb;
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+
+    .input-group-text {
+        background: #f8fafc;
+        color: #475569;
+        font-weight: 700;
+    }
+
+    .detail-section {
+        box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+    }
+
+    .bg-light {
+        background-color: #f8fafc !important;
+    }
 
     .text-danger {
-        display: block;
-        margin-top: 5px;
-        font-size: 13px;
+        font-size: 12px;
+        margin-top: 4px;
+        font-weight: 600;
     }
 
     .form-actions {
         display: flex;
-        gap: 12px;
-        margin-top: 32px;
-        padding-top: 25px;
-        border-top: 1px solid #eef2f7;
-    }
-
-    .save-button,
-    .cancel-button {
-        min-height: 50px;
-        display: inline-flex;
-        justify-content: center;
         align-items: center;
-        gap: 8px;
-        border-radius: 13px;
-        padding: 0 22px;
-        font-weight: 800;
     }
 
     .save-button {
-        border: 0;
         background: #2563eb;
-        color: #fff;
+        border: 0;
+        font-weight: 700;
+        padding: 10px 24px;
+        border-radius: 10px;
+        transition: all 0.2s ease;
     }
 
         .save-button:hover {
@@ -303,20 +409,111 @@
     .cancel-button {
         background: #f1f5f9;
         color: #475569;
+        border: 1px solid #cbd5e1;
+        font-weight: 700;
+        padding: 10px 24px;
+        border-radius: 10px;
         text-decoration: none;
+        transition: all 0.2s ease;
     }
 
-    @@media (max-width: 575.98px) {
-        .update-listing-card {
-            padding: 24px;
+        .cancel-button:hover {
+            background: #e2e8f0;
+            color: #0f172a;
         }
-
-        .form-actions {
-            flex-direction: column;
-        }
-    }
 </style>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const categorySelect = document.getElementById("categorySelect");
+            const houseFields = document.getElementById("houseFields");
+            const landFields = document.getElementById("landFields");
+            const vehicleFields = document.getElementById("vehicleFields");
+
+            function hideAllDetails() {
+                houseFields.classList.add("d-none");
+                landFields.classList.add("d-none");
+                vehicleFields.classList.add("d-none");
+            }
+
+            function showDetailFields() {
+                hideAllDetails();
+
+                if (!categorySelect.value) {
+                    return;
+                }
+
+                const selectedText = categorySelect.options[categorySelect.selectedIndex].text
+                    .trim()
+                    .toLocaleLowerCase("tr-TR");
+
+                if (selectedText === "ev") {
+                    houseFields.classList.remove("d-none");
+                }
+                else if (selectedText === "arsa") {
+                    landFields.classList.remove("d-none");
+                }
+                else if (selectedText === "araç" || selectedText === "arac") {
+                    vehicleFields.classList.remove("d-none");
+                }
+            }
+
+            // Kategori değişimini dinle
+            categorySelect.addEventListener("change", showDetailFields);
+
+            // Sayfa açıldığında mevcut kategoriye göre alanları göster
+            showDetailFields();
+
+            // Şehir - İlçe İlişkisi (AJAX)
+            const citySelect = document.getElementById("citySelect");
+            const districtSelect = document.getElementById("districtSelect");
+
+            citySelect.addEventListener("change", async function () {
+                const cityId = this.value;
+
+                districtSelect.innerHTML = '<option value="">İlçe seçiniz</option>';
+                districtSelect.disabled = true;
+
+                if (!cityId) {
+                    districtSelect.innerHTML = '<option value="">Önce şehir seçiniz</option>';
+                    return;
+                }
+
+                try {
+                    // Dinamik ASP.NET Route eşlemesi yapıldı
+                    const response = await fetch(
+                        `@Url.Action("GetDistrictsByCity", "UserListing")?cityId=${cityId}`
+                    );
+
+                    if (!response.ok) {
+                        throw new Error("İlçeler alınamadı.");
+                    }
+
+                    const districts = await response.json();
+
+                    districts.forEach(function (district) {
+                        const option = document.createElement("option");
+                        option.value = district.id;
+                        option.textContent = district.name;
+
+                        // Eğer modeldeki ilçeye eşitse seçili hale getir
+                        if(district.id == "@Model.DistrictId") {
+                            option.selected = true;
+                        }
+
+                        districtSelect.appendChild(option);
+                    });
+
+                    districtSelect.disabled = false;
+                }
+                catch (error) {
+                    districtSelect.innerHTML = '<option value="">İlçeler yüklenemedi</option>';
+                    console.error(error);
+                }
+            });
+        });
+    </script>
 }

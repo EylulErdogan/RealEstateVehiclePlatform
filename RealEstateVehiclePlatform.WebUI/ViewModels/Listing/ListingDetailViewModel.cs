@@ -1,4 +1,5 @@
-﻿using RealEstateVehiclePlatform.WebUI.ViewModels.ListingImage;
+﻿using RealEstateVehiclePlatform.WebUI.ViewModels.ListingDetail;
+using RealEstateVehiclePlatform.WebUI.ViewModels.ListingImage;
 
 namespace RealEstateVehiclePlatform.WebUI.ViewModels.Listing
 {
@@ -29,6 +30,7 @@ namespace RealEstateVehiclePlatform.WebUI.ViewModels.Listing
         public string ListingTypeName { get; set; } = string.Empty;
 
         public int CityId { get; set; }
+        public bool IsFavorite { get; set; }
 
         public string CityName { get; set; } = string.Empty;
 
@@ -41,5 +43,11 @@ namespace RealEstateVehiclePlatform.WebUI.ViewModels.Listing
         public string OwnerFullName { get; set; } = string.Empty;
 
         public List<ListingImageViewModel> Images { get; set; } = new();
+
+        public HouseDetailViewModel? HouseDetail { get; set; }
+
+        public LandDetailViewModel? LandDetail { get; set; }
+
+        public VehicleDetailViewModel? VehicleDetail { get; set; }
     }
 }

@@ -8,216 +8,271 @@
         .OrderByDescending(x => x.IsMainImage)
         .ThenBy(x => x.DisplayOrder)
         .FirstOrDefault();
-}
-@{
-    var currentUserId =
-        Context.Session.GetInt32("UserId");
 
-    var isOwner =
-        currentUserId.HasValue &&
-        currentUserId.Value == Model.UserId;
+    var currentUserId = Context.Session.GetInt32("UserId");
+
+    var isOwner = currentUserId.HasValue && currentUserId.Value == Model.UserId;
+
+    var isLoggedIn = Context.Session.GetString("Token") != null;
 }
 
-<section class="listing-detail-section">
+<section class="listing-detail-section bg-light py-5">
     <div class="container">
 
-        <div class="detail-breadcrumb mb-4">
+        <!-- Ekmek Kırıntısı (Breadcrumb) Navigasyon -->
+        <nav class="detail-breadcrumb mb-4">
             <a href="/">Ana Sayfa</a>
-            <i class="bi bi-chevron-right"></i>
+            <i class="bi bi-chevron-right text-muted mx-1"></i>
             <a href="/Listing">İlanlar</a>
-            <i class="bi bi-chevron-right"></i>
-            <span>@Model.Title</span>
-        </div>
+            <i class="bi bi-chevron-right text-muted mx-1"></i>
+            <span class="text-dark fw-bold">@Model.Title</span>
+        </nav>
+
+        <!-- Hata ve Uyarı Mesajları -->
+        @if (TempData["Error"] != null)
+        {
+            <div class="alert alert-danger mb-4" style="border-radius: 12px;">
+                <i class="bi bi-exclamation-triangle-fill me-2"></i> @TempData["Error"]
+            </div>
+        }
 
         <div class="row g-4">
 
+            <!-- SOL KOLON: GALERİ VE DETAYLAR -->
             <div class="col-lg-8">
 
-                <div class="detail-gallery-card">
-
+                <!-- 1. GÖRSEL GALERİ KARTI -->
+                <div class="detail-gallery-card border-0 shadow-sm mb-4 bg-white overflow-hidden rounded-4">
                     <div class="main-image-area">
                         @if (mainImage != null && !string.IsNullOrWhiteSpace(mainImage.ImageUrl))
                         {
-                            <img id="mainListingImage"
-                                 src="@mainImage.ImageUrl"
-                                 alt="@Model.Title" />
+                            <img id="mainListingImage" src="@mainImage.ImageUrl" alt="@Model.Title" />
                         }
                         else
                         {
-                            <div class="image-placeholder">
-                                <i class="bi bi-buildings"></i>
+                            <div class="image-placeholder bg-dark text-white d-flex flex-column justify-content-center align-items-center">
+                                <i class="bi bi-buildings fs-1 mb-2"></i>
                                 <span>İlan görseli bulunmuyor</span>
                             </div>
                         }
-
-                        <span class="listing-no-badge">
-                            @Model.ListingNo
-                        </span>
+                        <span class="listing-no-badge">@Model.ListingNo</span>
                     </div>
 
                     @if (Model.Images.Count > 1)
                     {
-                        <div class="thumbnail-list">
+                        <div class="thumbnail-list d-flex gap-2 p-3 overflow-auto border-top">
                             @foreach (var image in Model.Images.OrderBy(x => x.DisplayOrder))
                             {
-                                <button type="button"
-                                        class="thumbnail-button"
-                                        data-image-url="@image.ImageUrl">
-                                    <img src="@image.ImageUrl"
-                                         alt="@Model.Title" />
+                                <button type="button" class="thumbnail-button border rounded-3 p-0 overflow-hidden" data-image-url="@image.ImageUrl">
+                                    <img src="@image.ImageUrl" alt="@Model.Title" class="w-100 h-100 object-fit-cover" />
                                 </button>
                             }
                         </div>
                     }
-
                 </div>
 
-                <div class="detail-content-card mt-4">
-
+                <!-- 2. İLAN TEMEL BİLGİLERİ KARTI -->
+                <div class="detail-content-card border-0 shadow-sm mb-4 bg-white p-4 rounded-4">
                     <div class="d-flex justify-content-between align-items-start gap-3 mb-3">
                         <div>
-                            <span class="detail-status">
+                            <span class="detail-status bg-success-subtle text-success border-0 px-3 py-2 rounded-pill fs-8 fw-bold">
                                 Güncel İlan
                             </span>
-
-                            <h1 class="detail-title">
-                                @Model.Title
-                            </h1>
+                            <h1 class="detail-title fw-extrabold text-dark mt-3">@Model.Title</h1>
                         </div>
 
-                        <button type="button"
-                                class="favorite-detail-button"
-                                data-listing-id="@Model.Id">
-                            <i class="bi bi-heart"></i>
-                        </button>
+                        @if (isLoggedIn && !isOwner)
+                        {
+                            <button type="button" class="favorite-detail-button @(Model.IsFavorite ? "is-favorite" : "")" data-listing-id="@Model.Id">
+                                <i class="bi @(Model.IsFavorite ? "bi-heart-fill" : "bi-heart")"></i>
+                            </button>
+                        }
                     </div>
 
-                    <div class="detail-meta">
-                        <p class="listing-address">
-                            <i class="bi bi-geo-alt"></i>
-
-                            @if (!string.IsNullOrWhiteSpace(Model.DistrictName) ||
-                                 !string.IsNullOrWhiteSpace(Model.CityName))
+                    <div class="detail-meta d-flex flex-wrap gap-3 text-secondary fs-7 border-top pt-3">
+                        <span class="listing-address">
+                            <i class="bi bi-geo-alt-fill text-primary"></i>
+                            @if (!string.IsNullOrWhiteSpace(Model.DistrictName) || !string.IsNullOrWhiteSpace(Model.CityName))
                             {
-                                <span>
-                                    @Model.DistrictName / @Model.CityName
-                                </span>
+                                <strong>@Model.DistrictName / @Model.CityName</strong>
                             }
-
                             <span>@Model.Address</span>
-                        </p>
-
-                        <span>
-                            <i class="bi bi-eye"></i>
-                            @Model.ViewCount görüntülenme
                         </span>
-
-                        <span>
-                            <i class="bi bi-hash"></i>
-                            @Model.ListingNo
-                        </span>
+                        <span><i class="bi bi-eye-fill text-primary"></i> @Model.ViewCount görüntülenme</span>
+                        <span><i class="bi bi-calendar-event-fill text-primary"></i> İlan Tarihi: Bugün</span>
                     </div>
+                </div>
 
-                    <hr />
+                <!-- 3. KATEGORİ TEKNİK ÖZELLİKLERİ KARTI -->
+                @if (Model.HouseDetail != null)
+                {
+                    <div class="detail-content-card border-0 shadow-sm mb-4 bg-white p-4 rounded-4">
+                        <div class="feature-section-header d-flex align-items-center gap-3 mb-4 pb-2 border-bottom">
+                            <div class="feature-section-icon bg-primary-subtle text-primary rounded-3 d-grid place-items-center">
+                                <i class="bi bi-house-door-fill fs-4"></i>
+                            </div>
+                            <div>
+                                <span class="text-primary fw-bold fs-8 uppercase">Konut Özellikleri</span>
+                                <h4 class="fw-bold text-dark m-0">Emlak Teknik Detayları</h4>
+                            </div>
+                        </div>
 
-                    <h5 class="section-title">
-                        İlan Açıklaması
-                    </h5>
+                        <div class="feature-grid">
+                            <div class="feature-item"><span>Oda Sayısı</span><strong>@(Model.HouseDetail.RoomCount?.ToString() ?? "-")</strong></div>
+                            <div class="feature-item"><span>Salon Sayısı</span><strong>@(Model.HouseDetail.LivingRoomCount?.ToString() ?? "-")</strong></div>
+                            <div class="feature-item"><span>Brüt Alan</span><strong>@(Model.HouseDetail.GrossSquareMeters?.ToString() ?? "-") m²</strong></div>
+                            <div class="feature-item"><span>Net Alan</span><strong>@(Model.HouseDetail.NetSquareMeters?.ToString() ?? "-") m²</strong></div>
+                            <div class="feature-item"><span>Bina Yaşı</span><strong>@(Model.HouseDetail.BuildingAge?.ToString() ?? "-") Yıl</strong></div>
+                            <div class="feature-item"><span>Bulunduğu Kat</span><strong>@(Model.HouseDetail.FloorNumber?.ToString() ?? "-")</strong></div>
+                            <div class="feature-item"><span>Toplam Kat</span><strong>@(Model.HouseDetail.TotalFloors?.ToString() ?? "-")</strong></div>
+                            <div class="feature-item"><span>Isıtma Tipi</span><strong>@(Model.HouseDetail.HeatingType ?? "-")</strong></div>
+                            <div class="feature-item"><span>Balkon</span><strong>@(Model.HouseDetail.HasBalcony ? "Var" : "Yok")</strong></div>
+                            <div class="feature-item"><span>Eşya Durumu</span><strong>@(Model.HouseDetail.IsFurnished ? "Eşyalı" : "Eşyasız")</strong></div>
+                        </div>
+                    </div>
+                }
+                else if (Model.LandDetail != null)
+                {
+                    <div class="detail-content-card border-0 shadow-sm mb-4 bg-white p-4 rounded-4">
+                        <div class="feature-section-header d-flex align-items-center gap-3 mb-4 pb-2 border-bottom">
+                            <div class="feature-section-icon bg-primary-subtle text-primary rounded-3 d-grid place-items-center">
+                                <i class="bi bi-map-fill fs-4"></i>
+                            </div>
+                            <div>
+                                <span class="text-primary fw-bold fs-8 uppercase">Arsa Özellikleri</span>
+                                <h4 class="fw-bold text-dark m-0">Tapu & İmar Detayları</h4>
+                            </div>
+                        </div>
 
-                    <p class="detail-description">
+                        <div class="feature-grid">
+                            <div class="feature-item"><span>Metrekare (m²)</span><strong>@(Model.LandDetail.SquareMeters?.ToString() ?? "-") m²</strong></div>
+                            <div class="feature-item"><span>İmar Durumu</span><strong>@(Model.LandDetail.ZoningStatus ?? "-")</strong></div>
+                            <div class="feature-item"><span>Ada No</span><strong>@(Model.LandDetail.BlockNo ?? "-")</strong></div>
+                            <div class="feature-item"><span>Parsel No</span><strong>@(Model.LandDetail.ParcelNo ?? "-")</strong></div>
+                            <div class="feature-item"><span>Pafta No</span><strong>@(Model.LandDetail.SheetNo ?? "-")</strong></div>
+                            <div class="feature-item"><span>Krediye Uygunluk</span><strong>@(Model.LandDetail.IsSuitableForCredit ? "Uygun" : "Uygun Değil")</strong></div>
+                        </div>
+                    </div>
+                }
+                else if (Model.VehicleDetail != null)
+                {
+                    <div class="detail-content-card border-0 shadow-sm mb-4 bg-white p-4 rounded-4">
+                        <div class="feature-section-header d-flex align-items-center gap-3 mb-4 pb-2 border-bottom">
+                            <div class="feature-section-icon bg-primary-subtle text-primary rounded-3 d-grid place-items-center">
+                                <i class="bi bi-car-front-fill fs-4"></i>
+                            </div>
+                            <div>
+                                <span class="text-primary fw-bold fs-8 uppercase">Araç Özellikleri</span>
+                                <h4 class="fw-bold text-dark m-0">Motor & Donanım Detayları</h4>
+                            </div>
+                        </div>
+
+                        <div class="feature-grid">
+                            <div class="feature-item"><span>Marka</span><strong>@(Model.VehicleDetail.Brand ?? "-")</strong></div>
+                            <div class="feature-item"><span>Model</span><strong>@(Model.VehicleDetail.Model ?? "-")</strong></div>
+                            <div class="feature-item"><span>Model Yılı</span><strong>@(Model.VehicleDetail.Year?.ToString() ?? "-")</strong></div>
+                            <div class="feature-item"><span>Kilometre (KM)</span><strong>@(Model.VehicleDetail.Kilometer.HasValue ? Model.VehicleDetail.Kilometer.Value.ToString("N0") + " km" : "-")</strong></div>
+                            <div class="feature-item"><span>Yakıt Tipi</span><strong>@(Model.VehicleDetail.FuelType ?? "-")</strong></div>
+                            <div class="feature-item"><span>Vites Tipi</span><strong>@(Model.VehicleDetail.GearType ?? "-")</strong></div>
+                            <div class="feature-item"><span>Kasa Tipi</span><strong>@(Model.VehicleDetail.BodyType ?? "-")</strong></div>
+                            <div class="feature-item"><span>Renk</span><strong>@(Model.VehicleDetail.Color ?? "-")</strong></div>
+                        </div>
+                    </div>
+                }
+
+                <!-- 4. AÇIKLAMA KARTI -->
+                <div class="detail-content-card border-0 shadow-sm bg-white p-4 rounded-4" id="descriptionCard">
+                    <h5 class="fw-bold text-dark mb-3 border-bottom pb-2">İlan Açıklaması</h5>
+                    <p class="detail-description text-secondary">
                         @Model.Description
                     </p>
-
                 </div>
 
             </div>
 
+            <!-- SAĞ KOLON: FİYAT VE İLAN SAHİBİ AKSİYONLARI -->
             <div class="col-lg-4">
 
-                <div class="price-card">
-                    <small>İlan Fiyatı</small>
-
-                    <h2>
+                <!-- 1. FİYAT VE AKSİYON PANELİ -->
+                <div class="price-card border-0 shadow-sm bg-white p-4 rounded-4">
+                    <span class="text-muted fs-8 fw-bold text-uppercase">İlan Fiyatı</span>
+                    <h2 class="price-value mt-1 mb-4 text-primary fw-extrabold">
                         @Model.Price.ToString("N0") ₺
                     </h2>
 
-                    <div class="action-list">
-
-                        @if (isOwner)
+                    <div class="action-list d-flex flex-column gap-2">
+                        @if (!isOwner)
                         {
-                            <a href="/UserListing/Update/@Model.Id"
-                               class="detail-action-button secondary-action">
-                                <i class="bi bi-pencil-square"></i>
-                                İlanımı Düzenle
-                            </a>
+                            if (isLoggedIn)
+                            {
+                                <button type="button" id="detailFavoriteButton" class="detail-favorite-button @(Model.IsFavorite ? "is-favorite" : "")" data-listing-id="@Model.Id">
+                                    <i class="bi @(Model.IsFavorite ? "bi-heart-fill" : "bi-heart")"></i>
+                                    <span>@(Model.IsFavorite ? "Favorilerden Çıkar" : "Favorilere Ekle")</span>
+                                </button>
 
-                            <a href="/UserListingImage?listingId=@Model.Id"
-                               class="detail-action-button secondary-action">
-                                <i class="bi bi-images"></i>
-                                Görselleri Yönet
-                            </a>
-                        }
-                        else if (Context.Session.GetString("Token") != null)
-                        {
-                            <a href="/UserAppointment/Create?listingId=@Model.Id"
-                               class="detail-action-button primary-action">
-                                <i class="bi bi-calendar-check"></i>
-                                Randevu Oluştur
-                            </a>
+                                <a href="/UserAppointment/Create?listingId=@Model.Id" class="detail-action-button primary-action">
+                                    <i class="bi bi-calendar-check"></i> Randevu Oluştur
+                                </a>
 
-                            <a href="/UserMessage/Start?listingId=@Model.Id&receiverId=@Model.UserId"
-                               class="detail-action-button secondary-action">
-                                <i class="bi bi-chat-dots"></i>
-                                İlan Sahibine Mesaj Gönder
-                            </a>
+                                <a href="/UserMessage/Start?listingId=@Model.Id&receiverId=@Model.UserId" class="detail-action-button secondary-action">
+                                    <i class="bi bi-chat-dots"></i> İlan Sahibine Mesaj Gönder
+                                </a>
+                            }
+                            else
+                            {
+                                <a href="/Account/Login" class="detail-action-button primary-action text-center">
+                                    <i class="bi bi-box-arrow-in-right"></i> İşlem Yapmak İçin Giriş Yap
+                                </a>
+                            }
                         }
                         else
                         {
-                            <a href="/Account/Login"
-                               class="detail-action-button primary-action">
-                                <i class="bi bi-box-arrow-in-right"></i>
-                                İşlem yapmak için giriş yap
+                            <a href="/UserListing/Update/@Model.Id" class="detail-action-button secondary-action text-center w-100">
+                                <i class="bi bi-pencil-square"></i> İlanımı Düzenle
+                            </a>
+
+                            <a href="/UserListingImage?listingId=@Model.Id" class="detail-action-button secondary-action text-center w-100">
+                                <i class="bi bi-images"></i> Görselleri Yönet
                             </a>
                         }
 
+                        <!-- PDF İlan Broşürü İndirme Butonu (ORTAK) -->
+                        <button type="button" id="downloadPdfButton" class="detail-action-button secondary-action text-center w-100">
+                            <i class="bi bi-file-earmark-pdf"></i> İlan Broşürü (PDF)
+                        </button>
                     </div>
                 </div>
 
-                <div class="info-card mt-4">
-                    <h5>İlan Bilgileri</h5>
-                    <div class="info-row">
-                        <span>Kategori</span>
-                        <strong>@Model.CategoryName</strong>
+                <!-- 2. İSTATİSTİK & DETAY BİLGİ PANELİ -->
+                <div class="info-card border-0 shadow-sm bg-white p-4 rounded-4 mt-4">
+                    <h5 class="fw-bold text-dark border-bottom pb-2 mb-3">İlan Bilgileri</h5>
+                    <div class="info-row d-flex justify-content-between py-2 border-bottom fs-7">
+                        <span class="text-secondary">Kategori</span>
+                        <strong class="text-dark">@Model.CategoryName</strong>
                     </div>
-
-                    <div class="info-row">
-                        <span>İlan Tipi</span>
-                        <strong>@Model.ListingTypeName</strong>
+                    <div class="info-row d-flex justify-content-between py-2 border-bottom fs-7">
+                        <span class="text-secondary">İlan Tipi</span>
+                        <strong class="text-dark">@Model.ListingTypeName</strong>
                     </div>
-
-                    <div class="info-row">
-                        <span>Şehir</span>
-                        <strong>@Model.CityName</strong>
+                    <div class="info-row d-flex justify-content-between py-2 border-bottom fs-7">
+                        <span class="text-secondary">Konum</span>
+                        <strong class="text-dark">@Model.DistrictName / @Model.CityName</strong>
                     </div>
-
-                    <div class="info-row">
-                        <span>İlçe</span>
-                        <strong>@Model.DistrictName</strong>
-                    </div>
-
-                    <div class="info-row">
-                        <span>İlan Sahibi</span>
-                        <strong>@Model.OwnerFullName</strong>
+                    <div class="info-row d-flex justify-content-between py-2 border-bottom fs-7">
+                        <span class="text-secondary">İlan Sahibi</span>
+                        <strong class="text-dark">@Model.OwnerFullName</strong>
                     </div>
                 </div>
 
-                <div class="security-card mt-4">
-                    <i class="bi bi-shield-check"></i>
-
+                <!-- 3. GÜVENLİK PANELİ -->
+                <div class="security-card border-0 shadow-sm bg-success-subtle p-3 rounded-4 mt-4 d-flex align-items-start gap-3">
+                    <div class="security-icon text-success">
+                        <i class="bi bi-shield-check fs-2"></i>
+                    </div>
                     <div>
-                        <h6>Güvenli işlem</h6>
-                        <p>
-                            Ödeme veya kişisel bilgilerinizi doğrulamadan paylaşmayın.
+                        <h6 class="fw-bold text-success mb-1">Güvenli İşlem Uyarısı</h6>
+                        <p class="text-secondary fs-8 m-0" style="line-height: 1.45;">
+                            Platform güvenliğiniz için ödeme yapmadan önce ürünü/gayrimenkulü fiziksel olarak görün, kişisel ve finansal bilgilerinizi paylaşmayın.
                         </p>
                     </div>
                 </div>
@@ -229,166 +284,136 @@
 </section>
 
 <style>
-    .listing-detail-section {
-        padding: 55px 0 90px;
-    }
-
     .detail-breadcrumb {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        color: #94a3b8;
-        font-size: 14px;
+        font-size: 0.85rem;
     }
 
         .detail-breadcrumb a {
             color: #64748b;
             text-decoration: none;
+            transition: color 0.2s ease;
         }
 
             .detail-breadcrumb a:hover {
                 color: #2563eb;
             }
 
-    .detail-gallery-card,
-    .detail-content-card,
-    .price-card,
-    .info-card,
-    .security-card {
-        border: 1px solid #e2e8f0;
-        border-radius: 24px;
-        background: #fff;
-        box-shadow: 0 14px 40px rgba(15, 23, 42, .06);
-    }
-
-    .detail-gallery-card {
-        overflow: hidden;
-    }
-
     .main-image-area {
         position: relative;
-        min-height: 480px;
-        background: linear-gradient(135deg, #2563eb, #1e3a8a);
+        width: 100%;
+        height: 480px;
+        background-color: #0f172a;
     }
 
-        .main-image-area > img {
+        .main-image-area img {
             width: 100%;
-            height: 480px;
-            object-fit: cover;
-        }
-
-    .image-placeholder {
-        min-height: 480px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 16px;
-        color: rgba(255,255,255,.75);
-    }
-
-        .image-placeholder i {
-            font-size: 85px;
+            height: 100%;
+            object-fit: contain;
         }
 
     .listing-no-badge {
         position: absolute;
-        left: 20px;
-        bottom: 20px;
-        padding: 8px 13px;
-        border-radius: 10px;
-        background: rgba(15,23,42,.72);
+        bottom: 16px;
+        left: 16px;
+        background: rgba(15, 23, 42, 0.75);
         color: #fff;
+        font-size: 12px;
         font-weight: 700;
-    }
-
-    .thumbnail-list {
-        display: flex;
-        gap: 12px;
-        overflow-x: auto;
-        padding: 16px;
+        padding: 6px 12px;
+        border-radius: 6px;
+        backdrop-filter: blur(4px);
     }
 
     .thumbnail-button {
-        width: 95px;
-        height: 72px;
-        flex: 0 0 auto;
-        overflow: hidden;
-        border: 2px solid transparent;
-        border-radius: 12px;
-        padding: 0;
-        background: none;
+        width: 80px;
+        height: 60px;
+        flex-shrink: 0;
+        border: 2px solid transparent !important;
+        cursor: pointer;
+        opacity: 0.7;
+        transition: all 0.2s ease;
     }
 
-        .thumbnail-button:hover {
-            border-color: #2563eb;
+        .thumbnail-button:hover, .thumbnail-button.active {
+            opacity: 1;
+            border-color: #2563eb !important;
+            transform: scale(1.05);
         }
-
-        .thumbnail-button img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-    .detail-content-card,
-    .price-card,
-    .info-card {
-        padding: 28px;
-    }
-
-    .detail-status {
-        display: inline-block;
-        margin-bottom: 12px;
-        padding: 7px 12px;
-        border-radius: 999px;
-        background: #dcfce7;
-        color: #15803d;
-        font-size: 12px;
-        font-weight: 700;
-    }
 
     .detail-title {
-        margin: 0;
-        color: #0f172a;
-        font-size: clamp(27px, 4vw, 42px);
-        font-weight: 850;
+        font-size: 1.8rem;
+        letter-spacing: -0.5px;
     }
 
     .favorite-detail-button {
-        width: 48px;
-        height: 48px;
-        flex: 0 0 auto;
-        border: 0;
+        width: 44px;
+        height: 44px;
         border-radius: 50%;
-        background: #fef2f2;
+        border: 0;
+        background-color: #fef2f2;
         color: #ef4444;
-        font-size: 21px;
+        font-size: 20px;
+        display: grid;
+        place-items: center;
+        transition: all 0.2s ease;
     }
 
+        .favorite-detail-button:hover {
+            transform: scale(1.08);
+            background-color: #fee2e2;
+        }
+
+        .favorite-detail-button.is-favorite {
+            background-color: #ef4444;
+            color: #fff;
+        }
+
     .detail-meta {
+        border-top: 1px solid #f1f5f9;
+    }
+
+    .fs-7 {
+        font-size: 0.85rem;
+    }
+
+    .fs-8 {
+        font-size: 0.75rem;
+    }
+
+    .feature-section-icon {
+        width: 48px;
+        height: 48px;
+        flex-shrink: 0;
+    }
+
+    .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .feature-item {
         display: flex;
-        flex-wrap: wrap;
-        gap: 18px;
-        color: #64748b;
+        justify-content: space-between;
+        align-items: center;
+        background: #f8fafc;
+        border: 1px solid #f1f5f9;
+        padding: 12px 16px;
+        border-radius: 10px;
         font-size: 14px;
     }
 
-        .detail-meta span {
-            display: flex;
-            align-items: center;
-            gap: 6px;
+        .feature-item span {
+            color: #64748b;
         }
 
-    .section-title {
-        margin-bottom: 16px;
-        color: #0f172a;
-        font-weight: 800;
-    }
+        .feature-item strong {
+            color: #0f172a;
+        }
 
     .detail-description {
-        margin: 0;
-        color: #475569;
         line-height: 1.8;
+        font-size: 15px;
         white-space: pre-line;
     }
 
@@ -397,32 +422,23 @@
         top: 95px;
     }
 
-        .price-card small {
-            color: #64748b;
-        }
-
-        .price-card h2 {
-            margin: 8px 0 25px;
-            color: #2563eb;
-            font-size: 34px;
-            font-weight: 850;
-        }
-
-    .action-list {
-        display: flex;
-        flex-direction: column;
-        gap: 11px;
+    .price-value {
+        font-size: 2.2rem;
     }
 
     .detail-action-button {
-        min-height: 52px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 9px;
-        border-radius: 13px;
+        width: 100%;
+        min-height: 46px;
+        border-radius: 10px;
         font-weight: 700;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        transition: all 0.2s ease;
         text-decoration: none;
+        cursor: pointer;
     }
 
     .primary-action {
@@ -432,90 +448,258 @@
 
         .primary-action:hover {
             background: #1d4ed8;
-            color: #fff;
+            transform: translateY(-2px);
         }
 
     .secondary-action {
-        border: 1px solid #bfdbfe;
         background: #eff6ff;
         color: #1d4ed8;
+        border: 1px solid #bfdbfe;
     }
 
         .secondary-action:hover {
-            border-color: #2563eb;
-            color: #1d4ed8;
+            background: #dbeafe;
+            color: #1e40af;
+            transform: translateY(-2px);
         }
 
-    .info-card h5 {
-        margin-bottom: 18px;
-        font-weight: 800;
-    }
-
-    .info-row {
+    .detail-favorite-button {
+        width: 100%;
+        min-height: 46px;
         display: flex;
-        justify-content: space-between;
-        gap: 15px;
-        padding: 13px 0;
-        border-bottom: 1px solid #eef2f7;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        border: 1px solid #fecaca;
+        border-radius: 10px;
+        background: #fff;
+        color: #ef4444;
+        font-weight: 700;
+        font-size: 14px;
+        cursor: pointer;
+        transition: all 0.2s ease;
     }
 
-        .info-row:last-child {
-            border-bottom: 0;
+        .detail-favorite-button:hover {
+            background: #fef2f2;
         }
 
-        .info-row span {
-            color: #64748b;
+        .detail-favorite-button.is-favorite {
+            background: #ef4444;
+            color: #fff;
+            border-color: #ef4444;
         }
 
-    .security-card {
-        display: flex;
-        align-items: flex-start;
-        gap: 14px;
-        padding: 22px;
+            .detail-favorite-button.is-favorite:hover {
+                background: #dc2626;
+                border-color: #dc2626;
+            }
+
+    .info-row span {
+        font-weight: 550;
     }
-
-        .security-card > i {
-            color: #16a34a;
-            font-size: 30px;
-        }
-
-        .security-card h6 {
-            margin-bottom: 5px;
-            font-weight: 800;
-        }
-
-        .security-card p {
-            margin: 0;
-            color: #64748b;
-            font-size: 14px;
-            line-height: 1.55;
-        }
 
     @@media (max-width: 991.98px) {
         .price-card {
             position: static;
         }
 
-        .main-image-area,
-        .main-image-area > img,
-        .image-placeholder {
-            min-height: 360px;
-            height: 360px;
+        .main-image-area {
+            height: 350px;
+        }
+
+        .feature-grid {
+            grid-template-columns: 1fr;
         }
     }
 </style>
 
 @section Scripts {
-    <script>
-        document.querySelectorAll(".thumbnail-button").forEach(function (button) {
-            button.addEventListener("click", function () {
-                const imageUrl = this.dataset.imageUrl;
-                const mainImage = document.getElementById("mainListingImage");
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-                if (mainImage && imageUrl) {
-                    mainImage.src = imageUrl;
-                }
-            });
+    <!-- Client-Side PDF Oluşturucu Kütüphanesi -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+        // GALERİ ETKİLEŞİMİ
+        const thumbnails = document.querySelectorAll(".thumbnail-button");
+        const mainImage = document.getElementById("mainListingImage");
+
+        if (thumbnails.length > 0) {
+        thumbnails[0].classList.add("active");
+        }
+
+        thumbnails.forEach(function (button) {
+        button.addEventListener("click", function () {
+        const imageUrl = this.dataset.imageUrl;
+
+        if (mainImage && imageUrl) {
+        mainImage.src = imageUrl;
+        }
+
+        thumbnails.forEach(btn => btn.classList.remove("active"));
+        this.classList.add("active");
+        });
+        });
+
+        // FAVORİYE EKLEME / ÇIKARMA
+        const favoriteButton = document.getElementById("detailFavoriteButton");
+
+        if (favoriteButton) {
+        favoriteButton.addEventListener("click", async function () {
+        const listingId = this.dataset.listingId;
+        this.disabled = true;
+
+        try {
+        const response = await fetch("/UserFavorite/Toggle", {
+        method: "POST",
+        headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: new URLSearchParams({ listingId: listingId })
+        });
+
+        const result = await response.json();
+
+        if (result.redirectUrl) {
+        window.location.href = result.redirectUrl;
+        return;
+        }
+
+        if (!result.success) {
+        throw new Error(result.message || "İşlem başarısız.");
+        }
+
+        const icon = this.querySelector("i");
+        const text = this.querySelector("span");
+
+        if (result.isFavorite) {
+        this.classList.add("is-favorite");
+        icon.className = "bi bi-heart-fill";
+        text.textContent = "Favorilerden Çıkar";
+        } else {
+        this.classList.remove("is-favorite");
+        icon.className = "bi bi-heart";
+        text.textContent = "Favorilere Ekle";
+        }
+
+        Swal.fire({
+        toast: true,
+        position: 'top-end',
+        icon: 'success',
+        title: result.message,
+        showConfirmButton: false,
+        timer: 2000
+        });
+        }
+        catch (error) {
+        Swal.fire('Hata', error.message, 'error');
+        }
+        finally {
+        this.disabled = false;
+        }
+        });
+        }
+
+        // PDF İLAN BROŞÜRÜ ÜRETME VE İNDİRME MOTORU (YENİ EKLENDİ)
+        const pdfButton = document.getElementById("downloadPdfButton");
+        if (pdfButton) {
+        pdfButton.addEventListener("click", function () {
+        // Kullanıcıya yükleniyor animasyonu gösterelim
+        Swal.fire({
+        title: 'PDF Hazırlanıyor...',
+        text: 'İlan broşürü optimize edilerek oluşturuluyor.',
+        allowOutsideClick: false,
+        didOpen: () => {
+        Swal.showLoading();
+        }
+        });
+
+        // Sayfadaki metin ve resim verilerini toplayalım
+        const title = document.querySelector(".detail-title") ? document.querySelector(".detail-title").innerText : "@Model.Title";
+        const price = document.querySelector(".price-value") ? document.querySelector(".price-value").innerText : "@Model.Price.ToString("N0") ₺";
+        const img = document.getElementById("mainListingImage") ? document.getElementById("mainListingImage").src : "";
+        const address = document.querySelector(".listing-address") ? document.querySelector(".listing-address").innerText : "@Model.Address";
+        const description = document.querySelector(".detail-description") ? document.querySelector(".detail-description").innerText : "";
+
+        // Teknik özellik tablosunu klonlayalım
+        const features = document.querySelector(".feature-grid") ? document.querySelector(".feature-grid").outerHTML : "";
+
+        // PDF'e özel şık bir A4 kataloğu DOM yapısı oluşturalım
+        const printTemplate = document.createElement("div");
+        printTemplate.className = "p-4 bg-white";
+
+        printTemplate.innerHTML = `
+        <div style="font-family: 'Segoe UI', Arial, sans-serif; color: #0f172a; padding: 15px;">
+        <!-- Header -->
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #2563eb; padding-bottom: 12px; margin-bottom: 20px;">
+        <div>
+        <h2 style="margin: 0; color: #2563eb; font-weight: 800; font-size: 24px; letter-spacing: -0.5px;">RealEstate</h2>
+        <small style="color: #64748b; font-weight: 600;">İlan No: @Model.ListingNo</small>
+        </div>
+        <div style="text-align: right;">
+        <h3 style="margin: 0; color: #0f172a; font-weight: 800; font-size: 22px;">${price}</h3>
+        <small style="color: #64748b; font-weight: 600;">Kategori: @Model.CategoryName / @Model.ListingTypeName</small>
+        </div>
+        </div>
+
+        <!-- Title & Location -->
+        <h1 style="font-size: 20px; font-weight: 800; color: #0f172a; margin-top: 0; margin-bottom: 8px; line-height: 1.3;">${title}</h1>
+        <div style="color: #64748b; font-size: 13px; margin-bottom: 20px; font-weight: 500;">
+        <i class="bi bi-geo-alt-fill" style="color: #2563eb;"></i> ${address}
+        </div>
+
+        <!-- Main Image -->
+        ${img ? `
+        <div style="text-align: center; margin-bottom: 25px; border-radius: 12px; overflow: hidden; background: #f8fafc; border: 1px solid #e2e8f0; height: 320px; display: flex; align-items: center; justify-content: center;">
+        <img src="${img}" style="max-width: 100%; max-height: 320px; object-fit: contain;" />
+        </div>` : ''}
+
+        <!-- Technical Specifications Grid -->
+        ${features ? `
+        <div style="margin-bottom: 25px;">
+        <h4 style="border-bottom: 1px solid #e2e8f0; padding-bottom: 6px; margin-bottom: 12px; color: #0f172a; font-weight: 700; font-size: 15px;">Teknik Özellikler</h4>
+        <style>
+        .feature-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+        .feature-item { display: flex; justify-content: space-between; align-items: center; background: #f8fafc; border: 1px solid #eef2f6; padding: 8px 12px; border-radius: 8px; font-size: 12px; }
+        .feature-item span { color: #64748b; }
+        .feature-item strong { color: #0f172a; font-weight: 700; }
+        </style>
+        ${features}
+        </div>` : ''}
+
+        <!-- Description -->
+        <div style="margin-bottom: 25px;">
+        <h4 style="border-bottom: 1px solid #e2e8f0; padding-bottom: 6px; margin-bottom: 12px; color: #0f172a; font-weight: 700; font-size: 15px;">Açıklama</h4>
+        <p style="color: #475569; font-size: 12px; line-height: 1.6; white-space: pre-line; margin: 0;">${description}</p>
+        </div>
+
+        <!-- Footer -->
+        <div style="margin-top: 40px; border-top: 1px solid #e2e8f0; padding-top: 12px; text-align: center; font-size: 10px; color: #94a3b8; font-weight: 500;">
+        Bu broşür RealEstate platformu üzerinden otomatik üretilmiştir. İletişim: info@realestate.com
+        </div>
+        </div>
+        `;
+
+        // PDF Seçenekleri (A4 Portre Düzeni)
+        const opt = {
+        margin:       12,
+        filename:     'ilan_brosuru_@Model.ListingNo' + '.pdf',
+        image:        { type: 'jpeg', quality: 0.98 },
+        html2canvas:  { scale: 2, useCORS: true }, // CORS aktif: API üzerindeki resmi alabilmek için kritik
+        jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+        };
+
+        // PDF üretme işlemini başlat
+        html2pdf().from(printTemplate).set(opt).save().then(() => {
+        Swal.close(); // Animasyonu kapat
+        }).catch(err => {
+        Swal.fire('Hata', 'PDF üretilirken bir hata oluştu: ' + err.message, 'error');
+        });
+        });
+        }
         });
     </script>
 }

@@ -1,0 +1,329 @@
+﻿@model RealEstateVehiclePlatform.WebUI.ViewModels.Listing.ListingDetailViewModel
+
+@{
+    ViewData["Title"] = "İlan İnceleme";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    var mainImage = Model.Images
+        .OrderByDescending(x => x.IsMainImage)
+        .ThenBy(x => x.DisplayOrder)
+        .FirstOrDefault();
+}
+
+<div class="admin-card p-4">
+
+    <!-- Üst Başlık ve Geri Dön Butonu -->
+    <div class="d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom">
+        <div>
+            <h5 class="fw-bold mb-1"><i class="bi bi-shield-check text-primary me-2"></i>İlan İnceleme Detayı</h5>
+            <small class="text-muted">
+                İlan No: <strong>@Model.ListingNo</strong> — @Model.OwnerFullName (@Model.ListingTypeName)
+            </small>
+        </div>
+        <a href="/AdminListing" class="btn btn-sm btn-outline-secondary">
+            <i class="bi bi-arrow-left me-1"></i> Listeye Geri Dön
+        </a>
+    </div>
+
+    <!-- Hata ve Uyarı Mesajları -->
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger mb-4" style="border-radius: 10px;">
+            <i class="bi bi-exclamation-triangle-fill me-2"></i> @TempData["Error"]
+        </div>
+    }
+
+    <div class="row g-4">
+        <!-- SOL KOLON: GALERİ VE DETAYLAR -->
+        <div class="col-xl-8">
+
+            <!-- Görsel Galeri -->
+            <div class="detail-gallery-card border rounded-3 overflow-hidden bg-white mb-4">
+                <div class="main-image-area bg-dark d-flex justify-content-center align-items-center position-relative" style="height: 420px; overflow:hidden;">
+                    @if (mainImage != null && !string.IsNullOrWhiteSpace(mainImage.ImageUrl))
+                    {
+                        <img id="mainListingImage" src="@mainImage.ImageUrl" alt="@Model.Title" class="w-100 h-100 object-fit-contain" />
+                    }
+                    else
+                    {
+                        <div class="text-white text-center">
+                            <i class="bi bi-buildings fs-1 mb-2"></i>
+                            <span class="d-block">Görsel bulunmuyor</span>
+                        </div>
+                    }
+                </div>
+                @if (Model.Images.Count > 1)
+                {
+                    <div class="thumbnail-list d-flex gap-2 p-3 overflow-auto border-top bg-light">
+                        @foreach (var image in Model.Images.OrderBy(x => x.DisplayOrder))
+                        {
+                            <button type="button" class="thumbnail-button border rounded-2 p-0 overflow-hidden bg-transparent" style="width: 75px; height: 55px;" data-image-url="@image.ImageUrl">
+                                <img src="@image.ImageUrl" alt="" class="w-100 h-100 object-fit-cover" />
+                            </button>
+                        }
+                    </div>
+                }
+            </div>
+
+            <!-- Temel Bilgiler -->
+            <div class="bg-white border rounded-3 p-4 mb-4 shadow-sm">
+                <h6 class="fw-bold text-dark border-bottom pb-2 mb-3">İlan Başlığı & Açıklaması</h6>
+                <h4 class="fw-bold text-slate-800 mb-3 text-dark">@Model.Title</h4>
+                <p class="text-secondary fs-7" style="line-height: 1.75; white-space: pre-line;">@Model.Description</p>
+            </div>
+
+            <!-- Kategoriye Göre Teknik Detaylar -->
+            @if (Model.HouseDetail != null)
+            {
+                <div class="bg-white border rounded-3 p-4 mb-4 shadow-sm">
+                    <h6 class="fw-bold text-primary border-bottom pb-2 mb-3 d-flex align-items-center">
+                        <i class="bi bi-house-door-fill me-2"></i> Emlak Teknik Detayları
+                    </h6>
+                    <div class="feature-grid">
+                        <div class="feature-item"><span>Oda Sayısı</span><strong>@(Model.HouseDetail.RoomCount?.ToString() ?? "-")</strong></div>
+                        <div class="feature-item"><span>Salon Sayısı</span><strong>@(Model.HouseDetail.LivingRoomCount?.ToString() ?? "-")</strong></div>
+                        <div class="feature-item"><span>Brüt Alan</span><strong>@(Model.HouseDetail.GrossSquareMeters?.ToString() ?? "-") m²</strong></div>
+                        <div class="feature-item"><span>Net Alan</span><strong>@(Model.HouseDetail.NetSquareMeters?.ToString() ?? "-") m²</strong></div>
+                        <div class="feature-item"><span>Bina Yaşı</span><strong>@(Model.HouseDetail.BuildingAge?.ToString() ?? "-") Yıl</strong></div>
+                        <div class="feature-item"><span>Bulunduğu Kat</span><strong>@(Model.HouseDetail.FloorNumber?.ToString() ?? "-")</strong></div>
+                        <div class="feature-item"><span>Toplam Kat</span><strong>@(Model.HouseDetail.TotalFloors?.ToString() ?? "-")</strong></div>
+                        <div class="feature-item"><span>Isıtma Tipi</span><strong>@(Model.HouseDetail.HeatingType ?? "-")</strong></div>
+                        <div class="feature-item"><span>Balkon</span><strong>@(Model.HouseDetail.HasBalcony ? "Var" : "Yok")</strong></div>
+                        <div class="feature-item"><span>Eşya Durumu</span><strong>@(Model.HouseDetail.IsFurnished ? "Eşyalı" : "Eşyasız")</strong></div>
+                    </div>
+                </div>
+            }
+            else if (Model.LandDetail != null)
+            {
+                <div class="bg-white border rounded-3 p-4 mb-4 shadow-sm">
+                    <h6 class="fw-bold text-primary border-bottom pb-2 mb-3 d-flex align-items-center">
+                        <i class="bi bi-map-fill me-2"></i> Tapu & İmar Detayları
+                    </h6>
+                    <div class="feature-grid">
+                        <div class="feature-item"><span>Metrekare (m²)</span><strong>@(Model.LandDetail.SquareMeters?.ToString() ?? "-") m²</strong></div>
+                        <div class="feature-item"><span>İmar Durumu</span><strong>@(Model.LandDetail.ZoningStatus ?? "-")</strong></div>
+                        <div class="feature-item"><span>Ada No</span><strong>@(Model.LandDetail.BlockNo ?? "-")</strong></div>
+                        <div class="feature-item"><span>Parsel No</span><strong>@(Model.LandDetail.ParcelNo ?? "-")</strong></div>
+                        <div class="feature-item"><span>Pafta No</span><strong>@(Model.LandDetail.SheetNo ?? "-")</strong></div>
+                        <div class="feature-item"><span>Krediye Uygunluk</span><strong>@(Model.LandDetail.IsSuitableForCredit ? "Uygun" : "Uygun Değil")</strong></div>
+                    </div>
+                </div>
+            }
+            else if (Model.VehicleDetail != null)
+            {
+                <div class="bg-white border rounded-3 p-4 mb-4 shadow-sm">
+                    <h6 class="fw-bold text-primary border-bottom pb-2 mb-3 d-flex align-items-center">
+                        <i class="bi bi-car-front-fill me-2"></i> Motor & Donanım Detayları
+                    </h6>
+                    <div class="feature-grid">
+                        <div class="feature-item"><span>Marka</span><strong>@(Model.VehicleDetail.Brand ?? "-")</strong></div>
+                        <div class="feature-item"><span>Model</span><strong>@(Model.VehicleDetail.Model ?? "-")</strong></div>
+                        <div class="feature-item"><span>Model Yılı</span><strong>@(Model.VehicleDetail.Year?.ToString() ?? "-")</strong></div>
+                        <div class="feature-item"><span>Kilometre (KM)</span><strong>@(Model.VehicleDetail.Kilometer.HasValue ? Model.VehicleDetail.Kilometer.Value.ToString("N0") + " km" : "-")</strong></div>
+                        <div class="feature-item"><span>Yakıt Tipi</span><strong>@(Model.VehicleDetail.FuelType ?? "-")</strong></div>
+                        <div class="feature-item"><span>Vites Tipi</span><strong>@(Model.VehicleDetail.GearType ?? "-")</strong></div>
+                        <div class="feature-item"><span>Kasa Tipi</span><strong>@(Model.VehicleDetail.BodyType ?? "-")</strong></div>
+                        <div class="feature-item"><span>Renk</span><strong>@(Model.VehicleDetail.Color ?? "-")</strong></div>
+                    </div>
+                </div>
+            }
+
+        </div>
+
+        <!-- SAĞ KOLON: ADMİN KONTROLLERİ VE BİLGİLER -->
+        <div class="col-xl-4">
+
+            <!-- Admin Aksiyon Paneli (Yapışkan) -->
+            <div class="bg-white border rounded-3 p-4 mb-4 sticky-sidebar shadow-sm">
+                <h6 class="fw-bold text-dark border-bottom pb-2 mb-3">Admin İşlemleri</h6>
+
+                <div class="mb-4">
+                    <span class="text-secondary fs-8 d-block mb-1 text-uppercase fw-semibold">Fiyat</span>
+                    <h3 class="fw-bold text-primary">@Model.Price.ToString("N0") ₺</h3>
+                </div>
+
+                <div class="mb-4">
+                    <span class="text-secondary fs-8 d-block mb-1 text-uppercase fw-semibold">İlan Durumu</span>
+                    @if (Model.Status == 1)
+                    {
+                        <span class="badge bg-warning text-dark px-3 py-2 fs-7 w-100 d-inline-block text-center rounded-2">
+                            <i class="bi bi-hourglass-split me-1"></i> Onay Bekliyor
+                        </span>
+                    }
+                    else if (Model.Status == 2)
+                    {
+                        <span class="badge bg-success px-3 py-2 fs-7 w-100 d-inline-block text-center rounded-2">
+                            <i class="bi bi-check-circle-fill me-1"></i> Yayında (Aktif)
+                        </span>
+                    }
+                    else if (Model.Status == 3)
+                    {
+                        <span class="badge bg-secondary px-3 py-2 fs-7 w-100 d-inline-block text-center rounded-2">
+                            <i class="bi bi-eye-slash-fill me-1"></i> Pasif
+                        </span>
+                    }
+                    else if (Model.Status == 4)
+                    {
+                        <span class="badge bg-danger px-3 py-2 fs-7 w-100 d-inline-block text-center rounded-2">
+                            <i class="bi bi-x-octagon-fill me-1"></i> Reddedildi
+                        </span>
+                    }
+                </div>
+
+                <hr />
+
+                <!-- Karar Butonları -->
+                <div class="d-flex flex-column gap-2 mt-3">
+                    @if (Model.Status == 1 || Model.Status == 3 || Model.Status == 4)
+                    {
+                        <form asp-action="Approve" method="post" class="w-100">
+                            <input type="hidden" name="id" value="@Model.Id" />
+                            <button type="submit" class="btn btn-success w-100 py-2 fw-bold rounded-2">
+                                <i class="bi bi-check-circle me-1"></i> İlanı Onayla
+                            </button>
+                        </form>
+                    }
+
+                    @if (Model.Status == 1)
+                    {
+                        <form asp-action="Reject" method="post" class="w-100">
+                            <input type="hidden" name="id" value="@Model.Id" />
+                            <button type="submit" class="btn btn-danger w-100 py-2 fw-bold rounded-2">
+                                <i class="bi bi-x-circle me-1"></i> İlanı Reddet
+                            </button>
+                        </form>
+                    }
+
+                    @if (Model.Status == 2)
+                    {
+                        <form asp-action="MakePassive" method="post" class="w-100">
+                            <input type="hidden" name="id" value="@Model.Id" />
+                            <button type="submit" class="btn btn-warning text-dark w-100 py-2 fw-bold rounded-2">
+                                <i class="bi bi-eye-slash me-1"></i> İlanı Pasife Al
+                            </button>
+                        </form>
+                    }
+                </div>
+            </div>
+
+            <!-- İlan Detay Bilgileri -->
+            <div class="bg-white border rounded-3 p-4 shadow-sm">
+                <h6 class="fw-bold text-dark border-bottom pb-2 mb-3">İlan Konum & Sahibi</h6>
+
+                <div class="info-row d-flex justify-content-between py-2 border-bottom fs-7">
+                    <span class="text-secondary">İlan Sahibi</span>
+                    <strong class="text-dark">@Model.OwnerFullName</strong>
+                </div>
+                <div class="info-row d-flex justify-content-between py-2 border-bottom fs-7">
+                    <span class="text-secondary">Kategori</span>
+                    <strong class="text-dark">@Model.CategoryName</strong>
+                </div>
+                <div class="info-row d-flex justify-content-between py-2 border-bottom fs-7">
+                    <span class="text-secondary">Kategori Tipi</span>
+                    <strong class="text-dark">@Model.ListingTypeName</strong>
+                </div>
+                <div class="info-row d-flex justify-content-between py-2 border-bottom fs-7">
+                    <span class="text-secondary">Konum</span>
+                    <strong class="text-dark">@Model.CityName / @Model.DistrictName</strong>
+                </div>
+                <div class="info-row d-flex justify-content-between py-2 fs-7">
+                    <span class="text-secondary">Görüntülenme</span>
+                    <strong class="text-dark"><i class="bi bi-eye me-1 text-primary"></i> @Model.ViewCount</strong>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<style>
+    /* Admin Galeri Tasarımı */
+    .thumbnail-button {
+        border: 2px solid transparent !important;
+        opacity: 0.65;
+        transition: all 0.2s ease;
+    }
+
+        .thumbnail-button:hover, .thumbnail-button.active {
+            opacity: 1;
+            border-color: #2563eb !important;
+            transform: scale(1.04);
+        }
+
+    .fs-7 {
+        font-size: 0.85rem;
+    }
+
+    .fs-8 {
+        font-size: 0.75rem;
+    }
+
+    /* Teknik Özellikler Grid */
+    .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .feature-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #f8fafc;
+        border: 1px solid #eef2f6;
+        padding: 10px 14px;
+        border-radius: 8px;
+        font-size: 13px;
+    }
+
+        .feature-item span {
+            color: #64748b;
+        }
+
+        .feature-item strong {
+            color: #0f172a;
+        }
+
+    .sticky-sidebar {
+        position: sticky;
+        top: 20px;
+    }
+
+    @@media (max-width: 991.98px) {
+        .feature-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .sticky-sidebar {
+            position: static;
+        }
+    }
+</style>
+
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Galeri Görsel Değiştirici
+            const thumbnails = document.querySelectorAll(".thumbnail-button");
+            const mainImage = document.getElementById("mainListingImage");
+
+            if (thumbnails.length > 0) {
+                thumbnails[0].classList.add("active");
+            }
+
+            thumbnails.forEach(function (button) {
+                button.addEventListener("click", function () {
+                    const imageUrl = this.dataset.imageUrl;
+
+                    if (mainImage && imageUrl) {
+                        mainImage.src = imageUrl;
+                    }
+
+                    thumbnails.forEach(btn => btn.classList.remove("active"));
+                    this.classList.add("active");
+                });
+            });
+        });
+    </script>
+}

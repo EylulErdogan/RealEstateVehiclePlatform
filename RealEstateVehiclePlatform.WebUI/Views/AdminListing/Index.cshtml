@@ -10,10 +10,8 @@
     <div class="d-flex justify-content-between align-items-center mb-4">
         <div>
             <h5 class="fw-bold mb-1">İlan Yönetimi</h5>
-
             <small class="text-muted">
-                Kullanıcıların eklediği ilanları onaylayabilir,
-                reddedebilir veya pasife alabilirsiniz.
+                Kullanıcıların eklediği ilanları detaylı inceleyebilir, onaylayabilir veya pasife alabilirsiniz.
             </small>
         </div>
 
@@ -21,6 +19,19 @@
             @Model.Count ilan
         </span>
     </div>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success border-0 shadow-sm mb-3">
+            <i class="bi bi-check-circle me-1"></i> @TempData["Success"]
+        </div>
+    }
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger border-0 shadow-sm mb-3">
+            <i class="bi bi-exclamation-triangle me-1"></i> @TempData["Error"]
+        </div>
+    }
 
     @if (Model.Any())
     {
@@ -31,9 +42,9 @@
                         <th>İlan No</th>
                         <th>Başlık</th>
                         <th>Fiyat</th>
-                        <th>Kullanıcı</th>
+                        <th>Kullanıcı ID</th>
                         <th>Durum</th>
-                        <th class="text-end" style="min-width:260px;">
+                        <th class="text-end" style="min-width:280px;">
                             İşlemler
                         </th>
                     </tr>
@@ -44,7 +55,7 @@
                     {
                         var statusText = item.Status switch
                         {
-                           1 => "Onay Bekliyor",
+                            1 => "Onay Bekliyor",
                             2 => "Aktif",
                             3 => "Pasif",
                             4 => "Reddedildi",
@@ -69,7 +80,6 @@
 
                             <td>
                                 <strong>@item.Title</strong>
-
                                 <small class="d-block text-muted">
                                     @item.Address
                                 </small>
@@ -90,24 +100,28 @@
                             </td>
 
                             <td class="text-end">
+                                <!-- Admin İlan İnceleme Detay Butonu (YENİ EKLENDİ) -->
+                                <a href="/AdminListing/Detail/@item.Id"
+                                   class="btn btn-sm btn-info text-white me-1"
+                                   title="İlanı İncele (Yönetim)">
+                                    <i class="bi bi-search"></i>
+                                </a>
 
                                 <a href="/Listing/Detail/@item.Id"
                                    target="_blank"
                                    class="btn btn-sm btn-outline-primary me-1"
-                                   title="İlanı görüntüle">
+                                   title="Müşteri Gözünden Önizle">
                                     <i class="bi bi-eye"></i>
                                 </a>
 
-                                @if (item.Status != 1)
+                                @if (item.Status != 2)
                                 {
                                     <form asp-action="Approve"
                                           method="post"
                                           class="d-inline">
-
                                         <input type="hidden"
                                                name="id"
                                                value="@item.Id" />
-
                                         <button type="submit"
                                                 class="btn btn-sm btn-success me-1"
                                                 title="Onayla">
@@ -116,16 +130,14 @@
                                     </form>
                                 }
 
-                                @if (item.Status != 3)
+                                @if (item.Status == 1)
                                 {
                                     <form asp-action="Reject"
                                           method="post"
                                           class="d-inline">
-
                                         <input type="hidden"
                                                name="id"
                                                value="@item.Id" />
-
                                         <button type="submit"
                                                 class="btn btn-sm btn-danger me-1"
                                                 title="Reddet">
@@ -134,19 +146,17 @@
                                     </form>
                                 }
 
-                                @if (item.Status == 1)
+                                @if (item.Status == 2)
                                 {
                                     <form asp-action="MakePassive"
                                           method="post"
                                           class="d-inline">
-
                                         <input type="hidden"
                                                name="id"
                                                value="@item.Id" />
-
                                         <button type="submit"
-                                                class="btn btn-sm btn-secondary me-1"
-                                                title="Pasife al">
+                                                class="btn btn-sm btn-warning text-dark me-1"
+                                                title="Pasife Al">
                                             <i class="bi bi-pause-circle"></i>
                                         </button>
                                     </form>
@@ -158,7 +168,6 @@
                                    data-title="@item.Title ilanı silinecek.">
                                     <i class="bi bi-trash"></i>
                                 </a>
-
                             </td>
                         </tr>
                     }
