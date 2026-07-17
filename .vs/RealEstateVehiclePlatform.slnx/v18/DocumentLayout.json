@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{E9FD6C89-26A3-68E6-A9A6-FA9550919CBA}|RealEstateVehiclePlatform.WebUI\\RealEstateVehiclePlatform.WebUI.csproj|c:\\users\\eylul\\documents\\github\\realestatevehicleplatform\\realestatevehicleplatform.webui\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E9FD6C89-26A3-68E6-A9A6-FA9550919CBA}|RealEstateVehiclePlatform.WebUI\\RealEstateVehiclePlatform.WebUI.csproj|solutionrelative:realestatevehicleplatform.webui\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{00C08521-3638-EC1B-B462-9E498E800339}|RealEstateVehiclePlatform.EfApi\\RealEstateVehiclePlatform.EfApi.csproj|c:\\users\\eylul\\documents\\github\\realestatevehicleplatform\\realestatevehicleplatform.efapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{00C08521-3638-EC1B-B462-9E498E800339}|RealEstateVehiclePlatform.EfApi\\RealEstateVehiclePlatform.EfApi.csproj|solutionrelative:realestatevehicleplatform.efapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -255,10 +259,6 @@
       "RelativeMoniker": "D:0:0:{E9FD6C89-26A3-68E6-A9A6-FA9550919CBA}|RealEstateVehiclePlatform.WebUI\\RealEstateVehiclePlatform.WebUI.csproj|solutionrelative:realestatevehicleplatform.webui\\views\\userlisting\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E9FD6C89-26A3-68E6-A9A6-FA9550919CBA}|RealEstateVehiclePlatform.WebUI\\RealEstateVehiclePlatform.WebUI.csproj|c:\\users\\eylul\\documents\\github\\realestatevehicleplatform\\realestatevehicleplatform.webui\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E9FD6C89-26A3-68E6-A9A6-FA9550919CBA}|RealEstateVehiclePlatform.WebUI\\RealEstateVehiclePlatform.WebUI.csproj|solutionrelative:realestatevehicleplatform.webui\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{E9FD6C89-26A3-68E6-A9A6-FA9550919CBA}|RealEstateVehiclePlatform.WebUI\\RealEstateVehiclePlatform.WebUI.csproj|c:\\users\\eylul\\documents\\github\\realestatevehicleplatform\\realestatevehicleplatform.webui\\services\\listingimagehelperservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E9FD6C89-26A3-68E6-A9A6-FA9550919CBA}|RealEstateVehiclePlatform.WebUI\\RealEstateVehiclePlatform.WebUI.csproj|solutionrelative:realestatevehicleplatform.webui\\services\\listingimagehelperservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -474,7 +474,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 221,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -490,7 +490,80 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Statistics.cshtml",
+              "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\Views\\AdminDashboard\\Statistics.cshtml",
+              "RelativeDocumentMoniker": "RealEstateVehiclePlatform.WebUI\\Views\\AdminDashboard\\Statistics.cshtml",
+              "ToolTip": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\Views\\AdminDashboard\\Statistics.cshtml",
+              "RelativeToolTip": "RealEstateVehiclePlatform.WebUI\\Views\\AdminDashboard\\Statistics.cshtml",
+              "ViewState": "AgIAAKgAAAAAAAAAAAAmwL4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-17T22:25:15.374Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "_AdminLayout.cshtml",
+              "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\Views\\Shared\\_AdminLayout.cshtml",
+              "RelativeDocumentMoniker": "RealEstateVehiclePlatform.WebUI\\Views\\Shared\\_AdminLayout.cshtml",
+              "ToolTip": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\Views\\Shared\\_AdminLayout.cshtml",
+              "RelativeToolTip": "RealEstateVehiclePlatform.WebUI\\Views\\Shared\\_AdminLayout.cshtml",
+              "ViewState": "AgIAAJQAAAAAAAAAAAAIwKcAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-09T17:19:34.754Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Detail.cshtml",
+              "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\Views\\Listing\\Detail.cshtml",
+              "RelativeDocumentMoniker": "RealEstateVehiclePlatform.WebUI\\Views\\Listing\\Detail.cshtml",
+              "ToolTip": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\Views\\Listing\\Detail.cshtml",
+              "RelativeToolTip": "RealEstateVehiclePlatform.WebUI\\Views\\Listing\\Detail.cshtml",
+              "ViewState": "AgIAAEsCAAAAAAAAAAAIwMACAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-10T16:46:41.861Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "NotificationController.cs",
+              "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\Controllers\\NotificationController.cs",
+              "RelativeDocumentMoniker": "RealEstateVehiclePlatform.WebUI\\Controllers\\NotificationController.cs",
+              "ToolTip": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\Controllers\\NotificationController.cs",
+              "RelativeToolTip": "RealEstateVehiclePlatform.WebUI\\Controllers\\NotificationController.cs",
+              "ViewState": "AgIAAFwAAAAAAAAAAAAmwHIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-17T21:43:15.871Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "RealEstateVehiclePlatform.WebUI\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "RealEstateVehiclePlatform.WebUI\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAANUDAAAAAAAAAAAswPADAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-10T12:51:35.724Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "RealEstateVehiclePlatform.WebUI\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "RealEstateVehiclePlatform.WebUI\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAPsCAAAAAAAAAAAmwBEDAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-10T09:25:41.992Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.EfApi\\Program.cs",
               "RelativeDocumentMoniker": "RealEstateVehiclePlatform.EfApi\\Program.cs",
@@ -503,85 +576,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ChatbotController.cs",
-              "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\Controllers\\ChatbotController.cs",
-              "RelativeDocumentMoniker": "RealEstateVehiclePlatform.WebUI\\Controllers\\ChatbotController.cs",
-              "ToolTip": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\Controllers\\ChatbotController.cs",
-              "RelativeToolTip": "RealEstateVehiclePlatform.WebUI\\Controllers\\ChatbotController.cs",
-              "ViewState": "AgIAAH0AAAAAAAAAAAAmwJMAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-17T22:37:46.838Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "RealEstateVehiclePlatform.WebUI\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "RealEstateVehiclePlatform.WebUI\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAPsCAAAAAAAAAAAmwBEDAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-07-10T09:25:41.992Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Statistics.cshtml",
-              "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\Views\\AdminDashboard\\Statistics.cshtml",
-              "RelativeDocumentMoniker": "RealEstateVehiclePlatform.WebUI\\Views\\AdminDashboard\\Statistics.cshtml",
-              "ToolTip": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\Views\\AdminDashboard\\Statistics.cshtml",
-              "RelativeToolTip": "RealEstateVehiclePlatform.WebUI\\Views\\AdminDashboard\\Statistics.cshtml",
-              "ViewState": "AgIAAKgAAAAAAAAAAAAmwL4AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-07-17T22:25:15.374Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "_AdminLayout.cshtml",
-              "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\Views\\Shared\\_AdminLayout.cshtml",
-              "RelativeDocumentMoniker": "RealEstateVehiclePlatform.WebUI\\Views\\Shared\\_AdminLayout.cshtml",
-              "ToolTip": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\Views\\Shared\\_AdminLayout.cshtml",
-              "RelativeToolTip": "RealEstateVehiclePlatform.WebUI\\Views\\Shared\\_AdminLayout.cshtml",
-              "ViewState": "AgIAAJQAAAAAAAAAAAAIwKcAAAAHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-07-09T17:19:34.754Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Detail.cshtml",
-              "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\Views\\Listing\\Detail.cshtml",
-              "RelativeDocumentMoniker": "RealEstateVehiclePlatform.WebUI\\Views\\Listing\\Detail.cshtml",
-              "ToolTip": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\Views\\Listing\\Detail.cshtml",
-              "RelativeToolTip": "RealEstateVehiclePlatform.WebUI\\Views\\Listing\\Detail.cshtml",
-              "ViewState": "AgIAAEsCAAAAAAAAAAAIwMACAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-07-10T16:46:41.861Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "NotificationController.cs",
-              "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\Controllers\\NotificationController.cs",
-              "RelativeDocumentMoniker": "RealEstateVehiclePlatform.WebUI\\Controllers\\NotificationController.cs",
-              "ToolTip": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\Controllers\\NotificationController.cs",
-              "RelativeToolTip": "RealEstateVehiclePlatform.WebUI\\Controllers\\NotificationController.cs",
-              "ViewState": "AgIAAFwAAAAAAAAAAAAmwHIAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-17T21:43:15.871Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
               "Title": "AdminDashboardController.cs",
               "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.EfApi\\Controllers\\AdminDashboardController.cs",
               "RelativeDocumentMoniker": "RealEstateVehiclePlatform.EfApi\\Controllers\\AdminDashboardController.cs",
@@ -589,12 +584,23 @@
               "RelativeToolTip": "RealEstateVehiclePlatform.EfApi\\Controllers\\AdminDashboardController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-08T11:13:08.455Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-08T11:13:08.455Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
+              "Title": "ChatbotController.cs",
+              "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\Controllers\\ChatbotController.cs",
+              "RelativeDocumentMoniker": "RealEstateVehiclePlatform.WebUI\\Controllers\\ChatbotController.cs",
+              "ToolTip": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\Controllers\\ChatbotController.cs",
+              "RelativeToolTip": "RealEstateVehiclePlatform.WebUI\\Controllers\\ChatbotController.cs",
+              "ViewState": "AgIAAH0AAAAAAAAAAAAmwJMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-17T22:37:46.838Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "AdminDashboardController.cs",
               "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\Controllers\\AdminDashboardController.cs",
               "RelativeDocumentMoniker": "RealEstateVehiclePlatform.WebUI\\Controllers\\AdminDashboardController.cs",
@@ -602,12 +608,11 @@
               "RelativeToolTip": "RealEstateVehiclePlatform.WebUI\\Controllers\\AdminDashboardController.cs",
               "ViewState": "AgIAABUAAAAAAAAAAAASwCkAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-17T22:01:47.481Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-17T22:01:47.481Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "ApiService.cs",
               "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\Services\\ApiService.cs",
               "RelativeDocumentMoniker": "RealEstateVehiclePlatform.WebUI\\Services\\ApiService.cs",
@@ -615,12 +620,11 @@
               "RelativeToolTip": "RealEstateVehiclePlatform.WebUI\\Services\\ApiService.cs",
               "ViewState": "AgIAAKEAAAAAAAAAAAAIwMUAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-17T17:08:19.741Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-17T17:08:19.741Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\Program.cs",
               "RelativeDocumentMoniker": "RealEstateVehiclePlatform.WebUI\\Program.cs",
@@ -628,12 +632,11 @@
               "RelativeToolTip": "RealEstateVehiclePlatform.WebUI\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-12T16:33:59.095Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-12T16:33:59.095Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "Logs.cshtml",
               "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\Views\\AdminDashboard\\Logs.cshtml",
               "RelativeDocumentMoniker": "RealEstateVehiclePlatform.WebUI\\Views\\AdminDashboard\\Logs.cshtml",
@@ -641,12 +644,11 @@
               "RelativeToolTip": "RealEstateVehiclePlatform.WebUI\\Views\\AdminDashboard\\Logs.cshtml",
               "ViewState": "AgIAABsAAAAAAAAAAAAIwEIAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-07-17T22:02:57.912Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-17T22:02:57.912Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "LogService.cs",
               "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\Services\\LogService.cs",
               "RelativeDocumentMoniker": "RealEstateVehiclePlatform.WebUI\\Services\\LogService.cs",
@@ -654,12 +656,11 @@
               "RelativeToolTip": "RealEstateVehiclePlatform.WebUI\\Services\\LogService.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAIwCoAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-17T21:58:58.726Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-17T21:58:58.726Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "UserListingController.cs",
               "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\Controllers\\UserListingController.cs",
               "RelativeDocumentMoniker": "RealEstateVehiclePlatform.WebUI\\Controllers\\UserListingController.cs",
@@ -667,12 +668,11 @@
               "RelativeToolTip": "RealEstateVehiclePlatform.WebUI\\Controllers\\UserListingController.cs",
               "ViewState": "AgIAAFEBAAAAAAAAAAAkwGUBAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-13T20:39:47.051Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-13T20:39:47.051Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\Views\\UserListingImage\\Index.cshtml",
               "RelativeDocumentMoniker": "RealEstateVehiclePlatform.WebUI\\Views\\UserListingImage\\Index.cshtml",
@@ -680,12 +680,11 @@
               "RelativeToolTip": "RealEstateVehiclePlatform.WebUI\\Views\\UserListingImage\\Index.cshtml",
               "ViewState": "AgIAAIECAAAAAAAAAAAAAI0CAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-07-12T16:09:11.534Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-12T16:09:11.534Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "UserListingImageController.cs",
               "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\Controllers\\UserListingImageController.cs",
               "RelativeDocumentMoniker": "RealEstateVehiclePlatform.WebUI\\Controllers\\UserListingImageController.cs",
@@ -693,12 +692,11 @@
               "RelativeToolTip": "RealEstateVehiclePlatform.WebUI\\Controllers\\UserListingImageController.cs",
               "ViewState": "AgIAALMAAAAAAAAAAAAAANcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-12T15:00:11.728Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-12T15:00:11.728Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "AccountController.cs",
               "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\Controllers\\AccountController.cs",
               "RelativeDocumentMoniker": "RealEstateVehiclePlatform.WebUI\\Controllers\\AccountController.cs",
@@ -706,12 +704,11 @@
               "RelativeToolTip": "RealEstateVehiclePlatform.WebUI\\Controllers\\AccountController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAGwAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-12T12:09:35.732Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-12T12:09:35.732Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\Views\\AdminDashboard\\Index.cshtml",
               "RelativeDocumentMoniker": "RealEstateVehiclePlatform.WebUI\\Views\\AdminDashboard\\Index.cshtml",
@@ -719,12 +716,11 @@
               "RelativeToolTip": "RealEstateVehiclePlatform.WebUI\\Views\\AdminDashboard\\Index.cshtml",
               "ViewState": "AgIAAMoBAAAAAAAAAAAIwAMCAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-07-17T21:35:29.763Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-17T21:35:29.763Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "Detail.cshtml",
               "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\Views\\AdminListing\\Detail.cshtml",
               "RelativeDocumentMoniker": "RealEstateVehiclePlatform.WebUI\\Views\\AdminListing\\Detail.cshtml",
@@ -732,12 +728,11 @@
               "RelativeToolTip": "RealEstateVehiclePlatform.WebUI\\Views\\AdminListing\\Detail.cshtml",
               "ViewState": "AgIAAB8BAAAAAAAAAAAswEgBAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-07-17T21:32:28.286Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-17T21:32:28.286Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "AdminListingController.cs",
               "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\Controllers\\AdminListingController.cs",
               "RelativeDocumentMoniker": "RealEstateVehiclePlatform.WebUI\\Controllers\\AdminListingController.cs",
@@ -745,12 +740,11 @@
               "RelativeToolTip": "RealEstateVehiclePlatform.WebUI\\Controllers\\AdminListingController.cs",
               "ViewState": "AgIAAA8AAAAAAAAAAAAiwB8AAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-12T17:56:55.592Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-12T17:56:55.592Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\Views\\AdminListing\\Index.cshtml",
               "RelativeDocumentMoniker": "RealEstateVehiclePlatform.WebUI\\Views\\AdminListing\\Index.cshtml",
@@ -758,12 +752,11 @@
               "RelativeToolTip": "RealEstateVehiclePlatform.WebUI\\Views\\AdminListing\\Index.cshtml",
               "ViewState": "AgIAAIUAAAAAAAAAAADwv7kAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-07-12T18:05:29.357Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-12T18:05:29.357Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 23,
               "Title": "VehicleDetailDto.cs",
               "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.Entities\\DTOs\\VehicleDetailDto.cs\\VehicleDetailDto.cs",
               "RelativeDocumentMoniker": "RealEstateVehiclePlatform.Entities\\DTOs\\VehicleDetailDto.cs\\VehicleDetailDto.cs",
@@ -771,12 +764,11 @@
               "RelativeToolTip": "RealEstateVehiclePlatform.Entities\\DTOs\\VehicleDetailDto.cs\\VehicleDetailDto.cs",
               "ViewState": "AgIAAAIAAAAAAAAAAAA6wBgAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-17T21:10:16.527Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-17T21:10:16.527Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 24,
               "Title": "LandDetailDto.cs",
               "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.Entities\\DTOs\\LandDetailDtos\\LandDetailDto.cs",
               "RelativeDocumentMoniker": "RealEstateVehiclePlatform.Entities\\DTOs\\LandDetailDtos\\LandDetailDto.cs",
@@ -784,12 +776,11 @@
               "RelativeToolTip": "RealEstateVehiclePlatform.Entities\\DTOs\\LandDetailDtos\\LandDetailDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-17T21:09:50.254Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-17T21:09:50.254Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "HouseDetailDto.cs",
               "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.Entities\\DTOs\\HouseDetailDtos\\HouseDetailDto.cs",
               "RelativeDocumentMoniker": "RealEstateVehiclePlatform.Entities\\DTOs\\HouseDetailDtos\\HouseDetailDto.cs",
@@ -797,12 +788,11 @@
               "RelativeToolTip": "RealEstateVehiclePlatform.Entities\\DTOs\\HouseDetailDtos\\HouseDetailDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-17T21:09:24.245Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-17T21:09:24.245Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 26,
               "Title": "UserUpdateListingViewModel.cs",
               "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\ViewModels\\Listing\\UserUpdateListingViewModel.cs",
               "RelativeDocumentMoniker": "RealEstateVehiclePlatform.WebUI\\ViewModels\\Listing\\UserUpdateListingViewModel.cs",
@@ -810,12 +800,11 @@
               "RelativeToolTip": "RealEstateVehiclePlatform.WebUI\\ViewModels\\Listing\\UserUpdateListingViewModel.cs",
               "ViewState": "AgIAADEAAAAAAAAAAAA6wEcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-12T14:29:46.709Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-12T14:29:46.709Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 25,
               "Title": "Update.cshtml",
               "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\Views\\UserListing\\Update.cshtml",
               "RelativeDocumentMoniker": "RealEstateVehiclePlatform.WebUI\\Views\\UserListing\\Update.cshtml",
@@ -823,12 +812,11 @@
               "RelativeToolTip": "RealEstateVehiclePlatform.WebUI\\Views\\UserListing\\Update.cshtml",
               "ViewState": "AgIAAPABAAAAAAAAAAAmwAYCAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-07-12T14:31:39.08Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-12T14:31:39.08Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 27,
               "Title": "Create.cshtml",
               "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\Views\\UserListing\\Create.cshtml",
               "RelativeDocumentMoniker": "RealEstateVehiclePlatform.WebUI\\Views\\UserListing\\Create.cshtml",
@@ -836,12 +824,11 @@
               "RelativeToolTip": "RealEstateVehiclePlatform.WebUI\\Views\\UserListing\\Create.cshtml",
               "ViewState": "AgIAAAwDAAAAAAAAAAAAABsDAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-07-12T13:12:56.037Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-12T13:12:56.037Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 29,
               "Title": "Upload.cshtml",
               "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\Views\\UserListingImage\\Upload.cshtml",
               "RelativeDocumentMoniker": "RealEstateVehiclePlatform.WebUI\\Views\\UserListingImage\\Upload.cshtml",
@@ -849,12 +836,11 @@
               "RelativeToolTip": "RealEstateVehiclePlatform.WebUI\\Views\\UserListingImage\\Upload.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-07-12T16:09:39.799Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-12T16:09:39.799Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 28,
               "Title": "ListingsController.cs",
               "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.EfApi\\Controllers\\ListingsController.cs",
               "RelativeDocumentMoniker": "RealEstateVehiclePlatform.EfApi\\Controllers\\ListingsController.cs",
@@ -862,12 +848,11 @@
               "RelativeToolTip": "RealEstateVehiclePlatform.EfApi\\Controllers\\ListingsController.cs",
               "ViewState": "AgIAAF4BAAAAAAAAAAAkwGsBAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-12T13:00:36.357Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-12T13:00:36.357Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 30,
               "Title": "Create.cshtml",
               "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\Views\\AdminListing\\Create.cshtml",
               "RelativeDocumentMoniker": "RealEstateVehiclePlatform.WebUI\\Views\\AdminListing\\Create.cshtml",
@@ -875,12 +860,11 @@
               "RelativeToolTip": "RealEstateVehiclePlatform.WebUI\\Views\\AdminListing\\Create.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-07-12T19:46:12.2Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-12T19:46:12.2Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 31,
               "Title": "Listing.cs",
               "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.Entities\\Concrete\\Listing.cs",
               "RelativeDocumentMoniker": "RealEstateVehiclePlatform.Entities\\Concrete\\Listing.cs",
@@ -888,22 +872,20 @@
               "RelativeToolTip": "RealEstateVehiclePlatform.Entities\\Concrete\\Listing.cs",
               "ViewState": "AgIAABYAAAAAAAAAAAAuwDkAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-08T06:38:07.085Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-08T06:38:07.085Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
-              "Title": "dbo.AspNetUsers [Data]",
+              "DocumentIndex": 32,
+              "Title": "dbo.AspNetUsers.sql",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/RealEstateVehiclePlatformDb/True/SqlTable/dbo.AspNetUsers.sql",
-              "ToolTip": "dbo.AspNetUsers [Data]",
+              "ToolTip": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/RealEstateVehiclePlatformDb/True/SqlTable/dbo.AspNetUsers.sql",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2026-07-17T18:52:48.497Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-17T18:52:48.497Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 39,
               "Title": "LandDetailViewModel.cs",
               "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\ViewModels\\ListingDetail\\LandDetailViewModel.cs",
               "RelativeDocumentMoniker": "RealEstateVehiclePlatform.WebUI\\ViewModels\\ListingDetail\\LandDetailViewModel.cs",
@@ -911,32 +893,29 @@
               "RelativeToolTip": "RealEstateVehiclePlatform.WebUI\\ViewModels\\ListingDetail\\LandDetailViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-17T17:23:33.136Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-17T17:23:33.136Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "dbo.Listings.sql",
+              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/RealEstateVehiclePlatformDb/True/SqlTable/dbo.Listings.sql",
+              "ToolTip": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/RealEstateVehiclePlatformDb/True/SqlTable/dbo.Listings.sql",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2026-07-17T18:49:28.551Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 33,
-              "Title": "dbo.Listings [Data]",
-              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/RealEstateVehiclePlatformDb/True/SqlTable/dbo.Listings.sql",
-              "ToolTip": "dbo.Listings [Data]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2026-07-17T18:49:28.551Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 32,
-              "Title": "dbo.ListingImages [Data]",
+              "Title": "dbo.ListingImages.sql",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/RealEstateVehiclePlatformDb/True/SqlTable/dbo.ListingImages.sql",
-              "ToolTip": "dbo.ListingImages [Data]",
+              "ToolTip": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/RealEstateVehiclePlatformDb/True/SqlTable/dbo.ListingImages.sql",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2026-07-17T18:49:58.961Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-17T18:49:58.961Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 36,
               "Title": "ListingController.cs",
               "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\Controllers\\ListingController.cs",
               "RelativeDocumentMoniker": "RealEstateVehiclePlatform.WebUI\\Controllers\\ListingController.cs",
@@ -944,12 +923,11 @@
               "RelativeToolTip": "RealEstateVehiclePlatform.WebUI\\Controllers\\ListingController.cs",
               "ViewState": "AgIAADsAAAAAAAAAAAAqwKQAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-10T16:05:16.784Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-10T16:05:16.784Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 35,
               "Title": "FavoritesController.cs",
               "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.EfApi\\Controllers\\FavoritesController.cs",
               "RelativeDocumentMoniker": "RealEstateVehiclePlatform.EfApi\\Controllers\\FavoritesController.cs",
@@ -957,12 +935,11 @@
               "RelativeToolTip": "RealEstateVehiclePlatform.EfApi\\Controllers\\FavoritesController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-10T19:36:21.179Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-10T19:36:21.179Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 37,
               "Title": "ListingDetailViewModel.cs",
               "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\ViewModels\\Listing\\ListingDetailViewModel.cs",
               "RelativeDocumentMoniker": "RealEstateVehiclePlatform.WebUI\\ViewModels\\Listing\\ListingDetailViewModel.cs",
@@ -970,12 +947,11 @@
               "RelativeToolTip": "RealEstateVehiclePlatform.WebUI\\ViewModels\\Listing\\ListingDetailViewModel.cs",
               "ViewState": "AgIAABEAAAAAAAAAAAA9wCAAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-10T16:04:23.258Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-10T16:04:23.258Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 38,
               "Title": "VehicleDetailViewModel.cs",
               "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\ViewModels\\ListingDetail\\VehicleDetailViewModel.cs",
               "RelativeDocumentMoniker": "RealEstateVehiclePlatform.WebUI\\ViewModels\\ListingDetail\\VehicleDetailViewModel.cs",
@@ -983,12 +959,11 @@
               "RelativeToolTip": "RealEstateVehiclePlatform.WebUI\\ViewModels\\ListingDetail\\VehicleDetailViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-17T17:23:50.69Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-17T17:23:50.69Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 40,
               "Title": "HouseDetailViewModel.cs",
               "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\ViewModels\\ListingDetail\\HouseDetailViewModel.cs",
               "RelativeDocumentMoniker": "RealEstateVehiclePlatform.WebUI\\ViewModels\\ListingDetail\\HouseDetailViewModel.cs",
@@ -996,12 +971,11 @@
               "RelativeToolTip": "RealEstateVehiclePlatform.WebUI\\ViewModels\\ListingDetail\\HouseDetailViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-17T17:23:17.726Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-17T17:23:17.726Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 41,
               "Title": "VehicleDetailsController.cs",
               "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.EfApi\\Controllers\\VehicleDetailsController.cs",
               "RelativeDocumentMoniker": "RealEstateVehiclePlatform.EfApi\\Controllers\\VehicleDetailsController.cs",
@@ -1009,12 +983,11 @@
               "RelativeToolTip": "RealEstateVehiclePlatform.EfApi\\Controllers\\VehicleDetailsController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAFIAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-17T17:15:22.01Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-17T17:15:22.01Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 42,
               "Title": "LandDetailsController.cs",
               "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.EfApi\\Controllers\\LandDetailsController.cs",
               "RelativeDocumentMoniker": "RealEstateVehiclePlatform.EfApi\\Controllers\\LandDetailsController.cs",
@@ -1022,12 +995,11 @@
               "RelativeToolTip": "RealEstateVehiclePlatform.EfApi\\Controllers\\LandDetailsController.cs",
               "ViewState": "AgIAACsAAAAAAAAAAAAiwFIAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-17T17:15:05.573Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-17T17:15:05.573Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 43,
               "Title": "HouseDetailsController.cs",
               "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.EfApi\\Controllers\\HouseDetailsController.cs",
               "RelativeDocumentMoniker": "RealEstateVehiclePlatform.EfApi\\Controllers\\HouseDetailsController.cs",
@@ -1035,12 +1007,11 @@
               "RelativeToolTip": "RealEstateVehiclePlatform.EfApi\\Controllers\\HouseDetailsController.cs",
               "ViewState": "AgIAACsAAAAAAAAAAAAiwFIAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-17T17:14:51.421Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-17T17:14:51.421Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 44,
               "Title": "IVehicleDetailService.cs",
               "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.Business\\Interfaces\\IVehicleDetailService.cs",
               "RelativeDocumentMoniker": "RealEstateVehiclePlatform.Business\\Interfaces\\IVehicleDetailService.cs",
@@ -1048,12 +1019,11 @@
               "RelativeToolTip": "RealEstateVehiclePlatform.Business\\Interfaces\\IVehicleDetailService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-17T17:14:33.384Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-17T17:14:33.384Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 45,
               "Title": "ILandDetailService.cs",
               "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.Business\\Interfaces\\ILandDetailService.cs",
               "RelativeDocumentMoniker": "RealEstateVehiclePlatform.Business\\Interfaces\\ILandDetailService.cs",
@@ -1061,12 +1031,11 @@
               "RelativeToolTip": "RealEstateVehiclePlatform.Business\\Interfaces\\ILandDetailService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-17T17:14:20.643Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-17T17:14:20.643Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 46,
               "Title": "IHouseDetailService.cs",
               "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.Business\\Interfaces\\IHouseDetailService.cs",
               "RelativeDocumentMoniker": "RealEstateVehiclePlatform.Business\\Interfaces\\IHouseDetailService.cs",
@@ -1074,12 +1043,11 @@
               "RelativeToolTip": "RealEstateVehiclePlatform.Business\\Interfaces\\IHouseDetailService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-17T17:14:08.295Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-17T17:14:08.295Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 47,
               "Title": "DistrictsController.cs",
               "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.EfApi\\Controllers\\DistrictsController.cs",
               "RelativeDocumentMoniker": "RealEstateVehiclePlatform.EfApi\\Controllers\\DistrictsController.cs",
@@ -1087,12 +1055,11 @@
               "RelativeToolTip": "RealEstateVehiclePlatform.EfApi\\Controllers\\DistrictsController.cs",
               "ViewState": "AgIAAAQAAAAAAAAAAAAswGIAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-12T10:41:46.974Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-12T10:41:46.974Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 48,
               "Title": "DistrictViewModel.cs",
               "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\ViewModels\\District\\DistrictViewModel.cs",
               "RelativeDocumentMoniker": "RealEstateVehiclePlatform.WebUI\\ViewModels\\District\\DistrictViewModel.cs",
@@ -1100,12 +1067,11 @@
               "RelativeToolTip": "RealEstateVehiclePlatform.WebUI\\ViewModels\\District\\DistrictViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-17T14:39:29.233Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-17T14:39:29.233Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 51,
+              "DocumentIndex": 52,
               "Title": "ListingRepository.cs",
               "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.DataAccess\\Repository\\ListingRepository.cs",
               "RelativeDocumentMoniker": "RealEstateVehiclePlatform.DataAccess\\Repository\\ListingRepository.cs",
@@ -1117,7 +1083,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 49,
               "Title": "index.html",
               "DocumentMoniker": "C:\\Users\\eylul\\Downloads\\modern-portfolio\\modern-portfolio\\index.html",
               "RelativeDocumentMoniker": "..\\..\\..\\Downloads\\modern-portfolio\\modern-portfolio\\index.html",
@@ -1129,7 +1095,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 50,
+              "DocumentIndex": 51,
               "Title": "IListingService.cs",
               "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.Business\\Interfaces\\IListingService.cs",
               "RelativeDocumentMoniker": "RealEstateVehiclePlatform.Business\\Interfaces\\IListingService.cs",
@@ -1141,7 +1107,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 49,
+              "DocumentIndex": 50,
               "Title": "ListingService.cs",
               "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.Business\\Services\\ListingService.cs",
               "RelativeDocumentMoniker": "RealEstateVehiclePlatform.Business\\Services\\ListingService.cs",
@@ -1153,7 +1119,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 52,
+              "DocumentIndex": 53,
               "Title": "IListingRepository.cs",
               "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.DataAccess\\Interfaces\\IListingRepository.cs",
               "RelativeDocumentMoniker": "RealEstateVehiclePlatform.DataAccess\\Interfaces\\IListingRepository.cs",
@@ -1165,7 +1131,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 53,
+              "DocumentIndex": 54,
               "Title": "ListingDetailDto.cs",
               "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.Entities\\DTOs\\ListingDtos\\ListingDetailDto.cs",
               "RelativeDocumentMoniker": "RealEstateVehiclePlatform.Entities\\DTOs\\ListingDtos\\ListingDetailDto.cs",
@@ -1177,7 +1143,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 55,
+              "DocumentIndex": 56,
               "Title": "ListingStatus.cs",
               "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.Entities\\Enums\\ListingStatus.cs",
               "RelativeDocumentMoniker": "RealEstateVehiclePlatform.Entities\\Enums\\ListingStatus.cs",
@@ -1189,7 +1155,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 57,
+              "DocumentIndex": 58,
               "Title": "ListingTypesController.cs",
               "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.EfApi\\Controllers\\ListingTypesController.cs",
               "RelativeDocumentMoniker": "RealEstateVehiclePlatform.EfApi\\Controllers\\ListingTypesController.cs",
@@ -1201,7 +1167,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 54,
+              "DocumentIndex": 55,
               "Title": "ListingViewModel.cs",
               "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\ViewModels\\Listing\\ListingViewModel.cs",
               "RelativeDocumentMoniker": "RealEstateVehiclePlatform.WebUI\\ViewModels\\Listing\\ListingViewModel.cs",
@@ -1213,7 +1179,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 58,
+              "DocumentIndex": 59,
               "Title": "CitiesController.cs",
               "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.EfApi\\Controllers\\CitiesController.cs",
               "RelativeDocumentMoniker": "RealEstateVehiclePlatform.EfApi\\Controllers\\CitiesController.cs",
@@ -1225,7 +1191,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 56,
+              "DocumentIndex": 57,
               "Title": "MessagesController.cs",
               "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.EfApi\\Controllers\\MessagesController.cs",
               "RelativeDocumentMoniker": "RealEstateVehiclePlatform.EfApi\\Controllers\\MessagesController.cs",
@@ -1237,7 +1203,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 59,
+              "DocumentIndex": 60,
               "Title": "HomeController.cs",
               "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "RealEstateVehiclePlatform.WebUI\\Controllers\\HomeController.cs",
@@ -1249,7 +1215,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 60,
+              "DocumentIndex": 61,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\Views\\UserProfile\\Index.cshtml",
               "RelativeDocumentMoniker": "RealEstateVehiclePlatform.WebUI\\Views\\UserProfile\\Index.cshtml",
@@ -1261,7 +1227,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 61,
+              "DocumentIndex": 62,
               "Title": "AdminCityController.cs",
               "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\Controllers\\AdminCityController.cs",
               "RelativeDocumentMoniker": "RealEstateVehiclePlatform.WebUI\\Controllers\\AdminCityController.cs",
@@ -1273,7 +1239,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 62,
+              "DocumentIndex": 63,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\Views\\Listing\\Index.cshtml",
               "RelativeDocumentMoniker": "RealEstateVehiclePlatform.WebUI\\Views\\Listing\\Index.cshtml",
@@ -1286,18 +1252,6 @@
             {
               "$type": "Document",
               "DocumentIndex": 64,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "RealEstateVehiclePlatform.WebUI\\Views\\Home\\Index.cshtml",
-              "ToolTip": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\Views\\Home\\Index.cshtml",
-              "RelativeToolTip": "RealEstateVehiclePlatform.WebUI\\Views\\Home\\Index.cshtml",
-              "ViewState": "AgIAAEkDAAAAAAAAAAAuwGADAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-07-10T12:51:35.724Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 63,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\eylul\\Documents\\GitHub\\RealEstateVehiclePlatform\\RealEstateVehiclePlatform.WebUI\\Views\\UserListing\\Index.cshtml",
               "RelativeDocumentMoniker": "RealEstateVehiclePlatform.WebUI\\Views\\UserListing\\Index.cshtml",

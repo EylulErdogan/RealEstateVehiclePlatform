@@ -8,3 +8,6 @@
 [2026-07-18 01:55:57] [WARNING] [User: System/Guest] Hatalı giriş denemesi. Kullanılan E-posta: admin@test.com
 [2026-07-18 01:59:38] [WARNING] [User: System/Guest] Hatalı giriş denemesi. Kullanılan E-posta: admin@test.com
 [2026-07-18 02:00:29] [INFO] [User: Admin User] Başarılı kullanıcı girişi yapıldı.
+[2026-07-18 02:10:04] [INFO] [User: Admin User] Başarılı kullanıcı girişi yapıldı.
+[2026-07-18 02:26:55] [INFO] [User: Admin User] Oturum kapatıldı.
+[2026-07-18 02:27:25] [INFO] [User: Admin User] Başarılı kullanıcı girişi yapıldı.

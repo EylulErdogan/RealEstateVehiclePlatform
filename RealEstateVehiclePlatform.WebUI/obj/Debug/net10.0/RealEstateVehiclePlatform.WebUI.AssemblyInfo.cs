@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RealEstateVehiclePlatform.WebUI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+24cfa432963ff7e0ba3ad4dc2897cfa000ff6bef")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bfb8b89bbde94b077a14dfb382d3af548013e22a")]
 [assembly: System.Reflection.AssemblyProductAttribute("RealEstateVehiclePlatform.WebUI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RealEstateVehiclePlatform.WebUI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
