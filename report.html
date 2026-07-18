@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>RealEstateVehiclePlatform Bitirme Projesi Raporu</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+        
+        @page {
+            size: A4;
+            margin: 2cm 1.5cm;
+        }
+
+        html {
+            background-color: #f8fafc;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.6;
+            color: #1e293b;
+            font-size: 14px;
+            max-width: 850px;
+            margin: 40px auto;
+            padding: 50px 40px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 24px rgba(15, 23, 42, 0.06);
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+        }
+
+        h1, h2, h3, h4 {
+            color: #0f172a;
+            font-weight: 800;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 20px;
+            margin-top: 30px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 8px;
+            page-break-before: always;
+        }
+
+        h3 {
+            font-size: 16px;
+            margin-top: 20px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        ul, ol {
+            margin-bottom: 15px;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #f1f5f9;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 13px;
+        }
+
+        pre {
+            background-color: #f1f5f9;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            border: 1px solid #e2e8f0;
+            margin-bottom: 20px;
+        }
+
+        pre code {
+            padding: 0;
+            background-color: transparent;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #cbd5e1;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f8fafc;
+            font-weight: 700;
+        }
+
+        .cover-page {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+            padding: 50px 0;
+            page-break-after: always;
+        }
+
+        .cover-top h2 {
+            page-break-before: avoid;
+            border-bottom: none;
+            font-size: 20px;
+            color: #475569;
+            letter-spacing: 2px;
+            margin-top: 0;
+        }
+
+        .cover-middle {
+            margin: auto 0;
+        }
+
+        .cover-middle h1 {
+            font-size: 34px;
+            color: #0f172a;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .cover-middle h3 {
+            font-size: 18px;
+            color: #2563eb;
+            font-weight: 600;
+            margin-top: 0;
+        }
+
+        .cover-bottom {
+            font-size: 14px;
+            color: #475569;
+        }
+
+        .cover-bottom p {
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
+        .toc-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .toc-list li {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px dashed #cbd5e1;
+            margin-bottom: 12px;
+        }
+
+        .toc-list li span:first-child {
+            background-color: #fff;
+            padding-right: 5px;
+        }
+
+        .toc-list li span:last-child {
+            background-color: #fff;
+            padding-left: 5px;
+            font-weight: 600;
+        }
+
+        .img-container {
+            text-align: center;
+            margin: 15px 0;
+            page-break-inside: avoid;
+        }
+
+        .img-container img {
+            max-width: 85%;
+            max-height: 250px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+            object-fit: contain;
+        }
+
+        .img-label {
+            font-size: 12px;
+            color: #64748b;
+            margin-top: 8px;
+            font-weight: 600;
+        }
+
+        .page-break {
+            page-break-after: always;
+        }
+
+        @media print {
+            html {
+                background-color: #ffffff;
+            }
+            body {
+                max-width: 100%;
+                margin: 0;
+                padding: 0;
+                background-color: #ffffff;
+                box-shadow: none;
+                border: none;
+                border-radius: 0;
+            }
+            .cover-page {
+                height: 20cm;
+                padding: 2cm 0;
+                box-sizing: border-box;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. KAPAK SAYFASI -->
+    <div class="cover-page">
+        <div class="cover-top">
+            <h2>softito YAZILIM BİLİŞİM AKADEMİSİ</h2>
+            <div style="width: 80px; height: 3px; background-color: #2563eb; margin: 15px auto;"></div>
+            <h3>BİTİRME PROJESİ RAPORU</h3>
+        </div>
+        
+        <div class="cover-middle">
+            <h1>RealEstateVehiclePlatform</h1>
+            <h3>Modern Emlak & Vasıta İlan Platformu</h3>
+            <p style="color: #64748b; font-size: 14px; max-width: 500px; margin: 15px auto 0; text-align: center;">
+                ASP.NET Core 9 Web API ve MVC mimarisiyle geliştirilmiş, hibrit ORM entegrasyonuna ve Yapay Zeka desteğine sahip yeni nesil ilan yönetim sistemi.
+            </p>
+        </div>
+        
+        <div class="cover-bottom">
+            <p><strong>Geliştirici:</strong> Sedanur Eylül Erdoğan</p>
+            <p><strong>E-posta:</strong> sedanureylulerdogan@gmail.com</p>
+            <p style="margin-top: 15px;"><strong>Temmuz, 2026</strong></p>
+        </div>
+    </div>
+
+    <!-- 2. İÇİNDEKİLER SAYFASI -->
+    <div class="page-break" style="padding-top: 20px;">
+        <h2 style="page-break-before: avoid; margin-top: 0;">📋 İÇİNDEKİLER</h2>
+        <ul class="toc-list" style="margin-top: 30px;">
+            <li><span>1. GİRİŞ</span> <span>1</span></li>
+            <li><span>&nbsp;&nbsp;&nbsp;&nbsp;1.1. Projenin Amacı</span> <span>1</span></li>
+            <li><span>&nbsp;&nbsp;&nbsp;&nbsp;1.2. Proje Kısıtları</span> <span>1</span></li>
+            <li><span>2. MATERYAL VE YÖNTEM</span> <span>2</span></li>
+            <li><span>&nbsp;&nbsp;&nbsp;&nbsp;2.1. C# & .NET 9.0 Platformu ve Bağımlılıkları</span> <span>2</span></li>
+            <li><span>&nbsp;&nbsp;&nbsp;&nbsp;2.2. Entity Framework Core ve Dapper Entegrasyonu</span> <span>2</span></li>
+            <li><span>&nbsp;&nbsp;&nbsp;&nbsp;2.3. Proje Katmanlı Mimari Yapısı ve Tasarım Desenleri</span> <span>2</span></li>
+            <li><span>3. KURULUM VE GÖRSELLEŞTİRME</span> <span>3</span></li>
+            <li><span>&nbsp;&nbsp;&nbsp;&nbsp;3.1. Veritabanı ve Yerel SQL Server Yapılandırması</span> <span>3</span></li>
+            <li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.1.1. Veritabanı Bağlantı Dizesi (Connection String)</span> <span>3</span></li>
+            <li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.1.2. Entity Framework Core Migration İşlemleri</span> <span>3</span></li>
+            <li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.1.3. Identity ve Rol Başlangıç (Seeding) Verisi Kontrolü</span> <span>3</span></li>
+            <li><span>&nbsp;&nbsp;&nbsp;&nbsp;3.2. Uygulama Modüllerinin Çalıştırılması ve Test Senaryoları</span> <span>4</span></li>
+            <li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.2.1. REST Web API ve WebUI Projelerinin Eş Zamanlı Başlatılması</span> <span>4</span></li>
+            <li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.2.2. Admin ve Standart Kullanıcı Girişleri</span> <span>7</span></li>
+            <li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.2.3. AJAX Bildirim Sistemi ve SweetAlert2 Entegrasyonu</span> <span>7</span></li>
+            <li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.2.4. Önbellekleme (IMemoryCache) ve Otomatik Cache Eviction Kontrolü</span> <span>7</span></li>
+            <li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.2.5. Excel (CSV UTF-8 BOM) ve A4 Katalog (PDF) Raporlama Çıktıları</span> <span>7</span></li>
+            <li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.2.6. Platform İstatistik Paneli ve Grafik Analizleri (Chart.js)</span> <span>8</span></li>
+            <li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.2.7. Akıllı Yapay Zeka (AI) Asistanı Chatbot Deneyimi</span> <span>8</span></li>
+            <li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.2.8. Sistem Log Konsolu (Log Viewer) ile Hataları İzleme</span> <span>8</span></li>
+            <li><span>4. SONUÇ</span> <span>9</span></li>
+            <li><span>5. KAYNAKÇA</span> <span>10</span></li>
+        </ul>
+    </div>
+
+    <!-- 3. İÇERİK SAYFALARI -->
+    <h2>1. GİRİŞ</h2>
+    <p>Bu bölümde projenin genel amacı, kapsamı ve geliştirme sürecinde uyulan mimari kısıtlar ele alınmıştır.</p>
+    
+    <h3>1.1. Projenin Amacı</h3>
+    <p>Bu projenin amacı; kullanıcıların gayrimenkul (konut, arsa) ve vasıta ilanlarını tek bir çatı altında toplayarak ilan ekleyebildiği, resimlerini yönetebildiği, platform içi anlık mesajlaşma ve randevu mekanizmalarıyla etkileşime girebildiği modern bir pazar yeri (marketplace) platformu oluşturmaktır. Yönetici paneli sayesinde ilanların kontrol edilip onaylanabildiği, verilerin grafiksel olarak analiz edilebildiği kurumsal düzeyde bir yazılım sunulması hedeflenmiştir.</p>
+    
+    <h3>1.2. Proje Kısıtları</h3>
+    <ul>
+        <li><strong>Kısıt 1:</strong> Sistem, harici ve ağır üçüncü parti bağımlılıklara (lisans gerektiren PDF veya Excel paketleri gibi) muhtaç kalmaksızın, tamamen .NET'in yerel yetenekleri ve hafif istemci tarafı (client-side) kütüphaneleriyle çalışacak şekilde optimize edilmiştir.</li>
+        <li><strong>Kısıt 2:</strong> API katmanı ile MVC WebUI katmanı tamamen birbirinden bağımsız (Decoupled) çalışmalı, aralarındaki iletişim yalnızca JSON formatındaki güvenli HTTP istekleriyle (JWT Bearer Token yetkilendirmesiyle) sağlanmalıdır.</li>
+        <li><strong>Kısıt 3:</strong> Form doğrulama, görsel boyutlarının optimize edilmesi ve güvenlik açıkları (zararlı dosyaların sisteme yüklenmesi) henüz sunucu yorulmadan istemci ve denetleyici seviyesinde filtrelenmelidir.</li>
+    </ul>
+
+    <h2>2. MATERYAL VE YÖNTEM</h2>
+    <p>Projenin teknik altyapısını oluşturan teknolojiler ve mimari yaklaşımlar bu başlık altında detaylandırılmıştır.</p>
+    
+    <h3>2.1. C# & .NET 9.0 Platformu ve Bağımlılıkları</h3>
+    <p>Proje, Microsoft .NET 9.0 yazılım geliştirme platformu kullanılarak geliştirilmiştir. API katmanında JSON tabanlı güvenli bir RESTful API sunulurken, MVC katmanında Razor syntax ile hazırlanan kullanıcı arayüzü Bootstrap 5 kütüphanesiyle görselleştirilmiştir. Kimlik doğrulama süreçleri ASP.NET Core Identity sistemi ile yönetilmiştir.</p>
+    
+    <h3>2.2. Entity Framework Core ve Dapper Entegrasyonu</h3>
+    <p>Veritabanı ilişkileri Entity Framework Core kullanılarak Code-First yaklaşımıyla modellenmiştir. Eşleşen tabloların (One-to-Many vb.) yönetiminde EF Core tercih edilirken; yüksek performans ve minimum gecikme süresi gerektiren Dashboard sayaçları ve dinamik istatistik raporlarında <strong>Dapper (Micro ORM)</strong> entegrasyonuyla doğrudan SQL sorguları çalıştırılmıştır.</p>
+    
+    <h3>2.3. Proje Katmanlı Mimari Yapısı ve Tasarım Desenleri</h3>
+    <p>Proje, gevşek bağlılığı (Loose Coupling) ve sürdürülebilirliği sağlamak adına <strong>Katmanlı Mimari (N-Tier)</strong> ile tasarlanmıştır. Sistemde Service-Repository-Unit of Work desenleri uygulanmıştır. Veri okuma işlemlerini hızlandırmak amacıyla RAM önbelleği (IMemoryCache) ve veri yazıldığında belleği güncel tutan Cache Eviction mantığı kurulmuştur.</p>
+
+    <h2>3. KURULUM VE GÖRSELLEŞTİRME</h2>
+    
+    <h3>3.1. Veritabanı ve Yerel SQL Server Yapılandırması</h3>
+    
+    <h4>3.1.1. Veritabanı Bağlantı Dizesi (Connection String)</h4>
+    <p>Veritabanı bağlantısı <code>RealEstateVehiclePlatform.EfApi/appsettings.json</code> dosyası üzerinden yerel SQL LocalDB sunucusuna bağlanacak şekilde yapılandırılmıştır:</p>
+    <pre><code>"ConnectionStrings": {
+  "SqlConnection": "Server=(localdb)\\MSSQLLocalDB;Database=RealEstateVehiclePlatformDb;TrustServerCertificate=true;"
+}</code></pre>
+
+    <h4>3.1.2. Entity Framework Core Migration İşlemleri</h4>
+    <p>Paket Yöneticisi Konsolunda (PMC) veritabanı şemasını oluşturmak ve tabloları hazırlamak için aşağıdaki komut koşturulur:</p>
+    <pre><code>Update-Database</code></pre>
+
+    <h4>3.1.3. Identity ve Rol Başlangıç (Seeding) Verisi Kontrolü</h4>
+    <p>Sistem ilk kez çalıştırıldığında, <code>RoleSeedService</code> ve <code>AdminSeedService</code> devreye girerek veritabanında <code>Admin</code> ve <code>User</code> rollerini ve <code>admin@gmail.com</code> (şifre: <code>123456</code>) yöneticisini otomatik olarak kurar.</p>
+
+    <h3>3.2. Uygulama Modüllerinin Çalıştırılması ve Test Senaryoları</h3>
+    
+    <h4>3.2.1. REST Web API ve WebUI Projelerinin Eş Zamanlı Başlatılması</h4>
+    <p>Platformun çalışabilmesi için <code>RealEstateVehiclePlatform.EfApi</code> ve <code>RealEstateVehiclePlatform.WebUI</code> projeleri Visual Studio'da eş zamanlı (Multiple Startup Projects) olarak çalıştırılır.</p>
+
+    <div class="img-container">
+        <img src="images/home.png" alt="Platform Ana Sayfa Görünümü" />
+        <div class="img-label">Şekil 3.2.1.1. Platform Ana Sayfa Görünümü</div>
+    </div>
+
+    <div class="img-container">
+        <img src="images/listings.png" alt="İlan Listeleme ve Filtreleme Arayüzü" />
+        <div class="img-label">Şekil 3.2.1.2. İlan Listeleme ve Filtreleme Arayüzü</div>
+    </div>
+
+    <div class="img-container">
+        <img src="images/addListings.png" alt="İlan Ekleme Sihirbazı (Wizard)" />
+        <div class="img-label">Şekil 3.2.1.3. İlan Ekleme Sihirbazı (Wizard)</div>
+    </div>
+
+    <div class="img-container">
+        <img src="images/listingDetail.png" alt="İlan Detay Kartı ve Teknik Özellikler Grid Yapısı" />
+        <div class="img-label">Şekil 3.2.1.4. İlan Detay Kartı ve Teknik Özellikler Grid Yapısı</div>
+    </div>
+
+    <div class="img-container">
+        <img src="images/favorites.png" alt="Favori İlanlarım Listesi" />
+        <div class="img-label">Şekil 3.2.1.5. Favori İlanlarım Listesi</div>
+    </div>
+
+    <div class="img-container">
+        <img src="images/appointments.png" alt="Randevu Talepleri Yönetim Ekranı" />
+        <div class="img-label">Şekil 3.2.1.6. Randevu Talepleri Yönetim Ekranı</div>
+    </div>
+
+    <div class="img-container">
+        <img src="images/messages.png" alt="Alıcı ve Satıcı Arasındaki Sohbet Paneli" />
+        <div class="img-label">Şekil 3.2.1.7. Alıcı ve Satıcı Arasındaki Sohbet Paneli</div>
+    </div>
+
+    <div class="img-container">
+        <img src="images/profile.png" alt="Kullanıcı Profili Yönetimi" />
+        <div class="img-label">Şekil 3.2.1.8. Kullanıcı Profili Yönetimi</div>
+    </div>
+
+    <div class="img-container">
+        <img src="images/addPictures.png" alt="İlan Görsel Yükleme ve Sürükle-Bırak Paneli" />
+        <div class="img-label">Şekil 3.2.1.9. İlan Görsel Yükleme ve Sürükle-Bırak Paneli</div>
+    </div>
+
+    <div class="img-container">
+        <img src="images/adminDashboard.png" alt="Admin Kontrol Paneli ve Analitik Grafikler (Chart.js)" />
+        <div class="img-label">Şekil 3.2.1.10. Admin Kontrol Paneli ve Analitik Grafikler (Chart.js)</div>
+    </div>
+
+    <div class="img-container">
+        <img src="images/adminListings.png" alt="Admin İlan Yönetimi ve Onay Paneli" />
+        <div class="img-label">Şekil 3.2.1.11. Admin İlan Yönetimi ve Onay Paneli</div>
+    </div>
+
+    <div class="img-container">
+        <img src="images/register.png" alt="Yeni Kullanıcı Kayıt Arayüzü" />
+        <div class="img-label">Şekil 3.2.1.12. Yeni Kullanıcı Kayıt Arayüzü</div>
+    </div>
+
+    <div class="img-container">
+        <img src="images/istatistics.png" alt="Gelişmiş Şehir/Kategori Yoğunluk Grafikleri" />
+        <div class="img-label">Şekil 3.2.1.13. Gelişmiş Şehir/Kategori Yoğunluk Grafikleri</div>
+    </div>
+
+    <div class="img-container">
+        <img src="images/systemLogs.png" alt="Canlı Sistem Log Konsolu (Log Viewer)" />
+        <div class="img-label">Şekil 3.2.1.14. Canlı Sistem Log Konsolu (Log Viewer)</div>
+    </div>
+
+    <div class="img-container">
+        <img src="images/chatBot.png" alt="AI Chatbot Asistan Penceresi" />
+        <div class="img-label">Şekil 3.2.1.15. AI Chatbot Asistan Penceresi</div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <h4>3.2.2. Admin ve Standart Kullanıcı Girişleri</h4>
+    <p>Test verileri yüklenmiş temiz veritabanında test yapabilmeniz için kimlik bilgileri:
+    <br>• <strong>Admin Yöneticisi:</strong> <code>admin@gmail.com</code> | Şifre: <code>123456</code>
+    <br>• <strong>Normal Üye:</strong> <code>user@test.com</code> | Şifre: <code>Password123!</code></p>
+
+    <h4>3.2.3. AJAX Bildirim Sistemi ve SweetAlert2 Entegrasyonu</h4>
+    <p>Ziyaretçiler sisteme girdiğinde arka planda çalışan AJAX Polling (20 saniyede bir) mekanizması okunmamış mesajları ve randevuları süzerek zilde günceller. Yeni bir mesaj geldiğinde sağ üst köşeden SweetAlert2 Toast bildirimi akarak kullanıcı uyarılır.</p>
+
+    <h4>3.2.4. Önbellekleme (IMemoryCache) ve Otomatik Cache Eviction Kontrolü</h4>
+    <p>İlan ekleme veya ana sayfa listeleme sırasında sürekli çağrılan <code>Categories</code>, <code>Cities</code> ve <code>Districts</code> listeleri RAM'de 30 dakika önbelleğe alınır. Admin panelinden yeni bir kategori silindiğinde veya eklendiğinde <code>EvictCache</code> tetiklenerek eski veriler RAM'den temizlenir (Cache Invalidation).</p>
+
+    <h4>3.2.5. Excel (CSV UTF-8 BOM) ve A4 Katalog (PDF) Raporlama Çıktıları</h4>
+    <p>• <strong>Excel Raporlama:</strong> Admin İlanlar sayfasındaki butona tıklandığında, <code>UTF-8 BOM</code> kodlamasıyla hazırlanan ve Türkçe karakterleri bozmayan noktalı virgüllü <code>;</code> rapor Excel formatında indirilir.
+    <br>• <strong>PDF Raporlama:</strong> İlan detay sayfasındaki "İlan Broşürü (PDF)" butonu, <code>html2pdf.js</code> ile o ana ait görseli ve teknik özellikleri tarayıcıda dinamik olarak A4 emlak kataloğuna dönüştürür.</p>
+
+    <h4>3.2.6. Platform İstatistik Paneli ve Grafik Analizleri (Chart.js)</h4>
+    <p>Admin panelindeki İstatistik sekmesinde Chart.js kütüphanesiyle çizilen dairesel Kategori Dağılımı ve yatay Şehir Yoğunluk grafikleri dinamik olarak ilan sayılarını analiz eder.</p>
+
+    <h4>3.2.7. Akıllı Yapay Zeka (AI) Asistanı Chatbot Deneyimi</h4>
+    <p>Sağ altta yer alan AI ikonu tıklandığında sohbet penceresi açılır. Kullanıcı *"en ucuz ilanları göster"*, *"İstanbul"* veya *"Ev"* yazdığında veritabanını tarayarak uygun aktif ilanları doğrudan linkleriyle birlikte listeler.</p>
+
+    <h4>3.2.8. Sistem Log Konsolu (Log Viewer) ile Hataları İzleme</h4>
+    <p>Uygulamadaki tüm login, register ve hata hareketleri <code>LogService</code> tarafından thread-safe (kilit korumalı) olarak <code>system_logs.txt</code> dosyasına yazılır. Admin panelindeki "Sistem Logları" sekmesinden bu veriler canlı konsol ekranında renklendirilmiş (INFO: yeşil, ERROR: kırmızı) olarak takip edilebilir.</p>
+
+    <h2>4. SONUÇ</h2>
+    <p>Bu bitirme projesi kapsamında, modern yazılım mimarilerine uygun, katmanlar arası bağımsızlığın korunduğu kurumsal bir ilan otomasyon sistemi geliştirilmiştir. Projede Entity Framework Core Code-First yaklaşımı ile ilişkisel veritabanı kurulmuş, Dapper ile performans kritik istatistiksel raporlar çekilmiştir.</p>
+    <p>Sisteme entegre edilen istemci taraflı görsel sıkıştırma (Canvas API), sunucu taraflı güvenli dosya imzası doğrulamaları (Magic Numbers), IMemoryCache altyapısı ve otomatik önbellek geçersiz kılma mantığı sayesinde sistemin kararlı ve yüksek performanslı çalışması sağlanmıştır. Yapay Zeka destekli sohbet robotu ve dinamik grafik gösterimleriyle desteklenen modern kullanıcı arayüzü, platformun ticari bir pazar yeri uygulamasının gereksinimlerini eksiksiz karşıladığını kanıtlamaktadır.</p>
+
+    <h2>5. KAYNAKÇA</h2>
+    <ol>
+        <li>Microsoft .NET 9.0 Documentation - https://learn.microsoft.com/en-us/dotnet/</li>
+        <li>Entity Framework Core Code-First Migrations - https://learn.microsoft.com/en-us/ef/core/</li>
+        <li>Dapper Micro-ORM Tutorial & Benchmarks - https://github.com/DapperLib/Dapper</li>
+        <li>Chart.js Canvas Graph Library Documentation - https://www.chartjs.org/docs/</li>
+        <li>html2pdf.js HTML-to-PDF Conversion Guide - https://rawgit.com/eKoopmans/html2pdf.js/master/docs/index.html</li>
+    </ol>
+
+</body>
+</html>
