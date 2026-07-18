@@ -143,6 +143,11 @@ The primary objectives of this graduation project are:
 ![Listings](images/listings.png)
 
 ---
+## 🔍 Add Listing Page
+
+![Listings](images/addListings.png)
+
+---
 
 ## 📄 Listing Detail
 
@@ -174,9 +179,9 @@ The primary objectives of this graduation project are:
 
 ---
 
-## 📷 Listing Image Management
+## 📷 Add Image 
 
-![Images](images/listingImages.png)
+![Images](images/addPictures.png)
 
 ---
 
@@ -192,21 +197,26 @@ The primary objectives of this graduation project are:
 
 ---
 
-## 🏙 Category Management
+## 🏙 Register
 
-![Categories](images/categories.png)
-
----
-
-## 🌍 City Management
-
-![Cities](images/cities.png)
+![Categories](images/register.png)
 
 ---
 
-## 📍 District Management
+## 🌍 Istatistics
 
-![Districts](images/districts.png)
+![Cities](images/istatistics.png)
+
+---
+
+## 📍 System Logs 
+
+![Districts](images/systemLogs.png)
+
+---
+## 💬 ChatBot
+
+![Messages](images/chatBot.png)
 
 ---
 
